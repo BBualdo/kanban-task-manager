@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
+const PJS = Plus_Jakarta_Sans({ weight: ["500", "700"], subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Kanban",
@@ -19,7 +19,7 @@ export default function RootLayout({
       <head>
         <link rel="icon" href="/assets/logo-mobile.svg" />
       </head>
-      <body className={inter.className}>{children}</body>
+      <body className={PJS.className}>{children}</body>
     </html>
   );
 }

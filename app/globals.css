@@ -1,3 +1,67 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  h1 {
+    @apply text-[24px] font-bold leading-[30px];
+  }
+
+  h2 {
+    @apply text-[18px] font-bold leading-[23px];
+  }
+
+  h3 {
+    @apply text-[15px] font-bold leading-[19px];
+  }
+
+  h4 {
+    @apply text-[12px] font-bold leading-[15px] tracking-[2.4px];
+  }
+
+  .p-lg {
+    @apply text-[13px] font-medium leading-[23px];
+  }
+
+  .p-md {
+    @apply text-[12px] font-bold leading-[15px];
+  }
+}
+
+@layer components {
+  .btn {
+    @apply font-bold transition-all duration-200 cursor-pointer;
+  }
+
+  .btn-primary-lg {
+    @apply text-[15px] text-white bg-purple px-[61.5px] py-[14px] rounded-3xl;
+  }
+
+  .btn-primary-lg:hover {
+    @apply bg-purple_hover;
+  }
+
+  .btn-primary-sm {
+    @apply text-[13px] leading-[23px] text-white bg-purple px-[69.5px] py-[9px] rounded-[20px];
+  }
+
+  .btn-primary-sm:hover {
+    @apply bg-purple_hover;
+  }
+
+  .btn-secondary {
+    @apply text-[13px] leading-[23px] text-purple bg-purple/10 px-[69.5px] py-[9px] rounded-[20px];
+  }
+
+  .btn-secondary:hover {
+    @apply bg-purple/20;
+  }
+
+  .btn-destructive {
+    @apply text-[13px] leading-[23px] text-white bg-red px-[69.5px] py-[9px] rounded-[20px];
+  }
+
+  .btn-destructive:hover {
+    @apply bg-red_hover;
+  }
+}
