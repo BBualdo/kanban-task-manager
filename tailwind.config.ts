@@ -15,7 +15,7 @@ const config: Config = {
       dark_grey: "#2B2C37",
       lines: "#3E3F4E",
       medium_grey: "#828FA3",
-      lines_light: "#828FA3",
+      lines_light: "#E4EBFA",
       light_grey: "#F4F7FD",
       white: "#FFFFFF",
       red: "#EA5555",
