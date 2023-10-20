@@ -1,14 +1,36 @@
+"use client";
+
+import { useState } from "react";
+
 import Image from "next/image";
 import darkLogo from "../../public/assets/logo-dark.svg";
+import lightLogo from "../../public/assets/logo-light.svg";
 import sunIcon from "../../public/assets/icon-light-theme.svg";
 import moonIcon from "../../public/assets/icon-dark-theme.svg";
 import blindEye from "../../public/assets/icon-hide-sidebar.svg";
 import Boards from "./Boards";
 
 const Sidebar = () => {
+  const [isLightMode, setIsLightMode] = useState(true);
+
+  function toggleTheme() {
+    setIsLightMode((prevMode) => !prevMode);
+  }
+
   return (
-    <section className="w-[300px] border-r-[1px] border-lines_light min-h-full pt-8 pb-12 flex flex-col">
-      <Image src={darkLogo} alt="Kanban Logo" className="pl-[34px]" />
+    <section
+      className={`${
+        isLightMode
+          ? "bg-white border-lines_light"
+          : "bg-dark_grey border-lines_dark"
+      } min-w-[300px] border-r-[1px]  min-h-full pt-8 pb-12 flex flex-col`}
+    >
+      {isLightMode && (
+        <Image src={darkLogo} alt="Kanban Logo" className="pl-[34px]" />
+      )}
+      {!isLightMode && (
+        <Image src={lightLogo} alt="Kanban Logo" className="pl-[34px]" />
+      )}
       <div className="flex flex-col justify-between flex-1">
         <div className=" mt-[54px]">
           <h4 className="text-medium_grey pl-8">ALL BOARDS (3)</h4>
@@ -29,10 +51,21 @@ const Sidebar = () => {
           </div>
         </div>
         <div>
-          <div className="flex items-center justify-center gap-3 bg-light_grey mx-6 py-[14px]">
+          <div
+            className={`${
+              isLightMode ? "bg-light_grey" : "bg-very_dark_grey"
+            } flex items-center justify-center gap-3 mx-6 py-[14px]`}
+          >
             <Image src={sunIcon} alt="Sun Icon" />
-            <div className="w-12 h-5 bg-purple rounded-full cursor-pointer flex items-center justify-center">
-              <div className="w-[14px] h-[14px] bg-white rounded-full transition-transform duration-400 translate-x-[-100%]" />
+            <div
+              onClick={toggleTheme}
+              className="w-12 h-5 bg-purple rounded-full cursor-pointer flex items-center justify-center"
+            >
+              <div
+                className={`w-[14px] h-[14px] bg-white rounded-full transition-transform duration-400 ${
+                  isLightMode ? "translate-x-[-100%]" : "translate-x-[100%]"
+                }`}
+              />
             </div>
             <Image src={moonIcon} alt="Moon Icon" />
           </div>

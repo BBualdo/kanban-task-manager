@@ -13,7 +13,7 @@ const config: Config = {
       black: "#000112",
       very_dark_grey: "#20212C",
       dark_grey: "#2B2C37",
-      lines: "#3E3F4E",
+      lines_dark: "#3E3F4E",
       medium_grey: "#828FA3",
       lines_light: "#E4EBFA",
       light_grey: "#F4F7FD",
