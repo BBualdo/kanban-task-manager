@@ -33,11 +33,15 @@
     @apply font-bold transition-all duration-200 cursor-pointer;
   }
 
-  .btn-primary-lg {
-    @apply text-[15px] text-white bg-purple px-[61.5px] py-[14px] rounded-3xl;
+  .btn:disabled {
+    @apply opacity-20 cursor-default;
   }
 
-  .btn-primary-lg:hover {
+  .btn-primary-lg {
+    @apply text-[15px] text-white bg-purple py-[14px] rounded-3xl;
+  }
+
+  .btn-primary-lg:enabled:hover {
     @apply bg-purple_hover;
   }
 

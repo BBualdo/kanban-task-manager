@@ -7,7 +7,7 @@ import Boards from "./Boards";
 
 const Sidebar = () => {
   return (
-    <div className="w-[300px] border-r-[1px] border-lines_light min-h-full pt-8 pb-12 flex flex-col">
+    <section className="w-[300px] border-r-[1px] border-lines_light min-h-full pt-8 pb-12 flex flex-col">
       <Image src={darkLogo} alt="Kanban Logo" className="pl-[34px]" />
       <div className="flex flex-col justify-between flex-1">
         <div className=" mt-[54px]">
@@ -44,7 +44,7 @@ const Sidebar = () => {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 
