@@ -61,11 +61,20 @@ const Header = () => {
           <button disabled className="btn btn-primary-lg px-6">
             + Add New Task
           </button>
-          <Image
-            src={dotsIcon}
-            alt="Three Vertical Dots"
-            className="cursor-pointer"
-          />
+          <svg
+            width="5"
+            height="20"
+            xmlns="http://www.w3.org/2000/svg"
+            className={`cursor-pointer fill-medium_grey  ${
+              isLightTheme ? "hover:fill-black" : "hover:fill-white"
+            } transition-all duration-100`}
+          >
+            <g fill-rule="evenodd">
+              <circle cx="2.308" cy="2.308" r="2.308" />
+              <circle cx="2.308" cy="10" r="2.308" />
+              <circle cx="2.308" cy="17.692" r="2.308" />
+            </g>
+          </svg>
         </div>
       </div>
     </header>
