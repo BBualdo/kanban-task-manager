@@ -1,5 +1,5 @@
 import React from "react";
-import boards from "../data/data";
+import DUMMY_BOARDS from "../data/data";
 import { AppDispatch, useAppSelector } from "@/redux/store";
 import { useDispatch } from "react-redux";
 import { switchBoard } from "@/redux/features/board-slice";
@@ -20,7 +20,7 @@ const Boards = () => {
     dispatch(switchBoard(board));
   };
 
-  const boardElement = boards.map((board) => (
+  const boardElement = DUMMY_BOARDS.map((board) => (
     <div
       onClick={() => switchBoards(board)}
       key={board.id}

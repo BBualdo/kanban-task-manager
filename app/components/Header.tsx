@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 
-import dotsIcon from "../../public/assets/icon-vertical-ellipsis.svg";
 import darkLogo from "../../public/assets/logo-dark.svg";
 import lightLogo from "../../public/assets/logo-light.svg";
 
@@ -11,6 +10,10 @@ import { useAppSelector } from "@/redux/store";
 const Header = () => {
   const isLightTheme = useAppSelector(
     (state) => state.themeReducer.value.isLightTheme
+  );
+
+  const selectedBoard = useAppSelector(
+    (state) => state.boardReducer.value.selectedBoard
   );
 
   const isSidebarShown = useAppSelector(
@@ -54,7 +57,7 @@ const Header = () => {
               isSidebarShown ? "translate-x-6" : "translate-x-0"
             }`}
           >
-            Platform Launch
+            {selectedBoard.name}
           </h1>
         </div>
         <div className="flex items-center gap-6">
@@ -69,7 +72,7 @@ const Header = () => {
               isLightTheme ? "hover:fill-black" : "hover:fill-white"
             } transition-all duration-100`}
           >
-            <g fill-rule="evenodd">
+            <g fillRule="evenodd">
               <circle cx="2.308" cy="2.308" r="2.308" />
               <circle cx="2.308" cy="10" r="2.308" />
               <circle cx="2.308" cy="17.692" r="2.308" />

@@ -2,6 +2,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import themeReducer from "./features/theme-slice";
 import sidebarReducer from "./features/sidebar-slice";
 import boardReducer from "./features/board-slice";
+import modalReducer from "./features/modal-slice";
 import { TypedUseSelectorHook, useSelector } from "react-redux";
 
 export const store = configureStore({
@@ -9,6 +10,7 @@ export const store = configureStore({
     themeReducer,
     sidebarReducer,
     boardReducer,
+    modalReducer,
   },
 });
 

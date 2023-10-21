@@ -1,6 +1,6 @@
 import { BoardInterface } from "@/ts/types";
 
-const boards: BoardInterface[] = [
+const DUMMY_BOARDS: BoardInterface[] = [
   {
     id: 0,
     name: "Platform Launch",
@@ -30,4 +30,4 @@ const boards: BoardInterface[] = [
   },
 ];
 
-export default boards;
+export default DUMMY_BOARDS;
