@@ -1,12 +1,21 @@
 "use client";
 
+import { useAppSelector } from "@/redux/store";
 import React, { useState } from "react";
 
 const Feed = () => {
+  const isLightTheme = useAppSelector(
+    (state) => state.themeReducer.value.isLightTheme
+  );
+
   const [isEmpty, setIsEmpty] = useState(true);
 
   return (
-    <div className="bg-light_grey flex-1">
+    <div
+      className={`${
+        isLightTheme ? "bg-light_grey" : "bg-very_dark_grey"
+      } flex-1`}
+    >
       {isEmpty && (
         <div className="flex flex-col items-center justify-center h-full gap-8">
           <h2 className="text-medium_grey">
