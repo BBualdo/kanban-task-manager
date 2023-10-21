@@ -6,21 +6,31 @@ import lightLogo from "../../public/assets/logo-light.svg";
 import sunIcon from "../../public/assets/icon-light-theme.svg";
 import moonIcon from "../../public/assets/icon-dark-theme.svg";
 import blindEye from "../../public/assets/icon-hide-sidebar.svg";
+import eye from "../../public/assets/icon-show-sidebar.svg";
 import Boards from "./Boards";
 
 import { toggleTheme } from "@/redux/features/theme-slice";
+import { toggleSidebar } from "@/redux/features/sidebar-slice";
 import { useDispatch } from "react-redux";
 import { AppDispatch, useAppSelector } from "@/redux/store";
 
 const Sidebar = () => {
+  const dispatch = useDispatch<AppDispatch>();
+
   const isLightTheme = useAppSelector(
     (state) => state.themeReducer.value.isLightTheme
   );
 
-  const dispatch = useDispatch<AppDispatch>();
-
   const onClickToggle = () => {
     dispatch(toggleTheme());
+  };
+
+  const isSidebarShown = useAppSelector(
+    (state) => state.sidebarReducer.value.isShown
+  );
+
+  const toggleVisibility = () => {
+    dispatch(toggleSidebar());
   };
 
   return (
@@ -29,13 +39,15 @@ const Sidebar = () => {
         isLightTheme
           ? "bg-white border-lines_light"
           : "bg-dark_grey border-lines_dark"
-      } min-w-[300px] border-r-[1px]  min-h-full pt-8 pb-12 flex flex-col`}
+      } min-w-[300px] border-r-[1px] min-h-full pt-8 pb-12 flex flex-col transition-all duration-300 absolute top-0 ${
+        isSidebarShown ? "left-0" : "-left-[300px]"
+      }`}
     >
       {isLightTheme && (
-        <Image src={darkLogo} alt="Kanban Logo" className="pl-[34px]" />
+        <Image src={darkLogo} alt="Kanban Logo" className="ml-[34px]" />
       )}
       {!isLightTheme && (
-        <Image src={lightLogo} alt="Kanban Logo" className="pl-[34px]" />
+        <Image src={lightLogo} alt="Kanban Logo" className="ml-[34px]" />
       )}
       <div className="flex flex-col justify-between flex-1">
         <div className=" mt-[54px]">
@@ -77,12 +89,20 @@ const Sidebar = () => {
           </div>
           <div className="flex items-center gap-4 pl-8 mt-[22px]">
             <Image src={blindEye} alt="Crossed Eye Icon" />
-            <button>
+            <button onClick={toggleVisibility}>
               <h3 className="text-medium_grey">Hide Sidebar</h3>
             </button>
           </div>
         </div>
       </div>
+      {!isSidebarShown && (
+        <div
+          onClick={toggleVisibility}
+          className="w-14 h-12 rounded-r-full bg-purple absolute bottom-8 -right-14 flex items-center justify-center cursor-pointer transition-all duration-200 hover:bg-purple_hover"
+        >
+          <Image src={eye} alt="Eye Icon" />
+        </div>
+      )}
     </section>
   );
 };
