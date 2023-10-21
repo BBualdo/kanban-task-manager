@@ -7,6 +7,9 @@ const Feed = () => {
   const isLightTheme = useAppSelector(
     (state) => state.themeReducer.value.isLightTheme
   );
+  const isSidebarShown = useAppSelector(
+    (state) => state.sidebarReducer.value.isShown
+  );
 
   const [isEmpty, setIsEmpty] = useState(true);
 
@@ -14,7 +17,9 @@ const Feed = () => {
     <div
       className={`${
         isLightTheme ? "bg-light_grey" : "bg-very_dark_grey"
-      } flex-1 transition-all duration-200`}
+      } flex-1 transition-all duration-300 ${
+        isSidebarShown ? "ml-[300px]" : ""
+      }`}
     >
       {isEmpty && (
         <div className="flex flex-col items-center justify-center h-full gap-8">

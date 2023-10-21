@@ -13,18 +13,22 @@ const Header = () => {
     (state) => state.themeReducer.value.isLightTheme
   );
 
+  const isSidebarShown = useAppSelector(
+    (state) => state.sidebarReducer.value.isShown
+  );
+
   return (
     <header
       className={`border-b-[1px] ${
         isLightTheme
           ? "border-lines_light bg-white"
           : "border-lines_dark bg-dark_grey"
-      }  flex items-center relative transition-all duration-200`}
+      }  flex items-center relative transition-all duration-300`}
     >
       <div
         className={`pr-8 ${
           isLightTheme ? "border-lines_light" : "border-lines_dark"
-        } border-r-[1px] absolute transition-all duration-200`}
+        } border-r-[1px] absolute transition-all duration-300`}
       >
         {isLightTheme && (
           <Image
@@ -46,7 +50,9 @@ const Header = () => {
           <h1
             className={`${
               isLightTheme ? "text-black" : "text-white"
-            } transition-all duration-200`}
+            } transition-all duration-300 ${
+              isSidebarShown ? "translate-x-6" : "translate-x-0"
+            }`}
           >
             Platform Launch
           </h1>

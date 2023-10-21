@@ -1,8 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import darkLogo from "../../public/assets/logo-dark.svg";
-import lightLogo from "../../public/assets/logo-light.svg";
+
+import logo from "../../public/assets/logo-mobile.svg";
 import sunIcon from "../../public/assets/icon-light-theme.svg";
 import moonIcon from "../../public/assets/icon-dark-theme.svg";
 import blindEye from "../../public/assets/icon-hide-sidebar.svg";
@@ -43,12 +43,17 @@ const Sidebar = () => {
         isSidebarShown ? "left-0" : "-left-[300px]"
       }`}
     >
-      {isLightTheme && (
-        <Image src={darkLogo} alt="Kanban Logo" className="ml-[34px]" />
-      )}
-      {!isLightTheme && (
-        <Image src={lightLogo} alt="Kanban Logo" className="ml-[34px]" />
-      )}
+      <div className="flex items-center gap-4">
+        <Image src={logo} alt="Kanban Logo" className="ml-[34px]" />
+        <h1
+          className={`text-[32px] transition-all duration-300 ${
+            isLightTheme ? "text-black" : "text-white"
+          }`}
+        >
+          kanban
+        </h1>
+      </div>
+
       <div className="flex flex-col justify-between flex-1">
         <div className=" mt-[54px]">
           <h4 className="text-medium_grey pl-8">ALL BOARDS (3)</h4>
