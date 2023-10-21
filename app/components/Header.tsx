@@ -19,12 +19,12 @@ const Header = () => {
         isLightTheme
           ? "border-lines_light bg-white"
           : "border-lines_dark bg-dark_grey"
-      }  flex items-center relative`}
+      }  flex items-center relative transition-all duration-200`}
     >
       <div
         className={`pr-8 ${
           isLightTheme ? "border-lines_light" : "border-lines_dark"
-        } border-r-[1px] absolute`}
+        } border-r-[1px] absolute transition-all duration-200`}
       >
         {isLightTheme && (
           <Image
@@ -43,7 +43,11 @@ const Header = () => {
       </div>
       <div className="flex items-center justify-between flex-1 pt-5 pb-7 pl-[300px] pr-8">
         <div>
-          <h1 className={`${isLightTheme ? "text-black" : "text-white"}`}>
+          <h1
+            className={`${
+              isLightTheme ? "text-black" : "text-white"
+            } transition-all duration-200`}
+          >
             Platform Launch
           </h1>
         </div>

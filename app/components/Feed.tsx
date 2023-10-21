@@ -14,7 +14,7 @@ const Feed = () => {
     <div
       className={`${
         isLightTheme ? "bg-light_grey" : "bg-very_dark_grey"
-      } flex-1`}
+      } flex-1 transition-all duration-200`}
     >
       {isEmpty && (
         <div className="flex flex-col items-center justify-center h-full gap-8">
