@@ -10,25 +10,33 @@ import moonIcon from "../../public/assets/icon-dark-theme.svg";
 import blindEye from "../../public/assets/icon-hide-sidebar.svg";
 import Boards from "./Boards";
 
-const Sidebar = () => {
-  const [isLightMode, setIsLightMode] = useState(true);
+import { toggleTheme } from "@/redux/features/theme-slice";
+import { useDispatch } from "react-redux";
+import { AppDispatch, useAppSelector } from "@/redux/store";
 
-  function toggleTheme() {
-    setIsLightMode((prevMode) => !prevMode);
-  }
+const Sidebar = () => {
+  const isLightTheme = useAppSelector(
+    (state) => state.themeReducer.value.isLightTheme
+  );
+
+  const dispatch = useDispatch<AppDispatch>();
+
+  const onClickToggle = () => {
+    dispatch(toggleTheme());
+  };
 
   return (
     <section
       className={`${
-        isLightMode
+        isLightTheme
           ? "bg-white border-lines_light"
           : "bg-dark_grey border-lines_dark"
       } min-w-[300px] border-r-[1px]  min-h-full pt-8 pb-12 flex flex-col`}
     >
-      {isLightMode && (
+      {isLightTheme && (
         <Image src={darkLogo} alt="Kanban Logo" className="pl-[34px]" />
       )}
-      {!isLightMode && (
+      {!isLightTheme && (
         <Image src={lightLogo} alt="Kanban Logo" className="pl-[34px]" />
       )}
       <div className="flex flex-col justify-between flex-1">
@@ -53,17 +61,17 @@ const Sidebar = () => {
         <div>
           <div
             className={`${
-              isLightMode ? "bg-light_grey" : "bg-very_dark_grey"
+              isLightTheme ? "bg-light_grey" : "bg-very_dark_grey"
             } flex items-center justify-center gap-3 mx-6 py-[14px]`}
           >
             <Image src={sunIcon} alt="Sun Icon" />
             <div
-              onClick={toggleTheme}
+              onClick={onClickToggle}
               className="w-12 h-5 bg-purple rounded-full cursor-pointer flex items-center justify-center"
             >
               <div
                 className={`w-[14px] h-[14px] bg-white rounded-full transition-transform duration-400 ${
-                  isLightMode ? "translate-x-[-100%]" : "translate-x-[100%]"
+                  isLightTheme ? "translate-x-[-100%]" : "translate-x-[100%]"
                 }`}
               />
             </div>

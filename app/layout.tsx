@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
+import { ReduxProvider } from "@/redux/Provider";
 
 const PJS = Plus_Jakarta_Sans({ weight: ["500", "700"], subsets: ["latin"] });
 
@@ -19,7 +20,9 @@ export default function RootLayout({
       <head>
         <link rel="icon" href="/assets/logo-mobile.svg" />
       </head>
-      <body className={PJS.className}>{children}</body>
+      <body className={PJS.className}>
+        <ReduxProvider>{children}</ReduxProvider>
+      </body>
     </html>
   );
 }
