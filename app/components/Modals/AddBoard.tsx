@@ -4,6 +4,8 @@ import DUMMY_BOARDS from "@/app/data/data";
 import { BoardInterface } from "@/ts/types";
 
 const AddBoard = (props: { isLight: boolean; onClose: () => void }) => {
+  const boardNameInput = useRef<HTMLInputElement | null>(null);
+
   const addNewBoard = (board: BoardInterface) => {
     DUMMY_BOARDS.push(board);
     props.onClose();
@@ -19,8 +21,6 @@ const AddBoard = (props: { isLight: boolean; onClose: () => void }) => {
       return;
     }
   };
-
-  const boardNameInput = useRef<HTMLInputElement | null>(null);
 
   return (
     <div
@@ -63,7 +63,9 @@ const AddBoard = (props: { isLight: boolean; onClose: () => void }) => {
           onClick={() =>
             addNewBoard({
               id: DUMMY_BOARDS.length,
-              name: boardNameInput.current!.value,
+              name: boardNameInput.current?.value
+                ? boardNameInput.current.value
+                : `New Board #${DUMMY_BOARDS.length + 1}`,
             })
           }
           className="btn btn-primary-sm mt-6"
