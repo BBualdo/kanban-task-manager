@@ -14,6 +14,8 @@ import { toggleSidebar } from "@/redux/features/sidebar-slice";
 import { useDispatch } from "react-redux";
 import { AppDispatch, useAppSelector } from "@/redux/store";
 
+import boards from "../data/data";
+
 const Sidebar = () => {
   const dispatch = useDispatch<AppDispatch>();
 
@@ -56,7 +58,9 @@ const Sidebar = () => {
 
       <div className="flex flex-col justify-between flex-1">
         <div className=" mt-[54px]">
-          <h4 className="text-medium_grey pl-8">ALL BOARDS (3)</h4>
+          <h4 className="text-medium_grey pl-8">
+            ALL BOARDS ({boards.length})
+          </h4>
           <div className="mt-[19px]">
             {/* this will be rendered dynamically */}
             <Boards />
