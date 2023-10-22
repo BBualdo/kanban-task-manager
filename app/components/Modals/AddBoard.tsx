@@ -15,6 +15,7 @@ const AddBoard = (props: { isLight: boolean; onClose: () => void }) => {
     if (event.key === "Enter") {
       addNewBoard({
         name: boardNameInput.current!.value,
+        columns: [],
       });
     } else {
       return;
@@ -64,6 +65,7 @@ const AddBoard = (props: { isLight: boolean; onClose: () => void }) => {
               name: boardNameInput.current?.value
                 ? boardNameInput.current.value
                 : `New Board #${DUMMY_BOARDS.length + 1}`,
+              columns: [],
             })
           }
           className="btn btn-primary-sm mt-6"

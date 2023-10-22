@@ -1,8 +1,7 @@
-"use client";
 import { v4 as uuidv4 } from "uuid";
 
 import { useAppSelector } from "@/redux/store";
-import React, { useState } from "react";
+import React from "react";
 import Column from "./Column";
 
 const Feed = () => {
@@ -17,8 +16,6 @@ const Feed = () => {
     (state) => state.boardReducer.value.selectedBoard
   );
 
-  const [isEmpty, setIsEmpty] = useState(false);
-
   const columnElement = selectedBoard.columns!.map((column) => (
     <Column key={uuidv4()} columnName={column.name} tasks={column.tasks} />
   ));
@@ -31,7 +28,7 @@ const Feed = () => {
         isSidebarShown ? "ml-[300px]" : ""
       } h-screen`}
     >
-      {isEmpty && (
+      {selectedBoard.columns.length === 0 ? (
         <div className="flex flex-col items-center justify-center h-full gap-8">
           <h2 className="text-medium_grey">
             This board is empty. Create a new column to get started.
@@ -40,8 +37,7 @@ const Feed = () => {
             + Add New Column
           </button>
         </div>
-      )}
-      {!isEmpty && (
+      ) : (
         <div className="pt-6 pb-13 px-6 flex gap-6">
           {columnElement}
           <button

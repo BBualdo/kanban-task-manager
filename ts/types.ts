@@ -24,7 +24,7 @@ export interface BoardColumnInterface {
 
 export interface BoardInterface {
   name: string;
-  columns?: BoardColumnInterface[];
+  columns: BoardColumnInterface[];
 }
 
 export interface ModalProps {

@@ -61,7 +61,10 @@ const Header = () => {
           </h1>
         </div>
         <div className="flex items-center gap-6">
-          <button disabled className="btn btn-primary-lg px-6">
+          <button
+            disabled={selectedBoard.columns.length === 0}
+            className="btn btn-primary-lg px-6"
+          >
             + Add New Task
           </button>
           <svg
