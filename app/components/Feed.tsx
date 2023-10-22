@@ -29,7 +29,7 @@ const Feed = () => {
         isLightTheme ? "bg-light_grey" : "bg-very_dark_grey"
       } flex-1 transition-all duration-300 ${
         isSidebarShown ? "ml-[300px]" : ""
-      }`}
+      } h-screen`}
     >
       {isEmpty && (
         <div className="flex flex-col items-center justify-center h-full gap-8">
@@ -47,7 +47,7 @@ const Feed = () => {
           <button
             className={`group ${
               isLightTheme ? "bg-medium_grey/10" : "bg-dark_grey/10"
-            } w-[282px] rounded-[6px] cursor-pointer mt-10`}
+            } rounded-[6px] cursor-pointer mt-10 min-w-[282px]`}
           >
             <h1 className="text-medium_grey group-hover:text-purple transition-all duration-300">
               + New Column
