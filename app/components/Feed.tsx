@@ -2,6 +2,7 @@
 
 import { useAppSelector } from "@/redux/store";
 import React, { useState } from "react";
+import Column from "./Column";
 
 const Feed = () => {
   const isLightTheme = useAppSelector(
@@ -11,7 +12,15 @@ const Feed = () => {
     (state) => state.sidebarReducer.value.isShown
   );
 
-  const [isEmpty, setIsEmpty] = useState(true);
+  const selectedBoard = useAppSelector(
+    (state) => state.boardReducer.value.selectedBoard
+  );
+
+  const [isEmpty, setIsEmpty] = useState(false);
+
+  const columns = selectedBoard.columns!.map((column) => (
+    <Column columnName={column.name} />
+  ));
 
   return (
     <div
@@ -28,6 +37,15 @@ const Feed = () => {
           </h2>
           <button className="btn btn-primary-lg px-[18px]">
             + Add New Column
+          </button>
+        </div>
+      )}
+      {!isEmpty && (
+        <div className="pt-6 pb-13 px-6 flex gap-6 overflow-scroll">
+          {/* Columns render dynamically */}
+          {columns}
+          <button className="bg-medium_grey/10 w-[282px] h-[814px] rounded-[6px] cursor-pointer">
+            <h1 className="text-medium_grey">+ New Column</h1>
           </button>
         </div>
       )}

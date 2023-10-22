@@ -82,7 +82,6 @@ const Sidebar = () => {
               ALL BOARDS ({boards.length})
             </h4>
             <div className="mt-[19px]">
-              {/* this will be rendered dynamically */}
               <Boards />
               <div
                 onClick={openModal}

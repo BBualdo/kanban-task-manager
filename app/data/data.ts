@@ -4,29 +4,173 @@ const DUMMY_BOARDS: BoardInterface[] = [
   {
     id: 0,
     name: "Platform Launch",
-    content: {
-      todo: ["Task 1", "Task 2", "Task 3"],
-      doing: ["Task 4", "Task 5", "Task 6"],
-      done: ["Task 7", "Task 8", "Task 9"],
-    },
+    columns: [
+      {
+        name: "todo",
+        tasks: [
+          {
+            name: "Task 1",
+            subtasks: ["Subtask 1, Subtask 2, Subtask 3"],
+          },
+          {
+            name: "Task 2",
+            subtasks: ["Subtask 1, Subtask 2, Subtask 3"],
+          },
+          {
+            name: "Task 3",
+            subtasks: ["Subtask 1, Subtask 2, Subtask 3"],
+          },
+        ],
+      },
+      {
+        name: "doing",
+        tasks: [
+          {
+            name: "Task 1",
+            subtasks: ["Subtask 1, Subtask 2, Subtask 3"],
+          },
+          {
+            name: "Task 2",
+            subtasks: ["Subtask 1, Subtask 2, Subtask 3"],
+          },
+          {
+            name: "Task 3",
+            subtasks: ["Subtask 1, Subtask 2, Subtask 3"],
+          },
+        ],
+      },
+      {
+        name: "done",
+        tasks: [
+          {
+            name: "Task 1",
+            subtasks: ["Subtask 1, Subtask 2, Subtask 3"],
+          },
+          {
+            name: "Task 2",
+            subtasks: ["Subtask 1, Subtask 2, Subtask 3"],
+          },
+          {
+            name: "Task 3",
+            subtasks: ["Subtask 1, Subtask 2, Subtask 3"],
+          },
+        ],
+      },
+    ],
   },
   {
     id: 1,
     name: "Marketing Plan",
-    content: {
-      todo: ["Task 1", "Task 2", "Task 3"],
-      doing: ["Task 4", "Task 5", "Task 6"],
-      done: ["Task 7", "Task 8", "Task 9"],
-    },
+    columns: [
+      {
+        name: "todo",
+        tasks: [
+          {
+            name: "Task 1",
+            subtasks: ["Subtask 1, Subtask 2, Subtask 3"],
+          },
+          {
+            name: "Task 2",
+            subtasks: ["Subtask 1, Subtask 2, Subtask 3"],
+          },
+          {
+            name: "Task 3",
+            subtasks: ["Subtask 1, Subtask 2, Subtask 3"],
+          },
+        ],
+      },
+      {
+        name: "doing",
+        tasks: [
+          {
+            name: "Task 1",
+            subtasks: ["Subtask 1, Subtask 2, Subtask 3"],
+          },
+          {
+            name: "Task 2",
+            subtasks: ["Subtask 1, Subtask 2, Subtask 3"],
+          },
+          {
+            name: "Task 3",
+            subtasks: ["Subtask 1, Subtask 2, Subtask 3"],
+          },
+        ],
+      },
+      {
+        name: "done",
+        tasks: [
+          {
+            name: "Task 1",
+            subtasks: ["Subtask 1, Subtask 2, Subtask 3"],
+          },
+          {
+            name: "Task 2",
+            subtasks: ["Subtask 1, Subtask 2, Subtask 3"],
+          },
+          {
+            name: "Task 3",
+            subtasks: ["Subtask 1, Subtask 2, Subtask 3"],
+          },
+        ],
+      },
+    ],
   },
   {
     id: 2,
     name: "Roadmap",
-    content: {
-      todo: ["Task 1", "Task 2", "Task 3"],
-      doing: ["Task 4", "Task 5", "Task 6"],
-      done: ["Task 7", "Task 8", "Task 9"],
-    },
+    columns: [
+      {
+        name: "todo",
+        tasks: [
+          {
+            name: "Task 1",
+            subtasks: ["Subtask 1, Subtask 2, Subtask 3"],
+          },
+          {
+            name: "Task 2",
+            subtasks: ["Subtask 1, Subtask 2, Subtask 3"],
+          },
+          {
+            name: "Task 3",
+            subtasks: ["Subtask 1, Subtask 2, Subtask 3"],
+          },
+        ],
+      },
+      {
+        name: "doing",
+        tasks: [
+          {
+            name: "Task 1",
+            subtasks: ["Subtask 1, Subtask 2, Subtask 3"],
+          },
+          {
+            name: "Task 2",
+            subtasks: ["Subtask 1, Subtask 2, Subtask 3"],
+          },
+          {
+            name: "Task 3",
+            subtasks: ["Subtask 1, Subtask 2, Subtask 3"],
+          },
+        ],
+      },
+      {
+        name: "done",
+        tasks: [
+          {
+            name: "Task 1",
+            subtasks: ["Subtask 1, Subtask 2, Subtask 3"],
+          },
+          {
+            name: "Task 2",
+            subtasks: ["Subtask 1, Subtask 2, Subtask 3"],
+          },
+          {
+            name: "Task 3",
+            subtasks: ["Subtask 1, Subtask 2, Subtask 3"],
+          },
+        ],
+      },
+    ],
   },
 ];
 
