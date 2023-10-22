@@ -6,8 +6,20 @@ import darkLogo from "../../public/assets/logo-dark.svg";
 import lightLogo from "../../public/assets/logo-light.svg";
 
 import { useAppSelector } from "@/redux/store";
+import { useState } from "react";
+import Options from "./Modals/Options";
 
 const Header = () => {
+  const [isMenuShown, setIsMenuShown] = useState(false);
+
+  const showMenu = () => {
+    setIsMenuShown(true);
+  };
+
+  const hideMenu = () => {
+    setIsMenuShown(false);
+  };
+
   const isLightTheme = useAppSelector(
     (state) => state.themeReducer.value.isLightTheme
   );
@@ -68,6 +80,7 @@ const Header = () => {
             + Add New Task
           </button>
           <svg
+            onClick={showMenu}
             width="5"
             height="20"
             xmlns="http://www.w3.org/2000/svg"
@@ -81,6 +94,7 @@ const Header = () => {
               <circle cx="2.308" cy="17.692" r="2.308" />
             </g>
           </svg>
+          {isMenuShown && <Options onClose={hideMenu} isLight={isLightTheme} />}
         </div>
       </div>
     </header>
