@@ -3,6 +3,13 @@ import { ReactNode } from "react";
 export interface ColumnProps {
   key: string;
   columnName: string;
+  tasks: TaskInterface[];
+}
+
+export interface TaskProps {
+  key: string;
+  taskName: string;
+  subtasks: string[];
 }
 
 export interface TaskInterface {

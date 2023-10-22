@@ -19,8 +19,8 @@ const Feed = () => {
 
   const [isEmpty, setIsEmpty] = useState(false);
 
-  const columns = selectedBoard.columns!.map((column) => (
-    <Column key={uuidv4()} columnName={column.name} />
+  const columnElement = selectedBoard.columns!.map((column) => (
+    <Column key={uuidv4()} columnName={column.name} tasks={column.tasks} />
   ));
 
   return (
@@ -43,8 +43,7 @@ const Feed = () => {
       )}
       {!isEmpty && (
         <div className="pt-6 pb-13 px-6 flex gap-6 overflow-scroll">
-          {/* Columns render dynamically */}
-          {columns}
+          {columnElement}
           <button className="bg-medium_grey/10 w-[282px] h-[814px] rounded-[6px] cursor-pointer">
             <h1 className="text-medium_grey">+ New Column</h1>
           </button>

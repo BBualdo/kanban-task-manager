@@ -8,16 +8,16 @@ const DUMMY_BOARDS: BoardInterface[] = [
         name: "todo",
         tasks: [
           {
-            name: "Task 1",
-            subtasks: ["Subtask 1, Subtask 2, Subtask 3"],
+            name: "Build UI for onboarding flow",
+            subtasks: ["Subtask 1", "Subtask 2", "Subtask 3"],
           },
           {
             name: "Task 2",
-            subtasks: ["Subtask 1, Subtask 2, Subtask 3"],
+            subtasks: ["Subtask 1", "Subtask 2", "Subtask 3"],
           },
           {
             name: "Task 3",
-            subtasks: ["Subtask 1, Subtask 2, Subtask 3"],
+            subtasks: ["Subtask 1", "Subtask 2", "Subtask 3"],
           },
         ],
       },
@@ -26,15 +26,15 @@ const DUMMY_BOARDS: BoardInterface[] = [
         tasks: [
           {
             name: "Task 1",
-            subtasks: ["Subtask 1, Subtask 2, Subtask 3"],
+            subtasks: ["Subtask 1", "Subtask 2", "Subtask 3"],
           },
           {
             name: "Task 2",
-            subtasks: ["Subtask 1, Subtask 2, Subtask 3"],
+            subtasks: ["Subtask 1", "Subtask 2", "Subtask 3"],
           },
           {
             name: "Task 3",
-            subtasks: ["Subtask 1, Subtask 2, Subtask 3"],
+            subtasks: ["Subtask 1", "Subtask 2", "Subtask 3"],
           },
         ],
       },
@@ -43,15 +43,15 @@ const DUMMY_BOARDS: BoardInterface[] = [
         tasks: [
           {
             name: "Task 1",
-            subtasks: ["Subtask 1, Subtask 2, Subtask 3"],
+            subtasks: ["Subtask 1", "Subtask 2", "Subtask 3"],
           },
           {
             name: "Task 2",
-            subtasks: ["Subtask 1, Subtask 2, Subtask 3"],
+            subtasks: ["Subtask 1", "Subtask 2", "Subtask 3"],
           },
           {
             name: "Task 3",
-            subtasks: ["Subtask 1, Subtask 2, Subtask 3"],
+            subtasks: ["Subtask 1", "Subtask 2", "Subtask 3"],
           },
         ],
       },
@@ -65,15 +65,15 @@ const DUMMY_BOARDS: BoardInterface[] = [
         tasks: [
           {
             name: "Task 1",
-            subtasks: ["Subtask 1, Subtask 2, Subtask 3"],
+            subtasks: ["Subtask 1", "Subtask 2", "Subtask 3"],
           },
           {
             name: "Task 2",
-            subtasks: ["Subtask 1, Subtask 2, Subtask 3"],
+            subtasks: ["Subtask 1", "Subtask 2", "Subtask 3"],
           },
           {
             name: "Task 3",
-            subtasks: ["Subtask 1, Subtask 2, Subtask 3"],
+            subtasks: ["Subtask 1", "Subtask 2", "Subtask 3"],
           },
         ],
       },
@@ -82,15 +82,15 @@ const DUMMY_BOARDS: BoardInterface[] = [
         tasks: [
           {
             name: "Task 1",
-            subtasks: ["Subtask 1, Subtask 2, Subtask 3"],
+            subtasks: ["Subtask 1", "Subtask 2", "Subtask 3"],
           },
           {
             name: "Task 2",
-            subtasks: ["Subtask 1, Subtask 2, Subtask 3"],
+            subtasks: ["Subtask 1", "Subtask 2", "Subtask 3"],
           },
           {
             name: "Task 3",
-            subtasks: ["Subtask 1, Subtask 2, Subtask 3"],
+            subtasks: ["Subtask 1", "Subtask 2", "Subtask 3"],
           },
         ],
       },
@@ -99,15 +99,15 @@ const DUMMY_BOARDS: BoardInterface[] = [
         tasks: [
           {
             name: "Task 1",
-            subtasks: ["Subtask 1, Subtask 2, Subtask 3"],
+            subtasks: ["Subtask 1", "Subtask 2", "Subtask 3"],
           },
           {
             name: "Task 2",
-            subtasks: ["Subtask 1, Subtask 2, Subtask 3"],
+            subtasks: ["Subtask 1", "Subtask 2", "Subtask 3"],
           },
           {
             name: "Task 3",
-            subtasks: ["Subtask 1, Subtask 2, Subtask 3"],
+            subtasks: ["Subtask 1", "Subtask 2", "Subtask 3"],
           },
         ],
       },
@@ -121,15 +121,15 @@ const DUMMY_BOARDS: BoardInterface[] = [
         tasks: [
           {
             name: "Task 1",
-            subtasks: ["Subtask 1, Subtask 2, Subtask 3"],
+            subtasks: ["Subtask 1", "Subtask 2", "Subtask 3"],
           },
           {
             name: "Task 2",
-            subtasks: ["Subtask 1, Subtask 2, Subtask 3"],
+            subtasks: ["Subtask 1", "Subtask 2", "Subtask 3"],
           },
           {
             name: "Task 3",
-            subtasks: ["Subtask 1, Subtask 2, Subtask 3"],
+            subtasks: ["Subtask 1", "Subtask 2", "Subtask 3"],
           },
         ],
       },
@@ -138,15 +138,15 @@ const DUMMY_BOARDS: BoardInterface[] = [
         tasks: [
           {
             name: "Task 1",
-            subtasks: ["Subtask 1, Subtask 2, Subtask 3"],
+            subtasks: ["Subtask 1", "Subtask 2", "Subtask 3"],
           },
           {
             name: "Task 2",
-            subtasks: ["Subtask 1, Subtask 2, Subtask 3"],
+            subtasks: ["Subtask 1", "Subtask 2", "Subtask 3"],
           },
           {
             name: "Task 3",
-            subtasks: ["Subtask 1, Subtask 2, Subtask 3"],
+            subtasks: ["Subtask 1", "Subtask 2", "Subtask 3"],
           },
         ],
       },
@@ -155,15 +155,15 @@ const DUMMY_BOARDS: BoardInterface[] = [
         tasks: [
           {
             name: "Task 1",
-            subtasks: ["Subtask 1, Subtask 2, Subtask 3"],
+            subtasks: ["Subtask 1", "Subtask 2", "Subtask 3"],
           },
           {
             name: "Task 2",
-            subtasks: ["Subtask 1, Subtask 2, Subtask 3"],
+            subtasks: ["Subtask 1", "Subtask 2", "Subtask 3"],
           },
           {
             name: "Task 3",
-            subtasks: ["Subtask 1, Subtask 2, Subtask 3"],
+            subtasks: ["Subtask 1", "Subtask 2", "Subtask 3"],
           },
         ],
       },
