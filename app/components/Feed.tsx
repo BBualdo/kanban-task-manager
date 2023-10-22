@@ -42,10 +42,16 @@ const Feed = () => {
         </div>
       )}
       {!isEmpty && (
-        <div className="pt-6 pb-13 px-6 flex gap-6 overflow-scroll">
+        <div className="pt-6 pb-13 px-6 flex gap-6">
           {columnElement}
-          <button className="bg-medium_grey/10 w-[282px] h-[814px] rounded-[6px] cursor-pointer">
-            <h1 className="text-medium_grey">+ New Column</h1>
+          <button
+            className={`group ${
+              isLightTheme ? "bg-medium_grey/10" : "bg-dark_grey/10"
+            } w-[282px] rounded-[6px] cursor-pointer mt-10`}
+          >
+            <h1 className="text-medium_grey group-hover:text-purple transition-all duration-300">
+              + New Column
+            </h1>
           </button>
         </div>
       )}
