@@ -25,12 +25,12 @@ const Options = ({ onClose, isLight }: OptionsProps) => {
     <div
       ref={optionsRef}
       className={`absolute w-[192px] -bottom-[80px] right-6 ${
-        isLight ? "bg-white" : "bg-very_dark_grey"
+        isLight ? "bg-very_dark_grey" : "bg-white"
       } p-4 flex flex-col items-start gap-4 rounded-[4px]`}
     >
       <button
         className={`text-medium_grey ${
-          isLight ? "hover:text-black" : "hover:text-white"
+          isLight ? "hover:text-white" : "hover:text-black"
         } transition-all duration-300`}
       >
         Edit Board
