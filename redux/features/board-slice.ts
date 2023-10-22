@@ -20,7 +20,7 @@ export const selectedBoard = createSlice({
   name: "selected-board",
   initialState,
   reducers: {
-    switchBoard: (state, action: PayloadAction<BoardInterface>) => {
+    switchBoard: (state, action: PayloadAction<BoardInterface | any>) => {
       return {
         value: {
           selectedBoard: action.payload,

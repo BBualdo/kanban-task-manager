@@ -1,7 +1,17 @@
+import DUMMY_BOARDS from "@/app/data/data";
+import { switchBoard } from "@/redux/features/board-slice";
+import { AppDispatch, useAppSelector } from "@/redux/store";
 import { OptionsProps } from "@/ts/types";
 import React, { useEffect, useRef } from "react";
+import { useDispatch } from "react-redux";
 
 const Options = ({ onClose, isLight }: OptionsProps) => {
+  const dispatch = useDispatch<AppDispatch>();
+
+  const selectedBoard = useAppSelector(
+    (state) => state.boardReducer.value.selectedBoard
+  );
+
   const optionsRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
@@ -21,6 +31,19 @@ const Options = ({ onClose, isLight }: OptionsProps) => {
     };
   }, []);
 
+  const deleteBoard = () => {
+    const index = DUMMY_BOARDS.indexOf(selectedBoard);
+    DUMMY_BOARDS.splice(index, 1);
+    if (index - 1 === -1) {
+      dispatch(switchBoard(DUMMY_BOARDS[index]));
+    } else if (index) {
+      dispatch(switchBoard(DUMMY_BOARDS[index - 1]));
+    } else {
+      dispatch(switchBoard(null));
+    }
+    onClose();
+  };
+
   return (
     <div
       ref={optionsRef}
@@ -35,7 +58,10 @@ const Options = ({ onClose, isLight }: OptionsProps) => {
       >
         Edit Board
       </button>
-      <button className="text-red hover:text-red_hover transition-all duration-300">
+      <button
+        onClick={deleteBoard}
+        className="text-red hover:text-red_hover transition-all duration-300"
+      >
         Delete Board
       </button>
     </div>

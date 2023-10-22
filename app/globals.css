@@ -84,4 +84,10 @@
   .btn-destructive:hover {
     @apply bg-red_hover;
   }
+
+  .text-gradient {
+    background-clip: text;
+    color: transparent; /* Ukrywa oryginalny kolor tekstu */
+    background-image: linear-gradient(to right, #a8a4ff, #635fc7);
+  }
 }
