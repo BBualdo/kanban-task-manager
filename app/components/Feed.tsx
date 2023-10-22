@@ -1,4 +1,5 @@
 "use client";
+import { v4 as uuidv4 } from "uuid";
 
 import { useAppSelector } from "@/redux/store";
 import React, { useState } from "react";
@@ -19,7 +20,7 @@ const Feed = () => {
   const [isEmpty, setIsEmpty] = useState(false);
 
   const columns = selectedBoard.columns!.map((column) => (
-    <Column columnName={column.name} />
+    <Column key={uuidv4()} columnName={column.name} />
   ));
 
   return (

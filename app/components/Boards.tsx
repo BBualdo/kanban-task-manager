@@ -4,6 +4,7 @@ import { AppDispatch, useAppSelector } from "@/redux/store";
 import { useDispatch } from "react-redux";
 import { switchBoard } from "@/redux/features/board-slice";
 import { BoardInterface } from "@/ts/types";
+import { v4 as uuidv4 } from "uuid";
 
 const Boards = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -23,7 +24,7 @@ const Boards = () => {
   const boardElement = DUMMY_BOARDS.map((board) => (
     <div
       onClick={() => switchBoards(board)}
-      key={board.id}
+      key={uuidv4()}
       className={`group ${
         isLightTheme && selectedBoard !== board
           ? "hover:bg-purple/10"

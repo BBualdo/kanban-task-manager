@@ -2,7 +2,6 @@ import { BoardInterface } from "@/ts/types";
 
 const DUMMY_BOARDS: BoardInterface[] = [
   {
-    id: 0,
     name: "Platform Launch",
     columns: [
       {
@@ -59,7 +58,6 @@ const DUMMY_BOARDS: BoardInterface[] = [
     ],
   },
   {
-    id: 1,
     name: "Marketing Plan",
     columns: [
       {
@@ -116,7 +114,6 @@ const DUMMY_BOARDS: BoardInterface[] = [
     ],
   },
   {
-    id: 2,
     name: "Roadmap",
     columns: [
       {

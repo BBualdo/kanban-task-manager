@@ -1,5 +1,4 @@
 import { ColumnProps } from "@/ts/types";
-import React from "react";
 
 const Column = ({ columnName }: ColumnProps) => {
   return (

@@ -14,7 +14,6 @@ const AddBoard = (props: { isLight: boolean; onClose: () => void }) => {
   const onKeyDownHandler = (event: React.KeyboardEvent) => {
     if (event.key === "Enter") {
       addNewBoard({
-        id: DUMMY_BOARDS.length,
         name: boardNameInput.current!.value,
       });
     } else {
@@ -62,7 +61,6 @@ const AddBoard = (props: { isLight: boolean; onClose: () => void }) => {
         <button
           onClick={() =>
             addNewBoard({
-              id: DUMMY_BOARDS.length,
               name: boardNameInput.current?.value
                 ? boardNameInput.current.value
                 : `New Board #${DUMMY_BOARDS.length + 1}`,

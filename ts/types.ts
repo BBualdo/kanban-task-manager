@@ -1,6 +1,7 @@
 import { ReactNode } from "react";
 
 export interface ColumnProps {
+  key: string;
   columnName: string;
 }
 
@@ -15,7 +16,6 @@ export interface BoardColumnInterface {
 }
 
 export interface BoardInterface {
-  id: number;
   name: string;
   columns?: BoardColumnInterface[];
 }
