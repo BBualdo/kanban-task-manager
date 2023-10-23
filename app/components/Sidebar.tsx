@@ -19,7 +19,6 @@ import Modal from "./Modal";
 import AddBoard from "./Modals/AddBoard";
 
 const Sidebar = () => {
-  console.log(data);
   const dispatch = useDispatch<AppDispatch>();
 
   const isLightTheme = useAppSelector(

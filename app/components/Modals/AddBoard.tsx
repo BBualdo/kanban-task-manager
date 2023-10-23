@@ -3,7 +3,7 @@ import React, { useRef } from "react";
 import { ModalsProps, BoardInterface } from "@/ts/types";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "@/redux/store";
-import { switchBoard } from "@/redux/features/board-slice";
+import { switchBoard } from "@/redux/features/selected-board-slice";
 
 import data from "../../data/data.json";
 

@@ -1,8 +1,6 @@
-import { v4 as uuidv4 } from "uuid";
-
 import { useAppSelector } from "@/redux/store";
 import React from "react";
-import Column from "./Column";
+import ColumnsList from "./ColumnsList";
 
 const Feed = () => {
   const isLightTheme = useAppSelector(
@@ -13,12 +11,8 @@ const Feed = () => {
   );
 
   const selectedBoard = useAppSelector(
-    (state) => state.boardReducer.value.selectedBoard
+    (state) => state.selectedBoardReducer.value.selectedBoard
   );
-
-  const columnElement = selectedBoard.columns!.map((column) => (
-    <Column key={uuidv4()} columnName={column.name} tasks={column.tasks} />
-  ));
 
   return (
     <div
@@ -39,7 +33,7 @@ const Feed = () => {
         </div>
       ) : (
         <div className="pt-6 pb-13 px-6 flex gap-6">
-          {columnElement}
+          <ColumnsList />
           <button
             className={`group ${
               isLightTheme ? "bg-medium_grey/10" : "bg-dark_grey/10"

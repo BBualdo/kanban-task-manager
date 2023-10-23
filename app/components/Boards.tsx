@@ -2,7 +2,7 @@ import React from "react";
 import data from "../data/data.json";
 import { AppDispatch, useAppSelector } from "@/redux/store";
 import { useDispatch } from "react-redux";
-import { switchBoard } from "@/redux/features/board-slice";
+import { switchBoard } from "@/redux/features/selected-board-slice";
 import { BoardInterface } from "@/ts/types";
 import { v4 as uuidv4 } from "uuid";
 
@@ -14,7 +14,7 @@ const Boards = () => {
   );
 
   const selectedBoard = useAppSelector(
-    (state) => state.boardReducer.value.selectedBoard
+    (state) => state.selectedBoardReducer.value.selectedBoard
   );
 
   const switchBoards = (board: BoardInterface) => {

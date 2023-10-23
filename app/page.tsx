@@ -8,7 +8,7 @@ import Empty from "./components/Empty";
 
 export default function Home() {
   const selectedBoard = useAppSelector(
-    (state) => state.boardReducer.value.selectedBoard
+    (state) => state.selectedBoardReducer.value.selectedBoard
   );
 
   return (

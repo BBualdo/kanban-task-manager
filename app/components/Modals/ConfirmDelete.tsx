@@ -2,7 +2,7 @@ import React from "react";
 import { ModalsProps } from "@/ts/types";
 import { AppDispatch, useAppSelector } from "@/redux/store";
 import { useDispatch } from "react-redux";
-import { switchBoard } from "@/redux/features/board-slice";
+import { switchBoard } from "@/redux/features/selected-board-slice";
 
 import data from "../../data/data.json";
 
@@ -10,7 +10,7 @@ const ConfirmDelete = ({ isLight, onClose }: ModalsProps) => {
   const dispatch = useDispatch<AppDispatch>();
 
   const selectedBoard = useAppSelector(
-    (state) => state.boardReducer.value.selectedBoard
+    (state) => state.selectedBoardReducer.value.selectedBoard
   );
 
   const deleteBoard = () => {

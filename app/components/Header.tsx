@@ -31,7 +31,7 @@ const Header = () => {
   );
 
   const selectedBoard = useAppSelector(
-    (state) => state.boardReducer.value.selectedBoard
+    (state) => state.selectedBoardReducer.value.selectedBoard
   );
 
   const isSidebarShown = useAppSelector(

@@ -12,19 +12,19 @@ export interface TaskProps {
   subtasks: SubtaskInterface[];
 }
 
-interface SubtaskInterface {
+export interface SubtaskInterface {
   title: string;
   isCompleted: boolean;
 }
 
-interface TaskInterface {
+export interface TaskInterface {
   title: string;
   description: string;
   status: string;
   subtasks: SubtaskInterface[];
 }
 
-interface BoardColumnInterface {
+export interface BoardColumnInterface {
   name: string;
   tasks: TaskInterface[];
 }
