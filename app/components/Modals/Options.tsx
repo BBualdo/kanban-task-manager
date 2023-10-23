@@ -1,11 +1,12 @@
 import DUMMY_BOARDS from "@/app/data/data";
+import { showModal } from "@/redux/features/confirm-delete-slice";
 import { switchBoard } from "@/redux/features/board-slice";
 import { AppDispatch, useAppSelector } from "@/redux/store";
 import { OptionsProps } from "@/ts/types";
 import React, { useEffect, useRef } from "react";
 import { useDispatch } from "react-redux";
 
-const Options = ({ onClose, isLight }: OptionsProps) => {
+const Options = ({ onClose, isLight, openModal }: OptionsProps) => {
   const dispatch = useDispatch<AppDispatch>();
 
   const selectedBoard = useAppSelector(
@@ -59,7 +60,7 @@ const Options = ({ onClose, isLight }: OptionsProps) => {
         Edit Board
       </button>
       <button
-        onClick={deleteBoard}
+        onClick={openModal}
         className="text-red hover:text-red_hover transition-all duration-300"
       >
         Delete Board

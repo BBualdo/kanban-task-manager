@@ -33,7 +33,7 @@ export interface ModalProps {
   children: ReactNode;
 }
 
-export interface AddBoardProps {
+export interface ModalsProps {
   isLight: boolean;
   onClose: () => void;
 }
@@ -41,4 +41,5 @@ export interface AddBoardProps {
 export interface OptionsProps {
   onClose: () => void;
   isLight: boolean;
+  openModal: () => void;
 }

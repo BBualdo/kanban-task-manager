@@ -1,4 +1,4 @@
-import { PayloadAction, createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 type InitialState = {
   value: ModalState;
@@ -15,10 +15,10 @@ const initialState = {
 } as InitialState;
 
 export const modalVisibility = createSlice({
-  name: "modal-visibility",
+  name: "delete-board-modal-visibility",
   initialState,
   reducers: {
-    showModal: (state, action: PayloadAction<boolean>) => {
+    showModal(state, action: PayloadAction<boolean>) {
       return {
         value: {
           isShown: action.payload,

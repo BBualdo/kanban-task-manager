@@ -2,7 +2,8 @@ import { configureStore } from "@reduxjs/toolkit";
 import themeReducer from "./features/theme-slice";
 import sidebarReducer from "./features/sidebar-slice";
 import boardReducer from "./features/board-slice";
-import modalReducer from "./features/modal-slice";
+import addBoardModalReducer from "./features/add-board-slice";
+import deleteBoardModalReducer from "./features/confirm-delete-slice";
 import { TypedUseSelectorHook, useSelector } from "react-redux";
 
 export const store = configureStore({
@@ -10,7 +11,8 @@ export const store = configureStore({
     themeReducer,
     sidebarReducer,
     boardReducer,
-    modalReducer,
+    addBoardModalReducer,
+    deleteBoardModalReducer,
   },
 });
 

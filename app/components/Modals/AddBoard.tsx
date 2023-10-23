@@ -1,12 +1,12 @@
 import React, { useRef } from "react";
 
 import DUMMY_BOARDS from "@/app/data/data";
-import { AddBoardProps, BoardInterface } from "@/ts/types";
+import { ModalsProps, BoardInterface } from "@/ts/types";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "@/redux/store";
 import { switchBoard } from "@/redux/features/board-slice";
 
-const AddBoard = ({ isLight, onClose }: AddBoardProps) => {
+const AddBoard = ({ isLight, onClose }: ModalsProps) => {
   const dispatch = useDispatch<AppDispatch>();
 
   const boardNameInput = useRef<HTMLInputElement | null>(null);

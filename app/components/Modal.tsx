@@ -6,8 +6,6 @@ const Modal = ({ isOpen, onClose, children }: ModalProps) => {
     event: React.MouseEvent<HTMLDivElement, MouseEvent>
   ) => {
     if (event.target === event.currentTarget) {
-      // Jeśli kliknięto w tło (element o klasie "fixed"),
-      // to zamknij modal.
       onClose();
     }
   };

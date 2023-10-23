@@ -2,7 +2,7 @@ import Image from "next/image";
 
 import { useAppSelector, AppDispatch } from "@/redux/store";
 import { useDispatch } from "react-redux";
-import { showModal } from "@/redux/features/modal-slice";
+import { showModal } from "@/redux/features/add-board-slice";
 
 import Modal from "./Modal";
 import AddBoard from "./Modals/AddBoard";
@@ -21,7 +21,7 @@ const Empty = () => {
   );
 
   const isModalOpen = useAppSelector(
-    (state) => state.modalReducer.value.isShown
+    (state) => state.addBoardModalReducer.value.isShown
   );
 
   const openModal = () => {
