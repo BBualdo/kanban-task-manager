@@ -7,6 +7,7 @@ export interface ColumnProps {
 }
 
 export interface TaskProps {
+  selectTask: () => void;
   key: string;
   taskName: string;
   subtasks: SubtaskInterface[];

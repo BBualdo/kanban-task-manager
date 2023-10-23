@@ -70,6 +70,7 @@ Users should be able to:
 20. Added new modal which appears when user wants to delete board. User has to confirm deleting board. _This modal forced me to create new Redux Slice for this modal, otherwise it would display both AddBoard and ConfirmDelete modals at the same time._
 21. I realised that Frontend Mentor provided me data.json file and I didn't have to create my own data file 😂. Changing TypeScript interfaces and dynamic data paths was required.
 22. I had to add Columns and Tasks Lists components to make implementing detail's modals possible to render.
+23. Created new `selectedTask` Redux Slice similar to `selectedBoard`. When user clicks on Task it is selected.
 
 ### Built with
 
