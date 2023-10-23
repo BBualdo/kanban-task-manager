@@ -71,6 +71,7 @@ Users should be able to:
 21. I realised that Frontend Mentor provided me data.json file and I didn't have to create my own data file 😂. Changing TypeScript interfaces and dynamic data paths was required.
 22. I had to add Columns and Tasks Lists components to make implementing detail's modals possible to render.
 23. Created new `selectedTask` Redux Slice similar to `selectedBoard`. When user clicks on Task it is selected.
+24. Created slice for another modal and now clicking on Task displays modal.
 
 ### Built with
 
