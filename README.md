@@ -44,7 +44,7 @@ Users should be able to:
 
 ## My process
 
-# I built every App Component with approach: **Structure => Styling => Replacing hard-coded data with dynamic data => Logic**.
+#### I built every App Component with approach: **Structure => Styling => Replacing hard-coded data with dynamic data => Logic**.
 
 1. Initial Setup with **NextJS**, **TypeScript**, **TailwindCSS**, **ReduxToolkit** and **FramerMotion**.
 2. Customized Tailwind's config file with predefined colors, fonts, buttons, etc.
@@ -54,7 +54,7 @@ Users should be able to:
 6. Added state to store to manipulate sidebar visibility.
 7. Added some smoothness to changing theme and made Feed and Header's Board title shift by sidebar's width.
 
-# Meanwhile I started to build data file with appropiate Data Structure.
+#### Meanwhile I started to build data file with appropiate Data Structure.
 
 9. Passed `selectedBoard` state to Redux and added styling and Feed content based on which Board is selected.
 10. Added Board Adding modal but only with name input for now, to prevent bugs. _The tricky part was to make modal close when user clicks outside modal div._
@@ -83,7 +83,7 @@ Users should be able to:
 
 Coming soon.
 
-# Delete Logic
+#### Delete Logic
 
 ```tsx
 const deleteBoard = () => {
