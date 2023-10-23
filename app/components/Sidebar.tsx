@@ -14,11 +14,12 @@ import { showModal } from "@/redux/features/add-board-slice";
 import { useDispatch } from "react-redux";
 import { AppDispatch, useAppSelector } from "@/redux/store";
 
-import boards from "../data/data";
+import data from "../data/data.json";
 import Modal from "./Modal";
 import AddBoard from "./Modals/AddBoard";
 
 const Sidebar = () => {
+  console.log(data);
   const dispatch = useDispatch<AppDispatch>();
 
   const isLightTheme = useAppSelector(
@@ -79,7 +80,7 @@ const Sidebar = () => {
         <div className="flex flex-col justify-between flex-1">
           <div className=" mt-[54px]">
             <h4 className="text-medium_grey pl-8">
-              ALL BOARDS ({boards.length})
+              ALL BOARDS ({data.boards.length})
             </h4>
             <div className="mt-[19px]">
               <Boards />

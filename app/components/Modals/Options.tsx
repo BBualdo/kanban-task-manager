@@ -1,18 +1,7 @@
-import DUMMY_BOARDS from "@/app/data/data";
-import { showModal } from "@/redux/features/confirm-delete-slice";
-import { switchBoard } from "@/redux/features/board-slice";
-import { AppDispatch, useAppSelector } from "@/redux/store";
 import { OptionsProps } from "@/ts/types";
 import React, { useEffect, useRef } from "react";
-import { useDispatch } from "react-redux";
 
 const Options = ({ onClose, isLight, openModal }: OptionsProps) => {
-  const dispatch = useDispatch<AppDispatch>();
-
-  const selectedBoard = useAppSelector(
-    (state) => state.boardReducer.value.selectedBoard
-  );
-
   const optionsRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {

@@ -9,15 +9,22 @@ export interface ColumnProps {
 export interface TaskProps {
   key: string;
   taskName: string;
-  subtasks: string[];
+  subtasks: SubtaskInterface[];
 }
 
-export interface TaskInterface {
-  name: string;
-  subtasks: string[];
+interface SubtaskInterface {
+  title: string;
+  isCompleted: boolean;
 }
 
-export interface BoardColumnInterface {
+interface TaskInterface {
+  title: string;
+  description: string;
+  status: string;
+  subtasks: SubtaskInterface[];
+}
+
+interface BoardColumnInterface {
   name: string;
   tasks: TaskInterface[];
 }

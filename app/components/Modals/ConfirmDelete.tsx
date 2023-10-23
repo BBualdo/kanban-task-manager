@@ -1,9 +1,10 @@
 import React from "react";
 import { ModalsProps } from "@/ts/types";
 import { AppDispatch, useAppSelector } from "@/redux/store";
-import DUMMY_BOARDS from "@/app/data/data";
 import { useDispatch } from "react-redux";
 import { switchBoard } from "@/redux/features/board-slice";
+
+import data from "../../data/data.json";
 
 const ConfirmDelete = ({ isLight, onClose }: ModalsProps) => {
   const dispatch = useDispatch<AppDispatch>();
@@ -13,12 +14,12 @@ const ConfirmDelete = ({ isLight, onClose }: ModalsProps) => {
   );
 
   const deleteBoard = () => {
-    const index = DUMMY_BOARDS.indexOf(selectedBoard);
-    DUMMY_BOARDS.splice(index, 1);
+    const index = data.boards.indexOf(selectedBoard);
+    data.boards.splice(index, 1);
     if (index - 1 === -1) {
-      dispatch(switchBoard(DUMMY_BOARDS[index]));
+      dispatch(switchBoard(data.boards[index]));
     } else if (index) {
-      dispatch(switchBoard(DUMMY_BOARDS[index - 1]));
+      dispatch(switchBoard(data.boards[index - 1]));
     } else {
       dispatch(switchBoard(null));
     }

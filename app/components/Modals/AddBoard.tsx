@@ -1,10 +1,11 @@
 import React, { useRef } from "react";
 
-import DUMMY_BOARDS from "@/app/data/data";
 import { ModalsProps, BoardInterface } from "@/ts/types";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "@/redux/store";
 import { switchBoard } from "@/redux/features/board-slice";
+
+import data from "../../data/data.json";
 
 const AddBoard = ({ isLight, onClose }: ModalsProps) => {
   const dispatch = useDispatch<AppDispatch>();
@@ -12,7 +13,7 @@ const AddBoard = ({ isLight, onClose }: ModalsProps) => {
   const boardNameInput = useRef<HTMLInputElement | null>(null);
 
   const addNewBoard = (board: BoardInterface) => {
-    DUMMY_BOARDS.push(board);
+    data.boards.push(board);
     dispatch(switchBoard(board));
     onClose();
   };
@@ -70,7 +71,7 @@ const AddBoard = ({ isLight, onClose }: ModalsProps) => {
             addNewBoard({
               name: boardNameInput.current?.value
                 ? boardNameInput.current.value
-                : `New Board #${DUMMY_BOARDS.length + 1}`,
+                : `New Board #${data.boards.length + 1}`,
               columns: [],
             })
           }

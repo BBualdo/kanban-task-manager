@@ -1,5 +1,5 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import DUMMY_BOARDS from "@/app/data/data";
+import data from "../../app/data/data.json";
 import { BoardInterface } from "@/ts/types";
 
 type InitialState = {
@@ -12,7 +12,7 @@ type SelectedBoard = {
 
 const initialState = {
   value: {
-    selectedBoard: DUMMY_BOARDS[0],
+    selectedBoard: data.boards[0],
   } as SelectedBoard,
 } as InitialState;
 
