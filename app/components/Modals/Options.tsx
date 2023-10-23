@@ -32,19 +32,6 @@ const Options = ({ onClose, isLight, openModal }: OptionsProps) => {
     };
   }, []);
 
-  const deleteBoard = () => {
-    const index = DUMMY_BOARDS.indexOf(selectedBoard);
-    DUMMY_BOARDS.splice(index, 1);
-    if (index - 1 === -1) {
-      dispatch(switchBoard(DUMMY_BOARDS[index]));
-    } else if (index) {
-      dispatch(switchBoard(DUMMY_BOARDS[index - 1]));
-    } else {
-      dispatch(switchBoard(null));
-    }
-    onClose();
-  };
-
   return (
     <div
       ref={optionsRef}
