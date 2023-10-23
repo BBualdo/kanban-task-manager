@@ -1,5 +1,10 @@
 import { ReactNode } from "react";
 
+export interface DropdownProps {
+  isLight: boolean;
+  status: string | undefined;
+}
+
 export interface ColumnProps {
   key: string;
   columnName: string;

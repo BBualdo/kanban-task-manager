@@ -15,10 +15,6 @@ const TasksList = ({ tasks }: { tasks: TaskInterface[] }) => {
     (state) => state.themeReducer.value.isLightTheme
   );
 
-  const selectedTask = useAppSelector(
-    (state) => state.selectedTaskReducer.value.selectedTask
-  );
-
   const selectTask = (task: TaskInterface) => {
     dispatch(switchTask(task));
     openModal();

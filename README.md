@@ -72,6 +72,7 @@ Users should be able to:
 22. I had to add Columns and Tasks Lists components to make implementing detail's modals possible to render.
 23. Created new `selectedTask` Redux Slice similar to `selectedBoard`. When user clicks on Task it is selected.
 24. Created slice for another modal and now clicking on Task displays modal.
+25. Task Details Modal has `selectedTask` title, description and status. Also I've made custom dropdown (for now it doesn't let user to change it).
 
 ### Built with
 
