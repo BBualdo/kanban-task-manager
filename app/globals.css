@@ -19,6 +19,23 @@
     @apply bg-purple;
   }
 
+  input[type="checkbox"] {
+    @apply appearance-none w-[14px] h-[14px] border-[1px] border-purple cursor-pointer rounded-[2px] hover:border-purple_hover transition-all duration-200;
+  }
+
+  input[type="checkbox"]:checked {
+    @apply bg-purple hover:bg-purple_hover transition-all duration-200;
+  }
+
+  input[type="checkbox"]::before {
+    @apply block translate-x-[5%] translate-y-[-30%] opacity-0 transition-all duration-200;
+    content: url("../public/assets/icon-check.svg");
+  }
+
+  input[type="checkbox"]:checked::before {
+    @apply opacity-100;
+  }
+
   h1 {
     @apply text-[24px] font-bold leading-[30px];
   }

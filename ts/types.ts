@@ -1,5 +1,9 @@
 import { ReactNode } from "react";
 
+export interface SubtaskProps {
+  subtasks: SubtaskInterface[];
+}
+
 export interface DropdownProps {
   isLight: boolean;
   status: string | undefined;

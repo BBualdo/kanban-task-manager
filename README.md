@@ -73,6 +73,7 @@ Users should be able to:
 23. Created new `selectedTask` Redux Slice similar to `selectedBoard`. When user clicks on Task it is selected.
 24. Created slice for another modal and now clicking on Task displays modal.
 25. Task Details Modal has `selectedTask` title, description and status. Also I've made custom dropdown (for now it doesn't let user to change it).
+26. Added SubtasksList and Subtask Component to show in Task Details Modal. For now it checks if subtask `isCompleted` to check the checkbox, but I will add a function that will mark subtasks as completed or not.
 
 ### Built with
 
