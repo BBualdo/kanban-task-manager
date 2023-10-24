@@ -9,6 +9,14 @@ const TaskDetails = ({ isLight }: ModalsProps) => {
     (state) => state.selectedTaskReducer.value.selectedTask
   );
 
+  let completedAmount = 0;
+
+  for (const subtask of selectedTask!.subtasks) {
+    if (subtask.isCompleted) {
+      completedAmount += 1;
+    }
+  }
+
   return (
     <div
       className={`${
@@ -39,7 +47,7 @@ const TaskDetails = ({ isLight }: ModalsProps) => {
       <p className="p-lg text-medium_grey">{selectedTask?.description}</p>
       <div className="flex flex-col gap-4">
         <p className={`p-md ${isLight ? "text-medium_grey" : "text-white"}`}>
-          Subtasks (x of {selectedTask!.subtasks.length})
+          Subtasks ({completedAmount} of {selectedTask!.subtasks.length})
         </p>
         <SubtasksList subtasks={selectedTask!.subtasks} />
       </div>

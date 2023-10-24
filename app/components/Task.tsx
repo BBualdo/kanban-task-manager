@@ -7,6 +7,14 @@ const Task = ({ selectTask, taskName, subtasks }: TaskProps) => {
     (state) => state.themeReducer.value.isLightTheme
   );
 
+  let completedAmount = 0;
+
+  for (const subtask of subtasks) {
+    if (subtask.isCompleted) {
+      completedAmount += 1;
+    }
+  }
+
   return (
     <div
       onClick={selectTask}
@@ -21,7 +29,9 @@ const Task = ({ selectTask, taskName, subtasks }: TaskProps) => {
       >
         {taskName}
       </h3>
-      <p className="p-md text-medium_grey">X of {subtasks.length} subtasks</p>
+      <p className="p-md text-medium_grey">
+        {completedAmount} of {subtasks.length} subtasks
+      </p>
     </div>
   );
 };
