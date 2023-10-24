@@ -74,7 +74,8 @@ Users should be able to:
 24. Created slice for another modal and now clicking on Task displays modal.
 25. Task Details Modal has `selectedTask` title, description and status. Also I've made custom dropdown (for now it doesn't let user to change it).
 26. Added SubtasksList and Subtask Component to show in Task Details Modal. For now it checks if subtask `isCompleted` to check the checkbox, but I will add a function that will mark subtasks as completed or not.
-27. Added completed subtasks counter and displayed it instead of X in "X of (subtasks.length) subtasks."
+27. Added completed subtasks counter and displayed it instead of X in "X of (subtasks.length) subtasks.
+28. I started to implementing ability to add columns with custom names to new board. I added `ColumnInputsList` which is rendered by `AddBoardModal` and `ColumnInput` which is rendered by `ColumnInputsList` by mapping over `columnToAdd` state. For now it is hard coded.
 
 ### Built with
 
