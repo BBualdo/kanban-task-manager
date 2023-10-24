@@ -31,6 +31,20 @@ const AddBoard = ({ isLight, onClose }: ModalsProps) => {
     onClose();
   };
 
+  const addNewColumn = () => {
+    const newColumn: BoardColumnInterface = {
+      name: "",
+      tasks: [],
+    };
+    setColumnsToAdd((prevColumns) => [...prevColumns, newColumn]);
+  };
+
+  const removeNewColumn = (columnToDelete: BoardColumnInterface) => {
+    setColumnsToAdd((prevColumns) =>
+      prevColumns.filter((column) => column !== columnToDelete)
+    );
+  };
+
   const onKeyDownHandler = (event: React.KeyboardEvent) => {
     if (event.key === "Enter") {
       addNewBoard();
@@ -70,7 +84,12 @@ const AddBoard = ({ isLight, onClose }: ModalsProps) => {
           />
         </div>
 
-        <ColumnInputsList isLight={isLight} columns={columnsToAdd} />
+        <ColumnInputsList
+          isLight={isLight}
+          columns={columnsToAdd}
+          addNew={addNewColumn}
+          remove={removeNewColumn}
+        />
         <button
           onClick={() => addNewBoard()}
           className="btn btn-primary-sm mt-6"

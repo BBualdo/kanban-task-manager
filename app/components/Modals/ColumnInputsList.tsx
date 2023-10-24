@@ -1,16 +1,26 @@
-import React from "react";
 import ColumnInput from "./ColumnInput";
 import { BoardColumnInterface } from "@/ts/types";
+import { v4 as uuidv4 } from "uuid";
 
 const ColumnInputsList = ({
   isLight,
   columns,
+  addNew,
+  remove,
 }: {
   isLight: boolean;
   columns: BoardColumnInterface[];
+  addNew: () => void;
+  remove: (columnToDelete: BoardColumnInterface) => void;
 }) => {
   const columnInputs = columns.map((column) => (
-    <ColumnInput isLight={isLight} name={column.name} />
+    <ColumnInput
+      key={uuidv4()}
+      isLight={isLight}
+      name={column.name}
+      remove={remove}
+      currentColumn={column}
+    />
   ));
 
   return (
@@ -25,6 +35,7 @@ const ColumnInputsList = ({
       </div>
 
       <button
+        onClick={addNew}
         className={`btn btn-secondary ${
           isLight ? "" : "bg-white hover:bg-white/80"
         }`}
