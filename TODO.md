@@ -1,14 +1,5 @@
 ### Todo 🔜
 
-- Boards
-
-  - [ ] Clicking in the dropdown menu "Edit Board" opens up the "Edit Board" modal where details can be changed.
-  - [ ] Columns are added and removed for the Add/Edit Board modals.
-
-- Columns
-
-  - [ ] Clicking "Add New Column" opens the "Edit Board" modal where columns are added.
-
 - Tasks
 
   - [ ] Adding a new task adds it to the bottom of the relevant column.
@@ -21,9 +12,12 @@
   - [x] Clicking different boards in the sidebar will change to the selected board.
   - [x] Clicking "Create New Board" in the sidebar opens the "Add New Board" modal.
   - [x] Deleting a board deletes all columns and tasks and requires confirmation.
+  - [x] Clicking in the dropdown menu "Edit Board" opens up the "Edit Board" modal where details can be changed.
+  - [x] Columns are added and removed for the Add/Edit Board modals.
 
 - Columns
 
   - [x] A board needs at least one column before tasks can be added. If no columns exist, the "Add New Task" button in the header is disabled.
+  - [x] Clicking "Add New Column" opens the "Edit Board" modal where columns are added.
 
 - Tasks
