@@ -27,6 +27,7 @@ const ColumnInput = ({
         name="column-name"
         type="text"
         placeholder="e.g. Todo"
+        // maxLength={25}
         autoComplete="off"
         onChange={(event) => {
           setIsEmpty(false);
