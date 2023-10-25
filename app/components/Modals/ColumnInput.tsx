@@ -18,26 +18,33 @@ const ColumnInput = ({
   ) => void;
 }) => {
   const [inputValue, setInputValue] = useState(name);
+  const [isEmpty, setIsEmpty] = useState(false);
 
   return (
-    <div className="flex items-center justify-between gap-4">
+    <div className="relative flex items-center justify-between gap-4">
       <input
         value={inputValue}
         name="column-name"
         type="text"
         placeholder="e.g. Todo"
+        autoComplete="off"
         onChange={(event) => setInputValue(event.target.value)}
         onBlur={(event) => update(event, currentColumn)}
         className={`${
           isLight
             ? "bg-white text-black border-lines_light"
             : "bg-dark_grey text-white border-lines_dark placeholder:text-white/30"
+        } ${
+          isEmpty && "border-red focus:border-red"
         } p-lg border-[2px] rounded-[4px] outline-none focus:border-purple px-4 py-2 cursor-pointer transition-all duration-300 flex-1`}
       />
+      {isEmpty && (
+        <p className="absolute right-12 p-lg text-red">Can't be empty</p>
+      )}
       <svg
         onClick={() => remove(currentColumn)}
-        className={`${
-          isLight ? "hover:fill-black" : "hover:fill-white"
+        className={`${isLight ? "hover:fill-black" : "hover:fill-white"} ${
+          isEmpty && "hover:fill-red"
         } transition-all duration-200 cursor-pointer fill-medium_grey`}
         width="15"
         height="15"
