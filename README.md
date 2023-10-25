@@ -77,6 +77,14 @@ Users should be able to:
 27. Added completed subtasks counter and displayed it instead of X in "X of (subtasks.length) subtasks.
 28. I started to implementing ability to add columns with custom names to new board. I added `ColumnInputsList` which is rendered by `AddBoardModal` and `ColumnInput` which is rendered by `ColumnInputsList` by mapping over `columnToAdd` state. For now it is hard coded.
 29. Added ability to add new columns when creating board or delete it.
+30. Added ability to change columns names when creating board. That was a tough one to add:
+
+- First I added onChange event to input and passed a function to it.
+- Then I declared that [Function](#update-column).
+- After that I passed that function through ColumnInputsList to ColumnInput.
+- A bug occured - Every keystroke on input rerendered component and focus was lost.
+- So I declared state with `inputValue` initially equal to passed default name.
+- I set value to `inputValue` and declared that onChange it is set to `event.target.value` and passed `updateColumnName` function to onBlur.
 
 ### Built with
 
@@ -105,6 +113,27 @@ const deleteBoard = () => {
     dispatch(switchBoard(null));
   }
   onClose();
+};
+```
+
+#### Update Column
+
+```tsx
+const updateColumnName = (
+  event: React.ChangeEvent<HTMLInputElement>,
+  columnToUpdate: BoardColumnInterface
+) => {
+  const newName = event.target.value;
+
+  setColumnsToAdd((prevColumns) => {
+    return prevColumns.map((column) => {
+      if (column === columnToUpdate) {
+        return { ...column, name: newName };
+      } else {
+        return column;
+      }
+    });
+  });
 };
 ```
 

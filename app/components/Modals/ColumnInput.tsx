@@ -1,23 +1,33 @@
 import { BoardColumnInterface } from "@/ts/types";
+import { useState } from "react";
 
 const ColumnInput = ({
   isLight,
   name,
   remove,
   currentColumn,
+  update,
 }: {
   isLight: boolean;
   name: string;
   remove: (columnToDelete: BoardColumnInterface) => void;
   currentColumn: BoardColumnInterface;
+  update: (
+    event: React.ChangeEvent<HTMLInputElement>,
+    columnToUpdate: BoardColumnInterface
+  ) => void;
 }) => {
+  const [inputValue, setInputValue] = useState(name);
+
   return (
     <div className="flex items-center justify-between gap-4">
       <input
-        value={name}
+        value={inputValue}
         name="column-name"
         type="text"
         placeholder="e.g. Todo"
+        onChange={(event) => setInputValue(event.target.value)}
+        onBlur={(event) => update(event, currentColumn)}
         className={`${
           isLight
             ? "bg-white text-black border-lines_light"

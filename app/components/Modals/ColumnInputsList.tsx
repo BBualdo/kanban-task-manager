@@ -7,11 +7,16 @@ const ColumnInputsList = ({
   columns,
   addNew,
   remove,
+  update,
 }: {
   isLight: boolean;
   columns: BoardColumnInterface[];
   addNew: () => void;
   remove: (columnToDelete: BoardColumnInterface) => void;
+  update: (
+    event: React.ChangeEvent<HTMLInputElement>,
+    columnToUpdate: BoardColumnInterface
+  ) => void;
 }) => {
   const columnInputs = columns.map((column) => (
     <ColumnInput
@@ -20,6 +25,7 @@ const ColumnInputsList = ({
       name={column.name}
       remove={remove}
       currentColumn={column}
+      update={update}
     />
   ));
 

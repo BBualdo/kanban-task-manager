@@ -45,6 +45,23 @@ const AddBoard = ({ isLight, onClose }: ModalsProps) => {
     );
   };
 
+  const updateColumnName = (
+    event: React.ChangeEvent<HTMLInputElement>,
+    columnToUpdate: BoardColumnInterface
+  ) => {
+    const newName = event.target.value;
+
+    setColumnsToAdd((prevColumns) => {
+      return prevColumns.map((column) => {
+        if (column === columnToUpdate) {
+          return { ...column, name: newName };
+        } else {
+          return column;
+        }
+      });
+    });
+  };
+
   const onKeyDownHandler = (event: React.KeyboardEvent) => {
     if (event.key === "Enter") {
       addNewBoard();
@@ -89,6 +106,7 @@ const AddBoard = ({ isLight, onClose }: ModalsProps) => {
           columns={columnsToAdd}
           addNew={addNewColumn}
           remove={removeNewColumn}
+          update={updateColumnName}
         />
         <button
           onClick={() => addNewBoard()}
