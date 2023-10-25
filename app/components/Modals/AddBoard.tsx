@@ -26,9 +26,14 @@ const AddBoard = ({ isLight, onClose }: ModalsProps) => {
         boardNameInput.current!.value || `New Board #${data.boards.length + 1}`,
       columns: columnsToAdd,
     };
-    data.boards.push(newBoard);
-    dispatch(switchBoard(newBoard));
-    onClose();
+
+    if (columnsToAdd.some((column) => column.name == "")) {
+      return;
+    } else {
+      data.boards.push(newBoard);
+      dispatch(switchBoard(newBoard));
+      onClose();
+    }
   };
 
   const addNewColumn = () => {

@@ -18,7 +18,7 @@ const ColumnInput = ({
   ) => void;
 }) => {
   const [inputValue, setInputValue] = useState(name);
-  const [isEmpty, setIsEmpty] = useState(false);
+  const [isEmpty, setIsEmpty] = useState(inputValue == "");
 
   return (
     <div className="relative flex items-center justify-between gap-4">
@@ -28,7 +28,10 @@ const ColumnInput = ({
         type="text"
         placeholder="e.g. Todo"
         autoComplete="off"
-        onChange={(event) => setInputValue(event.target.value)}
+        onChange={(event) => {
+          setIsEmpty(false);
+          setInputValue(event.target.value);
+        }}
         onBlur={(event) => update(event, currentColumn)}
         className={`${
           isLight

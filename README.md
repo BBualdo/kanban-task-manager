@@ -86,6 +86,8 @@ Users should be able to:
 - So I declared state with `inputValue` initially equal to passed default name.
 - I set value to `inputValue` and declared that onChange it is set to `event.target.value` and passed `updateColumnName` function to onBlur.
 
+31. I've added if condition to `addBoard` function to check if any name in created columns is an empty string: [Check](#Array.some). I've also added `isEmpty` state to `ColumnInput` component to add proper styling when field is empty.
+
 ### Built with
 
 - React
@@ -134,6 +136,26 @@ const updateColumnName = (
       }
     });
   });
+};
+```
+
+#### Array.some
+
+```tsx
+const addNewBoard = () => {
+  const newBoard: BoardInterface = {
+    name:
+      boardNameInput.current!.value || `New Board #${data.boards.length + 1}`,
+    columns: columnsToAdd,
+  };
+
+  if (columnsToAdd.some((column) => column.name == "")) {
+    return;
+  } else {
+    data.boards.push(newBoard);
+    dispatch(switchBoard(newBoard));
+    onClose();
+  }
 };
 ```
 
