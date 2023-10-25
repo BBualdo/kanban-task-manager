@@ -1,37 +1,50 @@
-import React, { useRef, useState } from "react";
+"use client";
+
+import { useState } from "react";
 
 import { ModalsProps, BoardInterface, BoardColumnInterface } from "@/ts/types";
 import { useDispatch } from "react-redux";
-import { AppDispatch } from "@/redux/store";
+import { AppDispatch, useAppSelector } from "@/redux/store";
 import { switchBoard } from "@/redux/features/selected-board-slice";
 
 import data from "../../data/data.json";
+
 import ColumnInputsList from "./ColumnInputsList";
 
 const EditBoard = ({ isLight, onClose }: ModalsProps) => {
   const dispatch = useDispatch<AppDispatch>();
 
-  const boardNameInput = useRef<HTMLInputElement | null>(null);
-
-  const [columnsToAdd, setColumnsToAdd] = useState<BoardColumnInterface[] | []>(
-    [
-      { name: "Todo", tasks: [] },
-      { name: "Doing", tasks: [] },
-    ]
+  const selectedBoard = useAppSelector(
+    (state) => state.selectedBoardReducer.value.selectedBoard
   );
 
-  const addNewBoard = () => {
-    const newBoard: BoardInterface = {
-      name:
-        boardNameInput.current!.value || `New Board #${data.boards.length + 1}`,
-      columns: columnsToAdd,
+  const [editedBoard, setEditedBoard] = useState(selectedBoard);
+
+  const [columnsToEdit, setColumnsToEdit] = useState<
+    BoardColumnInterface[] | []
+  >(selectedBoard.columns);
+
+  const saveChanges = () => {
+    if (columnsToEdit.some((column) => column.name == "")) {
+      return;
+    } else if (editedBoard.name == "") {
+      editedBoard.name = `New Board #${data.boards.indexOf(selectedBoard)}`;
+    }
+
+    const updatedBoard: BoardInterface = {
+      ...editedBoard,
+      columns: columnsToEdit,
     };
 
-    if (columnsToAdd.some((column) => column.name == "")) {
-      return;
-    } else {
-      data.boards.push(newBoard);
-      dispatch(switchBoard(newBoard));
+    const boardIndex = data.boards.findIndex(
+      (board: BoardInterface) => board.id == selectedBoard.id
+    );
+
+    if (boardIndex !== -1) {
+      const newBoards = [...data.boards];
+      newBoards[boardIndex] = updatedBoard;
+      data.boards = newBoards;
+      dispatch(switchBoard(updatedBoard));
       onClose();
     }
   };
@@ -41,11 +54,11 @@ const EditBoard = ({ isLight, onClose }: ModalsProps) => {
       name: "",
       tasks: [],
     };
-    setColumnsToAdd((prevColumns) => [...prevColumns, newColumn]);
+    setColumnsToEdit((prevColumns) => [...prevColumns, newColumn]);
   };
 
   const removeNewColumn = (columnToDelete: BoardColumnInterface) => {
-    setColumnsToAdd((prevColumns) =>
+    setColumnsToEdit((prevColumns) =>
       prevColumns.filter((column) => column !== columnToDelete)
     );
   };
@@ -56,7 +69,7 @@ const EditBoard = ({ isLight, onClose }: ModalsProps) => {
   ) => {
     const newName = event.target.value;
 
-    setColumnsToAdd((prevColumns) => {
+    setColumnsToEdit((prevColumns) => {
       return prevColumns.map((column) => {
         if (column === columnToUpdate) {
           return { ...column, name: newName };
@@ -67,12 +80,13 @@ const EditBoard = ({ isLight, onClose }: ModalsProps) => {
     });
   };
 
-  const onKeyDownHandler = (event: React.KeyboardEvent) => {
-    if (event.key === "Enter") {
-      addNewBoard();
-    } else {
-      return;
-    }
+  const updateBoardName = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const newName = event.target.value;
+
+    setEditedBoard((prevBoard) => ({
+      ...prevBoard,
+      name: newName,
+    }));
   };
 
   return (
@@ -81,9 +95,7 @@ const EditBoard = ({ isLight, onClose }: ModalsProps) => {
         isLight ? "bg-white" : "bg-dark_grey"
       } z-50 rounded-[6px] p-8 w-[480px]`}
     >
-      <h2 className={`${isLight ? "text-black" : "text-white"}`}>
-        Add New Board
-      </h2>
+      <h2 className={`${isLight ? "text-black" : "text-white"}`}>Edit Board</h2>
       <div className="flex flex-col mt-6 gap-6">
         <div className="flex flex-col gap-2">
           <label
@@ -93,9 +105,9 @@ const EditBoard = ({ isLight, onClose }: ModalsProps) => {
             Board Name
           </label>
           <input
-            onKeyDown={onKeyDownHandler}
+            value={editedBoard.name}
             id="board-name"
-            ref={boardNameInput}
+            onChange={updateBoardName}
             type="text"
             placeholder="e.g. Web Design"
             className={`${
@@ -108,13 +120,13 @@ const EditBoard = ({ isLight, onClose }: ModalsProps) => {
 
         <ColumnInputsList
           isLight={isLight}
-          columns={columnsToAdd}
+          columns={columnsToEdit}
           addNew={addNewColumn}
           remove={removeNewColumn}
           update={updateColumnName}
         />
-        <button onClick={() => addNewBoard()} className="btn btn-primary-sm">
-          Create New Board
+        <button onClick={saveChanges} className="btn btn-primary-sm">
+          Save Changes
         </button>
       </div>
     </div>

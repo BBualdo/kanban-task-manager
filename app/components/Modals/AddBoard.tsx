@@ -1,4 +1,7 @@
-import React, { useRef, useState } from "react";
+"use client";
+
+import { useRef, useState } from "react";
+import { v4 as uuidv4 } from "uuid";
 
 import { ModalsProps, BoardInterface, BoardColumnInterface } from "@/ts/types";
 import { useDispatch } from "react-redux";
@@ -22,6 +25,7 @@ const AddBoard = ({ isLight, onClose }: ModalsProps) => {
 
   const addNewBoard = () => {
     const newBoard: BoardInterface = {
+      id: uuidv4(),
       name:
         boardNameInput.current!.value || `New Board #${data.boards.length + 1}`,
       columns: columnsToAdd,

@@ -40,6 +40,7 @@ export interface BoardColumnInterface {
 }
 
 export interface BoardInterface {
+  id: string;
   name: string;
   columns: BoardColumnInterface[];
 }

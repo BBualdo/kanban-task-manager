@@ -1,3 +1,5 @@
+"use client";
+
 import { BoardColumnInterface } from "@/ts/types";
 import { useState } from "react";
 

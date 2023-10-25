@@ -1,4 +1,3 @@
-import React from "react";
 import data from "../data/data.json";
 import { AppDispatch, useAppSelector } from "@/redux/store";
 import { useDispatch } from "react-redux";
@@ -21,7 +20,7 @@ const Boards = () => {
     dispatch(switchBoard(board));
   };
 
-  const boardElement = data.boards.map((board) => (
+  const boardElement = data.boards.map((board: BoardInterface) => (
     <div
       onClick={() => switchBoards(board)}
       key={uuidv4()}

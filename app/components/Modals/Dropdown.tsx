@@ -1,7 +1,7 @@
 "use client";
 
 import { DropdownProps } from "@/ts/types";
-import React, { useState } from "react";
+import { useState } from "react";
 
 const Dropdown = ({ isLight, status }: DropdownProps) => {
   const [isOpen, setIsOpen] = useState(false);

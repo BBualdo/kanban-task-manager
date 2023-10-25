@@ -1,4 +1,3 @@
-import React from "react";
 import { ModalsProps } from "@/ts/types";
 import { AppDispatch, useAppSelector } from "@/redux/store";
 import { useDispatch } from "react-redux";

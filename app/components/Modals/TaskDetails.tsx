@@ -1,6 +1,5 @@
 import { useAppSelector } from "@/redux/store";
 import { ModalsProps } from "@/ts/types";
-import React from "react";
 import Dropdown from "./Dropdown";
 import SubtasksList from "../SubtasksList";
 

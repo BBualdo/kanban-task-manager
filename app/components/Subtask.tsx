@@ -1,6 +1,5 @@
 import { useAppSelector } from "@/redux/store";
 import { SubtaskInterface } from "@/ts/types";
-import React from "react";
 
 const Subtask = ({ title, isCompleted }: SubtaskInterface) => {
   const isLightTheme = useAppSelector(

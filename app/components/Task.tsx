@@ -1,6 +1,5 @@
 import { useAppSelector } from "@/redux/store";
 import { TaskProps } from "@/ts/types";
-import React from "react";
 
 const Task = ({ selectTask, taskName, subtasks }: TaskProps) => {
   const isLightTheme = useAppSelector(

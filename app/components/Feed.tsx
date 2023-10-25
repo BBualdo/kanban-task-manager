@@ -1,5 +1,4 @@
 import { useAppSelector } from "@/redux/store";
-import React from "react";
 import ColumnsList from "./ColumnsList";
 
 const Feed = () => {

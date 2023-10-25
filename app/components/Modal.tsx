@@ -1,5 +1,4 @@
 import { ModalProps } from "@/ts/types";
-import React from "react";
 
 const Modal = ({ isOpen, onClose, children }: ModalProps) => {
   const handleBackgroundClick = (
