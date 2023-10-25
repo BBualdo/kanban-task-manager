@@ -14,7 +14,7 @@ const Modal = ({ isOpen, onClose, children }: ModalProps) => {
 
   return (
     <div
-      onClick={handleBackgroundClick}
+      onMouseDown={handleBackgroundClick}
       className="fixed top-0 bottom-0 left-0 right-0 bg-black/50 z-40 flex items-center justify-center"
     >
       {children}
