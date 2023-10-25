@@ -9,9 +9,11 @@ import { AppDispatch, useAppSelector } from "@/redux/store";
 import { useState } from "react";
 import Options from "./Modals/Options";
 import { useDispatch } from "react-redux";
-import { showModal } from "@/redux/features/confirm-delete-slice";
+import { showDeleteBoardModal } from "@/redux/features/confirm-delete-board-slice";
 import ConfirmDelete from "./Modals/ConfirmDelete";
 import Modal from "./Modal";
+import { showEditBoardModal } from "@/redux/features/edit-board-slice";
+import EditBoard from "./Modals/EditBoard";
 
 const Header = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -38,23 +40,43 @@ const Header = () => {
     (state) => state.sidebarReducer.value.isShown
   );
 
-  const isModalOpen = useAppSelector(
+  const isDeleteModalOpen = useAppSelector(
     (state) => state.deleteBoardModalReducer.value.isShown
   );
 
-  const openModal = () => {
-    dispatch(showModal(true));
+  const openDeleteBoardModal = () => {
+    dispatch(showDeleteBoardModal(true));
   };
 
-  const closeModal = () => {
-    dispatch(showModal(false));
+  const closeDeleteBoardModal = () => {
+    dispatch(showDeleteBoardModal(false));
+  };
+
+  const isEditModalOpen = useAppSelector(
+    (state) => state.editBoardModalReducer.value.isShown
+  );
+
+  const openEditBoardModal = () => {
+    dispatch(showEditBoardModal(true));
+  };
+
+  const closeEditBoardModal = () => {
+    dispatch(showEditBoardModal(false));
   };
 
   return (
     <>
-      {isModalOpen && (
-        <Modal isOpen={isModalOpen} onClose={closeModal}>
-          <ConfirmDelete isLight={isLightTheme} onClose={closeModal} />
+      {isDeleteModalOpen && (
+        <Modal isOpen={isDeleteModalOpen} onClose={closeDeleteBoardModal}>
+          <ConfirmDelete
+            isLight={isLightTheme}
+            onClose={closeDeleteBoardModal}
+          />
+        </Modal>
+      )}
+      {isEditModalOpen && (
+        <Modal isOpen={isEditModalOpen} onClose={closeEditBoardModal}>
+          <EditBoard isLight={isLightTheme} onClose={closeEditBoardModal} />
         </Modal>
       )}
       <header
@@ -122,7 +144,8 @@ const Header = () => {
               <Options
                 onClose={hideMenu}
                 isLight={isLightTheme}
-                openModal={openModal}
+                openDeleteBoardModal={openDeleteBoardModal}
+                openEditBoardModal={openEditBoardModal}
               />
             )}
           </div>

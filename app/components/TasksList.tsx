@@ -6,7 +6,7 @@ import { useDispatch } from "react-redux";
 import { switchTask } from "@/redux/features/selected-task-slice";
 import Modal from "./Modal";
 import TaskDetails from "./Modals/TaskDetails";
-import { showModal } from "@/redux/features/task-details-slice";
+import { showTaskDetailsModal } from "@/redux/features/task-details-slice";
 
 const TasksList = ({ tasks }: { tasks: TaskInterface[] }) => {
   const dispatch = useDispatch<AppDispatch>();
@@ -21,11 +21,11 @@ const TasksList = ({ tasks }: { tasks: TaskInterface[] }) => {
   };
 
   const openModal = () => {
-    dispatch(showModal(true));
+    dispatch(showTaskDetailsModal(true));
   };
 
   const closeModal = () => {
-    dispatch(showModal(false));
+    dispatch(showTaskDetailsModal(false));
   };
 
   const isModalOpen = useAppSelector(

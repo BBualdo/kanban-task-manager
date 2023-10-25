@@ -14,11 +14,11 @@ const initialState = {
   } as ModalState,
 } as InitialState;
 
-export const modalVisibility = createSlice({
-  name: "task-details-modal-visibility",
+const modalVisibility = createSlice({
+  name: "edit-board-modal-visibility",
   initialState,
   reducers: {
-    showTaskDetailsModal(state, action: PayloadAction<boolean>) {
+    showEditBoardModal: (state, action: PayloadAction<boolean>) => {
       return {
         value: {
           isShown: action.payload,
@@ -28,5 +28,5 @@ export const modalVisibility = createSlice({
   },
 });
 
-export const { showTaskDetailsModal } = modalVisibility.actions;
+export const { showEditBoardModal } = modalVisibility.actions;
 export default modalVisibility.reducer;

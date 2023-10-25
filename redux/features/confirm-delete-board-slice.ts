@@ -18,7 +18,7 @@ export const modalVisibility = createSlice({
   name: "delete-board-modal-visibility",
   initialState,
   reducers: {
-    showModal(state, action: PayloadAction<boolean>) {
+    showDeleteBoardModal(state, action: PayloadAction<boolean>) {
       return {
         value: {
           isShown: action.payload,
@@ -28,5 +28,5 @@ export const modalVisibility = createSlice({
   },
 });
 
-export const { showModal } = modalVisibility.actions;
+export const { showDeleteBoardModal } = modalVisibility.actions;
 export default modalVisibility.reducer;

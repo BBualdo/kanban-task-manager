@@ -3,9 +3,10 @@ import themeReducer from "./features/theme-slice";
 import sidebarReducer from "./features/sidebar-slice";
 import selectedBoardReducer from "./features/selected-board-slice";
 import addBoardModalReducer from "./features/add-board-slice";
-import deleteBoardModalReducer from "./features/confirm-delete-slice";
+import deleteBoardModalReducer from "./features/confirm-delete-board-slice";
 import selectedTaskReducer from "./features/selected-task-slice";
 import taskDetailsModalReducer from "./features/task-details-slice";
+import editBoardModalReducer from "./features/edit-board-slice";
 import { TypedUseSelectorHook, useSelector } from "react-redux";
 
 export const store = configureStore({
@@ -17,6 +18,7 @@ export const store = configureStore({
     deleteBoardModalReducer,
     selectedTaskReducer,
     taskDetailsModalReducer,
+    editBoardModalReducer,
   },
 });
 

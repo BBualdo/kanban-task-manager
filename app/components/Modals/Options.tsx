@@ -1,7 +1,12 @@
 import { OptionsProps } from "@/ts/types";
 import React, { useEffect, useRef } from "react";
 
-const Options = ({ onClose, isLight, openModal }: OptionsProps) => {
+const Options = ({
+  onClose,
+  isLight,
+  openDeleteBoardModal,
+  openEditBoardModal,
+}: OptionsProps) => {
   const optionsRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
@@ -29,6 +34,7 @@ const Options = ({ onClose, isLight, openModal }: OptionsProps) => {
       } p-4 flex flex-col items-start gap-4 rounded-[4px]`}
     >
       <button
+        onClick={openEditBoardModal}
         className={`text-medium_grey ${
           isLight ? "hover:text-white" : "hover:text-black"
         } transition-all duration-300`}
@@ -36,7 +42,7 @@ const Options = ({ onClose, isLight, openModal }: OptionsProps) => {
         Edit Board
       </button>
       <button
-        onClick={openModal}
+        onClick={openDeleteBoardModal}
         className="text-red hover:text-red_hover transition-all duration-300"
       >
         Delete Board

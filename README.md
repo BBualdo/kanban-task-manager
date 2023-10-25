@@ -87,6 +87,7 @@ Users should be able to:
 - I set value to `inputValue` and declared that onChange it is set to `event.target.value` and passed `updateColumnName` function to onBlur.
 
 31. I've added if condition to `addBoard` function to check if any name in created columns is an empty string: [Check](#Array.some). I've also added `isEmpty` state to `ColumnInput` component to add proper styling when field is empty.
+32. I had to rename all reducers in Redux slices to easier read which reducer manipulates which modal. I've also copy-pasted `AddBoard` modal as `EditBoard` modal because they are very similar.
 
 ### Built with
 

@@ -10,7 +10,7 @@ import Boards from "./Boards";
 
 import { toggleTheme } from "@/redux/features/theme-slice";
 import { toggleSidebar } from "@/redux/features/sidebar-slice";
-import { showModal } from "@/redux/features/add-board-slice";
+import { showAddBoardModal } from "@/redux/features/add-board-slice";
 import { useDispatch } from "react-redux";
 import { AppDispatch, useAppSelector } from "@/redux/store";
 
@@ -42,11 +42,11 @@ const Sidebar = () => {
   );
 
   const openModal = () => {
-    dispatch(showModal(true));
+    dispatch(showAddBoardModal(true));
   };
 
   const closeModal = () => {
-    dispatch(showModal(false));
+    dispatch(showAddBoardModal(false));
   };
 
   return (
