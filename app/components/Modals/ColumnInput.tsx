@@ -43,7 +43,7 @@ const ColumnInput = ({
         } p-lg border-[2px] rounded-[4px] outline-none focus:border-purple px-4 py-2 cursor-pointer transition-all duration-300 flex-1`}
       />
       {isEmpty && (
-        <p className="absolute right-12 p-lg text-red">Can't be empty</p>
+        <p className="absolute right-12 p-lg text-red">Can&apos;t be empty</p>
       )}
       <svg
         onClick={() => remove(currentColumn)}
