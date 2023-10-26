@@ -18,6 +18,7 @@ import { showAddTaskModal } from "@/redux/features/add-task-slice";
 import AddTask from "./Modals/AddTask";
 
 const Header = () => {
+  console.log("Header rendered");
   const dispatch = useDispatch<AppDispatch>();
 
   const [isMenuShown, setIsMenuShown] = useState(false);
@@ -48,6 +49,7 @@ const Header = () => {
 
   const openDeleteBoardModal = () => {
     dispatch(showDeleteBoardModal(true));
+    hideMenu();
   };
 
   const closeDeleteBoardModal = () => {
@@ -60,6 +62,7 @@ const Header = () => {
 
   const openEditBoardModal = () => {
     dispatch(showEditBoardModal(true));
+    hideMenu();
   };
 
   const closeEditBoardModal = () => {
@@ -72,6 +75,7 @@ const Header = () => {
 
   const openAddTaskModal = () => {
     dispatch(showAddTaskModal(true));
+    hideMenu();
   };
 
   const closeAddTaskModal = () => {

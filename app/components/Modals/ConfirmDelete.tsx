@@ -6,6 +6,7 @@ import { switchBoard } from "@/redux/features/selected-board-slice";
 import data from "../../data/data.json";
 
 const ConfirmDelete = ({ isLight, onClose }: ModalsProps) => {
+  console.log("Confirm Delete rendered");
   const dispatch = useDispatch<AppDispatch>();
 
   const selectedBoard = useAppSelector(

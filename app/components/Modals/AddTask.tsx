@@ -17,6 +17,7 @@ import data from "../../data/data.json";
 import { switchBoard } from "@/redux/features/selected-board-slice";
 
 const AddTask = ({ isLight, onClose }: ModalsProps) => {
+  console.log("AddTask rendered");
   const dispatch = useDispatch<AppDispatch>();
 
   const selectedBoard = useAppSelector(

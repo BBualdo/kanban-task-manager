@@ -9,6 +9,7 @@ const Options = ({
   openDeleteBoardModal,
   openEditBoardModal,
 }: OptionsProps) => {
+  console.log("Options rendered");
   const optionsRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
