@@ -94,6 +94,7 @@ Users should be able to:
 36. I built `AddTask` modal based on `AddBoard` modal. For now user can Add and remove subtasks, change Task's title and description, but none of these changes will affect anything. It's time to build it properly.
 37. `AddTask` modal now allows user to Add tasks to `selectedBoard` and to proper column by selecting status from `Dropdown`. I had to create new copy of entire board when `Add Task` button is clicked, otherwise strange error occured, like tasks array wasn't array. It means that I have to prevent mutating data directly everywhere in my code. But I will leave it for future.
 38. Meanwhile I've realised that `AddBoard` modal and `EditBoard` modal are conditionally rendered in 2 places, so setting Redux state to true affected displaying each of them twice.
+39. I've added possibility to change each tasks status, and if so, that task is moved into selected status (column). That was a tough one. I aslo have to start commenting my code, because I started to lose myself in there... [Changing-Status](#changing-status)
 
 ### Built with
 
@@ -163,6 +164,47 @@ const addNewBoard = () => {
     dispatch(switchBoard(newBoard));
     onClose();
   }
+};
+```
+
+#### Changing status
+
+```tsx
+const changeStatus = (status: string) => {
+  setSelectedStatus(status);
+
+  const updatedTask: TaskInterface = {
+    ...selectedTask!,
+    status: status,
+  };
+
+  const updatedColumns = selectedBoard.columns.map((column) => {
+    if (column.name === selectedTask!.status) {
+      const updatedTasks = column.tasks.filter(
+        (task) => task.id !== selectedTask!.id
+      );
+      return { ...column, tasks: updatedTasks };
+    } else if (column.name === status) {
+      return { ...column, tasks: [...column.tasks, updatedTask] };
+    } else {
+      return column;
+    }
+  });
+
+  const newBoard = { ...selectedBoard, columns: updatedColumns };
+
+  const updatedBoards = data.boards.map((board) => {
+    if (board.id === newBoard.id) {
+      return newBoard;
+    } else {
+      return board;
+    }
+  });
+
+  data.boards = updatedBoards;
+
+  dispatch(switchTask(updatedTask));
+  dispatch(switchBoard(newBoard));
 };
 ```
 

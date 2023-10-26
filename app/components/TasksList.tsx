@@ -1,14 +1,21 @@
 import { v4 as uuidv4 } from "uuid";
 import Task from "./Task";
-import { TaskInterface } from "@/ts/types";
+import { BoardColumnInterface, TaskInterface } from "@/ts/types";
 import { AppDispatch, useAppSelector } from "@/redux/store";
 import { useDispatch } from "react-redux";
 import { switchTask } from "@/redux/features/selected-task-slice";
 import Modal from "./Modal";
 import TaskDetails from "./Modals/TaskDetails";
 import { showTaskDetailsModal } from "@/redux/features/task-details-slice";
+import { selectedBoard } from "@/redux/features/selected-board-slice";
 
-const TasksList = ({ tasks }: { tasks: TaskInterface[] }) => {
+const TasksList = ({
+  columns,
+  tasks,
+}: {
+  columns: BoardColumnInterface[];
+  tasks: TaskInterface[];
+}) => {
   const dispatch = useDispatch<AppDispatch>();
 
   const isLightTheme = useAppSelector(
@@ -44,7 +51,7 @@ const TasksList = ({ tasks }: { tasks: TaskInterface[] }) => {
     <>
       {isModalOpen && (
         <Modal isOpen={isModalOpen} onClose={closeModal}>
-          <TaskDetails isLight={isLightTheme} onClose={closeModal} />
+          <TaskDetails isLight={isLightTheme} statuses={columns} />
         </Modal>
       )}
       {taskElement}

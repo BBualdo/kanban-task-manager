@@ -8,7 +8,12 @@ const ColumnsList = () => {
   );
 
   const columnElement = selectedBoard.columns!.map((column) => (
-    <Column key={uuidv4()} columnName={column.name} tasks={column.tasks} />
+    <Column
+      key={uuidv4()}
+      columns={selectedBoard.columns}
+      columnName={column.name}
+      tasks={column.tasks}
+    />
   ));
   return <>{columnElement}</>;
 };

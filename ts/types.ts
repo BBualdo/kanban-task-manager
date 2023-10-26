@@ -13,6 +13,7 @@ export interface DropdownProps {
 
 export interface ColumnProps {
   key: string;
+  columns: BoardColumnInterface[];
   columnName: string;
   tasks: TaskInterface[];
 }

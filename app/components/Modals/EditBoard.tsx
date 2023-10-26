@@ -12,7 +12,6 @@ import data from "../../data/data.json";
 import ColumnInputsList from "./ColumnInputsList";
 
 const EditBoard = ({ isLight, onClose }: ModalsProps) => {
-  console.log("Edit rendered");
   const dispatch = useDispatch<AppDispatch>();
 
   const selectedBoard = useAppSelector(

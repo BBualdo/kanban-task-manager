@@ -18,7 +18,6 @@ import { showAddTaskModal } from "@/redux/features/add-task-slice";
 import AddTask from "./Modals/AddTask";
 
 const Header = () => {
-  console.log("Header rendered");
   const dispatch = useDispatch<AppDispatch>();
 
   const [isMenuShown, setIsMenuShown] = useState(false);
