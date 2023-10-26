@@ -7,6 +7,7 @@ import deleteBoardModalReducer from "./features/confirm-delete-board-slice";
 import selectedTaskReducer from "./features/selected-task-slice";
 import taskDetailsModalReducer from "./features/task-details-slice";
 import editBoardModalReducer from "./features/edit-board-slice";
+import addTaskModalReducer from "./features/add-task-slice";
 import { TypedUseSelectorHook, useSelector } from "react-redux";
 
 export const store = configureStore({
@@ -19,6 +20,7 @@ export const store = configureStore({
     selectedTaskReducer,
     taskDetailsModalReducer,
     editBoardModalReducer,
+    addTaskModalReducer,
   },
 });
 

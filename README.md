@@ -90,6 +90,7 @@ Users should be able to:
 32. I had to rename all reducers in Redux slices to easier read which reducer manipulates which modal. I've also copy-pasted `AddBoard` modal as `EditBoard` modal because they are very similar.
 33. I customized `EditBoard` modal to let user edit `selectedBoard` info such as name and columns in there. I'm thinking about adding warning when user click 'Save Changes', when these changes include removing columns which had some tasks.
 34. I've implemented showing `EditBoard` modal when user clicks `Add New Column` button either on `Empty` page or next to the existing columns.
+35. Added another modal: This time for adding tasks.
 
 ### Built with
 

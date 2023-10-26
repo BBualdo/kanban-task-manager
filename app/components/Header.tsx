@@ -14,6 +14,8 @@ import ConfirmDelete from "./Modals/ConfirmDelete";
 import Modal from "./Modal";
 import { showEditBoardModal } from "@/redux/features/edit-board-slice";
 import EditBoard from "./Modals/EditBoard";
+import { showAddTaskModal } from "@/redux/features/add-task-slice";
+import AddTask from "./Modals/AddTask";
 
 const Header = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -64,6 +66,18 @@ const Header = () => {
     dispatch(showEditBoardModal(false));
   };
 
+  const isAddTaskModalOpen = useAppSelector(
+    (state) => state.addTaskModalReducer.value.isShown
+  );
+
+  const openAddTaskModal = () => {
+    dispatch(showAddTaskModal(true));
+  };
+
+  const closeAddTaskModal = () => {
+    dispatch(showAddTaskModal(false));
+  };
+
   return (
     <>
       {isDeleteModalOpen && (
@@ -77,6 +91,11 @@ const Header = () => {
       {isEditModalOpen && (
         <Modal isOpen={isEditModalOpen} onClose={closeEditBoardModal}>
           <EditBoard isLight={isLightTheme} onClose={closeEditBoardModal} />
+        </Modal>
+      )}
+      {isAddTaskModalOpen && (
+        <Modal isOpen={isAddTaskModalOpen} onClose={closeAddTaskModal}>
+          <AddTask isLight={isLightTheme} onClose={closeAddTaskModal} />
         </Modal>
       )}
       <header
@@ -120,6 +139,7 @@ const Header = () => {
           </div>
           <div className="flex items-center gap-6">
             <button
+              onClick={openAddTaskModal}
               disabled={selectedBoard.columns.length === 0}
               className="btn btn-primary-lg px-6"
             >
