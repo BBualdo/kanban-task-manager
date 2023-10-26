@@ -91,6 +91,7 @@ Users should be able to:
 33. I customized `EditBoard` modal to let user edit `selectedBoard` info such as name and columns in there. I'm thinking about adding warning when user click 'Save Changes', when these changes include removing columns which had some tasks.
 34. I've implemented showing `EditBoard` modal when user clicks `Add New Column` button either on `Empty` page or next to the existing columns.
 35. Added another modal: This time for adding tasks.
+36. I built `AddTask` modal based on `AddBoard` modal. For now user can Add and remove subtasks, change Task's title and description, but none of these changes will affect anything. It's time to build it properly.
 
 ### Built with
 

@@ -28,6 +28,7 @@ export interface SubtaskInterface {
 }
 
 export interface TaskInterface {
+  id: string;
   title: string;
   description: string;
   status: string;

@@ -117,7 +117,7 @@ const AddBoard = ({ isLight, onClose }: ModalsProps) => {
           remove={removeNewColumn}
           update={updateColumnName}
         />
-        <button onClick={() => addNewBoard()} className="btn btn-primary-sm">
+        <button onClick={addNewBoard} className="btn btn-primary-sm">
           Create New Board
         </button>
       </div>
