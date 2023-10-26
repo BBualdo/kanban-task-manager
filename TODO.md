@@ -2,8 +2,13 @@
 
 - Tasks
 
-  - [ ] Adding a new task adds it to the bottom of the relevant column.
   - [ ] Updating a task's status will move the task to the relevant column. If you're taking on the drag and drop bonus, dragging a task to a different column will also update the status.
+
+- Styling
+
+  - [ ] Fix Feed background, because it isn't streching when there is more tasks.
+  - [ ] Tablet RWD
+  - [ ] Mobile RWD
 
 ### Done ✅
 
@@ -21,3 +26,5 @@
   - [x] Clicking "Add New Column" opens the "Edit Board" modal where columns are added.
 
 - Tasks
+
+- [x] Adding a new task adds it to the bottom of the relevant column.

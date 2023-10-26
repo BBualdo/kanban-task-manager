@@ -38,9 +38,11 @@ const SubtaskInputsList = ({
         >
           Subtasks
         </label>
-        <div className="flex flex-col gap-3 max-h-[263px] overflow-y-auto"></div>
+        <div className="flex flex-col gap-3 max-h-[153px] overflow-y-auto">
+          {subtaskInputs}
+        </div>
       </div>
-      {subtaskInputs}
+
       <button
         onClick={addNew}
         className={`btn btn-secondary ${
