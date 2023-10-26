@@ -11,6 +11,10 @@ import { useDispatch } from "react-redux";
 import { AppDispatch, useAppSelector } from "@/redux/store";
 import { useRef, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
+import Dropdown from "./Dropdown";
+
+import data from "../../data/data.json";
+import { switchBoard } from "@/redux/features/selected-board-slice";
 
 const AddTask = ({ isLight, onClose }: ModalsProps) => {
   const dispatch = useDispatch<AppDispatch>();
@@ -27,9 +31,13 @@ const AddTask = ({ isLight, onClose }: ModalsProps) => {
     { title: "Subtask 2", isCompleted: false },
   ]);
 
-  const [selectedStatus, setSelectedStatus] = useState<string>(
-    selectedBoard.columns[0].name
-  );
+  const statuses = selectedBoard.columns;
+
+  const [selectedStatus, setSelectedStatus] = useState(statuses[0].name);
+
+  const changeStatus = (status: string) => {
+    setSelectedStatus(status);
+  };
 
   const addNewTask = () => {
     const newTask: TaskInterface = {
@@ -43,7 +51,24 @@ const AddTask = ({ isLight, onClose }: ModalsProps) => {
     if (subtasksToAdd.some((subtask) => subtask.title == "")) {
       return;
     } else {
-      selectedBoard.selectedStatus.push(newTask);
+      const updatedColumns = selectedBoard.columns.map((column) => {
+        if (column.name === selectedStatus) {
+          return {
+            ...column,
+            tasks: [...column.tasks, newTask],
+          };
+        } else {
+          return column;
+        }
+      });
+
+      const updatedBoard = {
+        ...selectedBoard,
+        columns: updatedColumns,
+      };
+
+      data.boards.splice(data.boards.indexOf(selectedBoard), 1, updatedBoard);
+      dispatch(switchBoard(updatedBoard));
       onClose();
     }
   };
@@ -132,6 +157,12 @@ const AddTask = ({ isLight, onClose }: ModalsProps) => {
           addNew={addNewSubtask}
           remove={removeNewSubtask}
           update={updateSubtaskTitle}
+        />
+        <Dropdown
+          isLight={isLight}
+          statuses={statuses}
+          selectedStatus={selectedStatus}
+          changeStatus={changeStatus}
         />
         <button onClick={addNewTask} className="btn btn-primary-sm">
           Create Task

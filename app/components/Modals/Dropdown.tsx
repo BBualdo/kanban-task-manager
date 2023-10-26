@@ -1,11 +1,29 @@
 "use client";
 
-import { DropdownProps } from "@/ts/types";
+import { BoardColumnInterface, DropdownProps } from "@/ts/types";
 import { useState } from "react";
 
-const Dropdown = ({ isLight, status }: DropdownProps) => {
+import { v4 as uuidv4 } from "uuid";
+
+const Dropdown = ({
+  isLight,
+  statuses,
+  selectedStatus,
+  changeStatus,
+}: DropdownProps) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedOption, setSelectedOption] = useState(status);
+
+  const availableOptions = statuses.map((option: BoardColumnInterface) => {
+    return (
+      <li
+        key={uuidv4()}
+        onClick={() => changeStatus(option.name)}
+        className="p-lg text-medium_grey hover:text-purple transition-all duration-200"
+      >
+        {option.name}
+      </li>
+    );
+  });
 
   return (
     <div
@@ -14,7 +32,7 @@ const Dropdown = ({ isLight, status }: DropdownProps) => {
     >
       <div className="flex items-center justify-between">
         <p className={`p-lg ${isLight ? "text-black" : "text-white"}`}>
-          {selectedOption}
+          {selectedStatus}
         </p>
         <svg
           className={`${isOpen && "rotate-180"} transition-all duration-300`}
@@ -31,17 +49,7 @@ const Dropdown = ({ isLight, status }: DropdownProps) => {
             isLight ? "bg-white text-black" : "bg-very_dark_grey text-white"
           }`}
         >
-          <ul className="flex flex-col gap-2">
-            <li className="p-lg text-medium_grey hover:text-purple transition-all duration-200">
-              Todo
-            </li>
-            <li className="p-lg text-medium_grey hover:text-purple transition-all duration-200">
-              Doing
-            </li>
-            <li className="p-lg text-medium_grey hover:text-purple transition-all duration-200">
-              Done
-            </li>
-          </ul>
+          <ul className="flex flex-col gap-2">{availableOptions}</ul>
         </div>
       )}
     </div>

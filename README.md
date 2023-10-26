@@ -92,6 +92,7 @@ Users should be able to:
 34. I've implemented showing `EditBoard` modal when user clicks `Add New Column` button either on `Empty` page or next to the existing columns.
 35. Added another modal: This time for adding tasks.
 36. I built `AddTask` modal based on `AddBoard` modal. For now user can Add and remove subtasks, change Task's title and description, but none of these changes will affect anything. It's time to build it properly.
+37. `AddTask` modal now allows user to Add tasks to `selectedBoard` and to proper column by selecting status from `Dropdown`. I had to create new copy of entire board when `Add Task` button is clicked, otherwise strange error occured, like tasks array wasn't array. It means that I have to prevent mutating data directly everywhere in my code. But I will leave it for future.
 
 ### Built with
 

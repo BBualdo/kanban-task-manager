@@ -6,7 +6,9 @@ export interface SubtaskProps {
 
 export interface DropdownProps {
   isLight: boolean;
-  status: string | undefined;
+  statuses: BoardColumnInterface[];
+  selectedStatus: string;
+  changeStatus: (status: string) => void;
 }
 
 export interface ColumnProps {
