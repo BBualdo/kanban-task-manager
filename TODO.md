@@ -2,7 +2,6 @@
 
 - Styling
 
-  - [ ] Tablet RWD
   - [ ] Mobile RWD
 
 ### Done ✅
@@ -31,3 +30,4 @@
 - Styling
 
   - [x] Fix Feed background, because it isn't streching when there is more tasks.
+  - [x] Tablet RWD
