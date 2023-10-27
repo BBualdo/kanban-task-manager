@@ -58,7 +58,7 @@ const Feed = () => {
           isLightTheme ? "bg-light_grey" : "bg-very_dark_grey"
         } flex-1 transition-all duration-300 ${
           isSidebarShown ? "ml-[300px]" : ""
-        } h-full pb-6`}
+        } min-h-full pb-6`}
       >
         {selectedBoard.columns.length === 0 ? (
           <div className="flex flex-col items-center justify-center h-full gap-8">

@@ -13,7 +13,7 @@ export default function Home() {
 
   return (
     <>
-      <div className="max-h-[100vh] flex flex-col relative ">
+      <div className="min-h-[100vh] flex flex-col relative">
         {selectedBoard && <Header />}
         <div className="w-full flex flex-1 overflow-auto">
           <Sidebar />
