@@ -1,14 +1,12 @@
 import { AppDispatch, useAppSelector } from "@/redux/store";
 import ColumnsList from "./ColumnsList";
 import Modal from "./Modal";
-import EditBoard from "./Modals/EditBoard";
 import { useDispatch } from "react-redux";
 import { showEditBoardModal } from "@/redux/features/edit-board-slice";
 import { showEditTaskModal } from "@/redux/features/edit-task-slice";
 import { showDeleteTaskModal } from "@/redux/features/confirm-delete-task-slice";
 import EditTask from "./Modals/EditTask";
 import ConfirmTaskDelete from "./Modals/ConfirmTaskDelete";
-import { showTaskDetailsModal } from "@/redux/features/task-details-slice";
 
 const Feed = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -43,11 +41,9 @@ const Feed = () => {
   return (
     <>
       {isEditTaskOpen && (
-        <div className="z-50">
-          <Modal isOpen={isEditTaskOpen} onClose={closeEditTaskModal}>
-            <EditTask isLight={isLightTheme} onClose={closeEditTaskModal} />
-          </Modal>
-        </div>
+        <Modal isOpen={isEditTaskOpen} onClose={closeEditTaskModal}>
+          <EditTask isLight={isLightTheme} onClose={closeEditTaskModal} />
+        </Modal>
       )}
       {isDeleteTaskOpen && (
         <Modal isOpen={isDeleteTaskOpen} onClose={closeDeleleTaskModal}>
@@ -62,7 +58,7 @@ const Feed = () => {
           isLightTheme ? "bg-light_grey" : "bg-very_dark_grey"
         } flex-1 transition-all duration-300 ${
           isSidebarShown ? "ml-[300px]" : ""
-        } h-screen`}
+        } h-full pb-6`}
       >
         {selectedBoard.columns.length === 0 ? (
           <div className="flex flex-col items-center justify-center h-full gap-8">

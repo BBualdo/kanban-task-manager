@@ -1,12 +1,7 @@
 ### Todo 🔜
 
-- Tasks
-
-  - [ ] Checking checkboxes
-
 - Styling
 
-  - [ ] Fix Feed background, because it isn't streching when there is more tasks.
   - [ ] Tablet RWD
   - [ ] Mobile RWD
 
@@ -31,3 +26,8 @@
 - [x] Updating a task's status will move the task to the relevant column. If you're taking on the drag and drop bonus, dragging a task to a different column will also update the status.
 - [x] Edit Task Modal
 - [x] Delete Task Modal
+- [x] Checking checkboxes
+
+- Styling
+
+  - [x] Fix Feed background, because it isn't streching when there is more tasks.
