@@ -1,14 +1,14 @@
 "use client";
 
-import { OptionsProps } from "@/ts/types";
+import { TaskOptionsProps } from "@/ts/types";
 import { useEffect, useRef } from "react";
 
-const Options = ({
+const TaskOptions = ({
   onClose,
   isLight,
-  openDeleteBoardModal,
-  openEditBoardModal,
-}: OptionsProps) => {
+  openDeleteTaskModal,
+  openEditTaskModal,
+}: TaskOptionsProps) => {
   const optionsRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
@@ -31,26 +31,26 @@ const Options = ({
   return (
     <div
       ref={optionsRef}
-      className={`absolute w-[192px] -bottom-[80px] right-6 ${
+      className={`absolute w-[192px] top-20 -right-16 ${
         isLight ? "bg-very_dark_grey" : "bg-white"
       } p-4 flex flex-col items-start gap-4 rounded-[4px]`}
     >
       <button
-        onClick={openEditBoardModal}
+        onClick={openEditTaskModal}
         className={`text-medium_grey ${
           isLight ? "hover:text-white" : "hover:text-black"
         } transition-all duration-300`}
       >
-        Edit Board
+        Edit Task
       </button>
       <button
-        onClick={openDeleteBoardModal}
+        onClick={openDeleteTaskModal}
         className="text-red hover:text-red_hover transition-all duration-300"
       >
-        Delete Board
+        Delete Task
       </button>
     </div>
   );
 };
 
-export default Options;
+export default TaskOptions;

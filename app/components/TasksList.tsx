@@ -7,7 +7,6 @@ import { switchTask } from "@/redux/features/selected-task-slice";
 import Modal from "./Modal";
 import TaskDetails from "./Modals/TaskDetails";
 import { showTaskDetailsModal } from "@/redux/features/task-details-slice";
-import { selectedBoard } from "@/redux/features/selected-board-slice";
 
 const TasksList = ({
   columns,
@@ -51,7 +50,11 @@ const TasksList = ({
     <>
       {isModalOpen && (
         <Modal isOpen={isModalOpen} onClose={closeModal}>
-          <TaskDetails isLight={isLightTheme} statuses={columns} />
+          <TaskDetails
+            isLight={isLightTheme}
+            statuses={columns}
+            onClose={closeModal}
+          />
         </Modal>
       )}
       {taskElement}

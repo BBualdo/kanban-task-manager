@@ -2,7 +2,8 @@
 
 - Tasks
 
-  - [ ] Updating a task's status will move the task to the relevant column. If you're taking on the drag and drop bonus, dragging a task to a different column will also update the status.
+  - [ ] Edit Task Modal
+  - [ ] Delete Task Modal
 
 - Styling
 
@@ -28,3 +29,4 @@
 - Tasks
 
 - [x] Adding a new task adds it to the bottom of the relevant column.
+- [x] Updating a task's status will move the task to the relevant column. If you're taking on the drag and drop bonus, dragging a task to a different column will also update the status.

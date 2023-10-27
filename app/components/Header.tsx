@@ -7,15 +7,15 @@ import lightLogo from "../../public/assets/logo-light.svg";
 
 import { AppDispatch, useAppSelector } from "@/redux/store";
 import { useState } from "react";
-import Options from "./Modals/Options";
 import { useDispatch } from "react-redux";
 import { showDeleteBoardModal } from "@/redux/features/confirm-delete-board-slice";
-import ConfirmDelete from "./Modals/ConfirmDelete";
+import ConfirmBoardDelete from "./Modals/ConfirmBoardDelete";
 import Modal from "./Modal";
 import { showEditBoardModal } from "@/redux/features/edit-board-slice";
 import EditBoard from "./Modals/EditBoard";
 import { showAddTaskModal } from "@/redux/features/add-task-slice";
 import AddTask from "./Modals/AddTask";
+import BoardOptions from "./Modals/BoardOptions";
 
 const Header = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -85,7 +85,7 @@ const Header = () => {
     <>
       {isDeleteModalOpen && (
         <Modal isOpen={isDeleteModalOpen} onClose={closeDeleteBoardModal}>
-          <ConfirmDelete
+          <ConfirmBoardDelete
             isLight={isLightTheme}
             onClose={closeDeleteBoardModal}
           />
@@ -164,7 +164,7 @@ const Header = () => {
               </g>
             </svg>
             {isMenuShown && (
-              <Options
+              <BoardOptions
                 onClose={hideMenu}
                 isLight={isLightTheme}
                 openDeleteBoardModal={openDeleteBoardModal}

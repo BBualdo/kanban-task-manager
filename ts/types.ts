@@ -60,9 +60,16 @@ export interface ModalsProps {
   onClose: () => void;
 }
 
-export interface OptionsProps {
+export interface BoardOptionsProps {
   onClose: () => void;
   isLight: boolean;
   openDeleteBoardModal: () => void;
   openEditBoardModal: () => void;
+}
+
+export interface TaskOptionsProps {
+  onClose: () => void;
+  isLight: boolean;
+  openDeleteTaskModal: () => void;
+  openEditTaskModal: () => void;
 }

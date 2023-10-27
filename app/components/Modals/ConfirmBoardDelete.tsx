@@ -5,7 +5,7 @@ import { switchBoard } from "@/redux/features/selected-board-slice";
 
 import data from "../../data/data.json";
 
-const ConfirmDelete = ({ isLight, onClose }: ModalsProps) => {
+const ConfirmBoardDelete = ({ isLight, onClose }: ModalsProps) => {
   const dispatch = useDispatch<AppDispatch>();
 
   const selectedBoard = useAppSelector(
@@ -53,4 +53,4 @@ const ConfirmDelete = ({ isLight, onClose }: ModalsProps) => {
   );
 };
 
-export default ConfirmDelete;
+export default ConfirmBoardDelete;

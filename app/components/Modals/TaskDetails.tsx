@@ -11,14 +11,40 @@ import { switchBoard } from "@/redux/features/selected-board-slice";
 import { switchTask } from "@/redux/features/selected-task-slice";
 
 import data from "../../data/data.json";
+import TaskOptions from "./TaskOptions";
+import { showEditTaskModal } from "@/redux/features/edit-task-slice";
+import { showDeleteTaskModal } from "@/redux/features/confirm-delete-task-slice";
+import { showTaskDetailsModal } from "@/redux/features/task-details-slice";
 
 const TaskDetails = ({
   isLight,
   statuses,
+  onClose,
 }: {
   isLight: boolean;
   statuses: BoardColumnInterface[];
+  onClose: () => void;
 }) => {
+  const [isMenuShown, setIsMenuShown] = useState(false);
+
+  const showMenu = () => {
+    setIsMenuShown(true);
+  };
+
+  const hideMenu = () => {
+    setIsMenuShown(false);
+  };
+
+  const openEditTaskModal = () => {
+    dispatch(showEditTaskModal(true));
+    dispatch(showTaskDetailsModal(false));
+  };
+
+  const openDeleteTaskModal = () => {
+    dispatch(showDeleteTaskModal(true));
+    dispatch(showTaskDetailsModal(false));
+  };
+
   const dispatch = useDispatch<AppDispatch>();
 
   const selectedTask = useAppSelector(
@@ -66,6 +92,7 @@ const TaskDetails = ({
 
     dispatch(switchTask(updatedTask));
     dispatch(switchBoard(newBoard));
+    onClose();
   };
 
   let completedAmount = 0;
@@ -80,7 +107,7 @@ const TaskDetails = ({
     <div
       className={`${
         isLight ? "bg-white" : "bg-dark_grey"
-      } z-50 rounded-[6px] p-8 w-[480px] flex flex-col gap-6`}
+      } z-50 rounded-[6px] p-8 w-[480px] flex flex-col gap-6 relative`}
     >
       <div className="flex items-center justify-between">
         <h2
@@ -89,6 +116,7 @@ const TaskDetails = ({
           {selectedTask!.title}
         </h2>
         <svg
+          onClick={showMenu}
           className={`fill-medium_grey ${
             isLight ? "hover:fill-black" : "hover:fill-white"
           } transition-all duration-200 cursor-pointer`}
@@ -121,6 +149,14 @@ const TaskDetails = ({
           changeStatus={changeStatus}
         />
       </div>
+      {isMenuShown && (
+        <TaskOptions
+          onClose={hideMenu}
+          isLight={isLight}
+          openDeleteTaskModal={openDeleteTaskModal}
+          openEditTaskModal={openEditTaskModal}
+        />
+      )}
     </div>
   );
 };
