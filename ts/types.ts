@@ -2,6 +2,7 @@ import { ReactNode } from "react";
 
 export interface SubtaskProps {
   subtasks: SubtaskInterface[];
+  toggleCompleted: (subtaskToToggle: SubtaskInterface) => void;
 }
 
 export interface DropdownProps {

@@ -1,7 +1,11 @@
 "use client";
 
 import { AppDispatch, useAppSelector } from "@/redux/store";
-import { BoardColumnInterface, TaskInterface } from "@/ts/types";
+import {
+  BoardColumnInterface,
+  SubtaskInterface,
+  TaskInterface,
+} from "@/ts/types";
 import Dropdown from "./Dropdown";
 import SubtasksList from "../SubtasksList";
 import { useState } from "react";
@@ -99,6 +103,54 @@ const TaskDetails = ({
     onClose();
   };
 
+  const toggleCompleted = (subtaskToToggle: SubtaskInterface) => {
+    const newSubtask: SubtaskInterface = {
+      ...subtaskToToggle,
+      isCompleted: !subtaskToToggle.isCompleted,
+    };
+
+    const updatedSubtasks: SubtaskInterface[] = selectedTask!.subtasks.map(
+      (subtask) => {
+        if (subtask.title === subtaskToToggle.title) {
+          return newSubtask;
+        } else {
+          return subtask;
+        }
+      }
+    );
+
+    const updatedTask: TaskInterface = {
+      ...selectedTask!,
+      subtasks: updatedSubtasks,
+    };
+
+    const updatedColumns = selectedBoard.columns.map((column) => {
+      if (column.name === selectedTask!.status) {
+        const updatedTasks = column.tasks.filter(
+          (task) => task.id !== selectedTask!.id
+        );
+        return { ...column, tasks: [...updatedTasks, updatedTask] };
+      } else {
+        return column;
+      }
+    });
+
+    const newBoard = { ...selectedBoard, columns: updatedColumns };
+
+    const updatedBoards = data.boards.map((board) => {
+      if (board.id === newBoard.id) {
+        return newBoard;
+      } else {
+        return board;
+      }
+    });
+
+    data.boards = updatedBoards;
+
+    dispatch(switchBoard(newBoard));
+    dispatch(switchTask(updatedTask));
+  };
+
   let completedAmount = 0;
 
   for (const subtask of selectedTask!.subtasks) {
@@ -140,7 +192,10 @@ const TaskDetails = ({
         <p className={`p-md ${isLight ? "text-medium_grey" : "text-white"}`}>
           Subtasks ({completedAmount} of {selectedTask!.subtasks.length})
         </p>
-        <SubtasksList subtasks={selectedTask!.subtasks} />
+        <SubtasksList
+          subtasks={selectedTask!.subtasks}
+          toggleCompleted={toggleCompleted}
+        />
       </div>
       <div className="flex flex-col gap-2">
         <p className={`p-md ${isLight ? "text-medium_grey" : "text-white"}`}>

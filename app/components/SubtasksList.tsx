@@ -2,12 +2,14 @@ import { SubtaskProps } from "@/ts/types";
 import Subtask from "./Subtask";
 import { v4 as uuidv4 } from "uuid";
 
-const SubtasksList = ({ subtasks }: SubtaskProps) => {
+const SubtasksList = ({ subtasks, toggleCompleted }: SubtaskProps) => {
   const subtasksElement = subtasks.map((subtask) => (
     <Subtask
       key={uuidv4()}
       title={subtask.title}
       isCompleted={subtask.isCompleted}
+      subtask={subtask}
+      toggleCompleted={toggleCompleted}
     />
   ));
 

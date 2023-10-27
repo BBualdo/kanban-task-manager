@@ -105,6 +105,7 @@ Users should be able to:
 
 40. `DeleteTask` works fine.
 41. Fixed bug that was deleting task if user was changing task's status to the same as selected.
+42. I've implemented checking the subtask as completed or not. [Toggle Complition](#check-as-completed) That was another opportunity to help me understand working with data. It affects `completedAmount` counter. One thing: Editing complition status of the task forces it to go at the bottom of tasks list, but I think that is not an issue. At least for now. I'm proud of myself, because I finished logic for entire Application, at least the basic logic, because I'm gonna setup a database for this app and provide some Authentication. But for now I have to make it responsive.
 
 ### Built with
 
@@ -270,6 +271,58 @@ const saveChanges = () => {
 
   dispatch(switchBoard(newBoard));
   onClose();
+};
+```
+
+#### Check as completed;
+
+```tsx
+const toggleCompleted = (subtaskToToggle: SubtaskInterface) => {
+  const newSubtask: SubtaskInterface = {
+    ...subtaskToToggle,
+    isCompleted: !subtaskToToggle.isCompleted,
+  };
+
+  const updatedSubtasks: SubtaskInterface[] = selectedTask!.subtasks.map(
+    (subtask) => {
+      if (subtask.title === subtaskToToggle.title) {
+        return newSubtask;
+      } else {
+        return subtask;
+      }
+    }
+  );
+
+  const updatedTask: TaskInterface = {
+    ...selectedTask!,
+    subtasks: updatedSubtasks,
+  };
+
+  const updatedColumns = selectedBoard.columns.map((column) => {
+    if (column.name === selectedTask!.status) {
+      const updatedTasks = column.tasks.filter(
+        (task) => task.id !== selectedTask!.id
+      );
+      return { ...column, tasks: [...updatedTasks, updatedTask] };
+    } else {
+      return column;
+    }
+  });
+
+  const newBoard = { ...selectedBoard, columns: updatedColumns };
+
+  const updatedBoards = data.boards.map((board) => {
+    if (board.id === newBoard.id) {
+      return newBoard;
+    } else {
+      return board;
+    }
+  });
+
+  data.boards = updatedBoards;
+
+  dispatch(switchBoard(newBoard));
+  dispatch(switchTask(updatedTask));
 };
 ```
 

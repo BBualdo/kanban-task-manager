@@ -1,7 +1,17 @@
 import { useAppSelector } from "@/redux/store";
 import { SubtaskInterface } from "@/ts/types";
 
-const Subtask = ({ title, isCompleted }: SubtaskInterface) => {
+const Subtask = ({
+  title,
+  isCompleted,
+  subtask,
+  toggleCompleted,
+}: {
+  title: string;
+  isCompleted: boolean;
+  subtask: SubtaskInterface;
+  toggleCompleted: (subtaskToToggle: SubtaskInterface) => void;
+}) => {
   const isLightTheme = useAppSelector(
     (state) => state.themeReducer.value.isLightTheme
   );
@@ -18,6 +28,7 @@ const Subtask = ({ title, isCompleted }: SubtaskInterface) => {
           className="checkbox"
           checked={isCompleted}
           type="checkbox"
+          onChange={() => toggleCompleted(subtask)}
         />
         <p
           className={`p-md ${
