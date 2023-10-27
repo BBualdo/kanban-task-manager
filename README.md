@@ -104,6 +104,7 @@ Users should be able to:
 - `DeleteTask` for now only displays modal with `selectedTask` name and let's user to cancel that action.
 
 40. `DeleteTask` works fine.
+41. Fixed bug that was deleting task if user was changing task's status to the same as selected.
 
 ### Built with
 

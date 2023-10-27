@@ -70,7 +70,11 @@ const TaskDetails = ({
         const updatedTasks = column.tasks.filter(
           (task) => task.id !== selectedTask!.id
         );
-        return { ...column, tasks: updatedTasks };
+        if (selectedTask!.status === updatedTask.status) {
+          return { ...column, tasks: [...updatedTasks, updatedTask] };
+        } else {
+          return { ...column, tasks: updatedTasks };
+        }
       } else if (column.name === status) {
         return { ...column, tasks: [...column.tasks, updatedTask] };
       } else {
