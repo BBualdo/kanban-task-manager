@@ -49,9 +49,7 @@ const ColumnInput = ({
       )}
       <svg
         onClick={() => remove(currentColumn)}
-        className={`${isLight ? "hover:fill-black" : "hover:fill-white"} ${
-          isEmpty && "hover:fill-red"
-        } transition-all duration-200 cursor-pointer fill-medium_grey`}
+        className="fill-medium_grey hover:fill-red transition-all duration-200 cursor-pointer"
         width="15"
         height="15"
         xmlns="http://www.w3.org/2000/svg"

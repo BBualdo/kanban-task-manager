@@ -79,7 +79,7 @@ const Feed = () => {
               onClick={openEditBoardModal}
               className={`group ${
                 isLightTheme ? "bg-medium_grey/10" : "bg-dark_grey/10"
-              } rounded-[6px] cursor-pointer mt-10 min-w-[282px]`}
+              } rounded-[6px] cursor-pointer mt-10 min-w-[282px] hover:shadow-xl hover:shadow-purple transition-all duration-300`}
             >
               <h1 className="text-medium_grey group-hover:text-purple transition-all duration-300">
                 + New Column
