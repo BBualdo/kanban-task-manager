@@ -16,7 +16,7 @@ export default function Home() {
       <div className="min-h-[100vh] flex flex-col relative">
         {selectedBoard && <Header />}
         <div className="w-full flex flex-1 overflow-auto">
-          <Sidebar />
+          {/* <Sidebar /> */}
           {selectedBoard && <Feed />}
           {!selectedBoard && <Empty />}
         </div>

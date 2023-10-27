@@ -10,7 +10,7 @@ type ThemeState = {
 
 const initialState = {
   value: {
-    isLightTheme: true,
+    isLightTheme: false,
   } as ThemeState,
 } as InitialState;
 

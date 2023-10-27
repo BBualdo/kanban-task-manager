@@ -24,9 +24,14 @@ const config: Config = {
     screens: {
       xl: "1441px",
       lg: "769px",
-      md: "376px",
+      md: "667px",
+      xs: "200px",
     },
-    extend: {},
+    extend: {
+      backgroundImage: {
+        plus: "url('../public/assets/icon-add-task-mobile.svg')",
+      },
+    },
   },
   plugins: [],
 };

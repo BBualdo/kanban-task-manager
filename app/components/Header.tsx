@@ -105,17 +105,17 @@ const Header = () => {
           isLightTheme
             ? "border-lines_light bg-white"
             : "border-lines_dark bg-dark_grey"
-        }  flex items-center relative transition-all duration-300`}
+        }  flex items-center relative transition-all duration-300 md:min-w-[700px] xs:p-4 md:p-0`}
       >
         <div
-          className={`pr-8 ${
+          className={`xs:pr-4 md:pr-8 ${
             isLightTheme ? "border-lines_light" : "border-lines_dark"
-          } border-r-[1px] absolute transition-all duration-300 h-full`}
+          } md:border-r-[1px] md:absolute transition-all duration-300 h-full`}
         >
           <div className="flex items-center h-full gap-4">
-            <Image src={logo} alt="Kanban Logo" className="ml-[34px]" />
+            <Image src={logo} alt="Kanban Logo" className="md:ml-[34px]" />
             <h1
-              className={`text-[32px] transition-all duration-300 ${
+              className={`xs:hidden md:block text-[32px] transition-all duration-300 ${
                 isLightTheme ? "text-black" : "text-white"
               }`}
             >
@@ -123,8 +123,8 @@ const Header = () => {
             </h1>
           </div>
         </div>
-        <div className="flex items-center justify-between flex-1 pt-6 pb-6 md:pl-[260px] lg:pl-[300px] md:pr-6 lg:pr-8">
-          <div>
+        <div className="flex items-center justify-between flex-1 md:pt-6 md:pb-6 md:pl-[260px] lg:pl-[300px] md:pr-6 lg:pr-8">
+          <div className="group xs:max-md:flex xs:max-md:items-center xs:max-md:gap-2">
             <h1
               className={`${
                 isLightTheme ? "text-black" : "text-white"
@@ -132,18 +132,28 @@ const Header = () => {
                 isSidebarShown
                   ? "md:translate-x-5 lg:translate-x-6"
                   : "translate-x-0"
-              } md:text-[20px] lg:text-[24px]`}
+              } xs:text-[18px] md:text-[20px] lg:text-[24px]`}
             >
               {selectedBoard.name}
             </h1>
+            <svg
+              className="md:hidden stroke-purple group-hover:stroke-purple_hover transition-all duration-200"
+              width="10"
+              height="7"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path strokeWidth="2" fill="none" d="m1 1 4 4 4-4" />
+            </svg>
           </div>
           <div className="flex items-center gap-6">
             <button
               onClick={openAddTaskModal}
               disabled={selectedBoard.columns.length === 0}
-              className="btn btn-primary-lg px-6"
+              className="btn btn-primary-lg xs:max-md:py-0 px-6 xs:max-md:bg-plus xs:max-md:h-8 xs:max-md:bg-no-repeat xs:max-md:bg-center"
             >
-              + Add New Task
+              <p className="xs:max-md:text-[32px] xs:hidden md:inline">
+                + Add New Task
+              </p>
             </button>
             <svg
               onClick={showMenu}
