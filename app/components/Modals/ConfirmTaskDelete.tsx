@@ -1,13 +1,46 @@
-import { useAppSelector } from "@/redux/store";
+import { AppDispatch, useAppSelector } from "@/redux/store";
 import { ModalsProps } from "@/ts/types";
 
+import data from "../../data/data.json";
+import { useDispatch } from "react-redux";
+import { switchBoard } from "@/redux/features/selected-board-slice";
+import { switchTask } from "@/redux/features/selected-task-slice";
+
 const ConfirmTaskDelete = ({ isLight, onClose }: ModalsProps) => {
+  const dispatch = useDispatch<AppDispatch>();
   const selectedTask = useAppSelector(
     (state) => state.selectedTaskReducer.value.selectedTask
   );
 
+  const selectedBoard = useAppSelector(
+    (state) => state.selectedBoardReducer.value.selectedBoard
+  );
+
   const deleteTask = () => {
-    console.log("Task has been deleted!");
+    const updatedColumns = selectedBoard.columns.map((column) => {
+      if (column.tasks.includes(selectedTask!)) {
+        const updatedTasks = column.tasks.filter(
+          (task) => task.id !== selectedTask!.id
+        );
+        return { ...column, tasks: updatedTasks };
+      } else {
+        return column;
+      }
+    });
+
+    const newBoard = { ...selectedBoard, columns: updatedColumns };
+
+    const updatedBoards = data.boards.map((board) => {
+      if (board.id === newBoard.id) {
+        return newBoard;
+      } else {
+        return board;
+      }
+    });
+
+    data.boards = updatedBoards;
+    dispatch(switchBoard(newBoard));
+    onClose();
   };
 
   return (

@@ -103,6 +103,8 @@ Users should be able to:
 - `EditTask` looks like `AddTask` and changing options there affects `selectedTask` [Edit Task](#edit-task)
 - `DeleteTask` for now only displays modal with `selectedTask` name and let's user to cancel that action.
 
+40. `DeleteTask` works fine.
+
 ### Built with
 
 - React
