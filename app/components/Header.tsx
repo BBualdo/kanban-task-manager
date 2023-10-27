@@ -2,8 +2,7 @@
 
 import Image from "next/image";
 
-import darkLogo from "../../public/assets/logo-dark.svg";
-import lightLogo from "../../public/assets/logo-light.svg";
+import logo from "../../public/assets/logo-mobile.svg";
 
 import { AppDispatch, useAppSelector } from "@/redux/store";
 import { useState } from "react";
@@ -111,24 +110,20 @@ const Header = () => {
         <div
           className={`pr-8 ${
             isLightTheme ? "border-lines_light" : "border-lines_dark"
-          } border-r-[1px] absolute transition-all duration-300`}
+          } border-r-[1px] absolute transition-all duration-300 h-full`}
         >
-          {isLightTheme && (
-            <Image
-              src={darkLogo}
-              alt="Kanban Logo"
-              className="mt-5 mb-7 ml-6 md:mr-6 lg:mr-8"
-            />
-          )}
-          {!isLightTheme && (
-            <Image
-              src={lightLogo}
-              alt="Kanban Logo"
-              className="mt-5 mb-7 ml-6 md:mr-6 lg:mr-8"
-            />
-          )}
+          <div className="flex items-center h-full gap-4">
+            <Image src={logo} alt="Kanban Logo" className="ml-[34px]" />
+            <h1
+              className={`text-[32px] transition-all duration-300 ${
+                isLightTheme ? "text-black" : "text-white"
+              }`}
+            >
+              kanban
+            </h1>
+          </div>
         </div>
-        <div className="flex items-center justify-between flex-1 pt-5 pb-7 md:pl-[260px] lg:pl-[300px] md:pr-6 lg:pr-8">
+        <div className="flex items-center justify-between flex-1 pt-6 pb-6 md:pl-[260px] lg:pl-[300px] md:pr-6 lg:pr-8">
           <div>
             <h1
               className={`${

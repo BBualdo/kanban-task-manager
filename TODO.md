@@ -21,11 +21,11 @@
 
 - Tasks
 
-- [x] Adding a new task adds it to the bottom of the relevant column.
-- [x] Updating a task's status will move the task to the relevant column. If you're taking on the drag and drop bonus, dragging a task to a different column will also update the status.
-- [x] Edit Task Modal
-- [x] Delete Task Modal
-- [x] Checking checkboxes
+  - [x] Adding a new task adds it to the bottom of the relevant column.
+  - [x] Updating a task's status will move the task to the relevant column. If you're taking on the drag and drop bonus, dragging a task to a different column will also update the status.
+  - [x] Edit Task Modal
+  - [x] Delete Task Modal
+  - [x] Checking checkboxes
 
 - Styling
 
