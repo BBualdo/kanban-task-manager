@@ -4,9 +4,6 @@ import { useAppSelector, AppDispatch } from "@/redux/store";
 import { useDispatch } from "react-redux";
 import { showAddBoardModal } from "@/redux/features/add-board-slice";
 
-import Modal from "./Modal";
-import AddBoard from "./Modals/AddBoard";
-
 import logo from "../../public/assets/logo-mobile.svg";
 
 const Empty = () => {
@@ -29,13 +26,17 @@ const Empty = () => {
       className={`${
         isLightTheme ? "bg-light_grey" : "bg-very_dark_grey"
       } flex-1 transition-all duration-300 ${
-        isSidebarShown ? "ml-[300px]" : ""
+        isSidebarShown ? "md:ml-[260px] lg:ml-[300px]" : ""
       } h-screen flex items-center justify-center flex-col`}
     >
       <div className="flex items-center gap-6">
-        <Image src={logo} alt="Kanban Logo" className="w-[100px]" />
+        <Image
+          src={logo}
+          alt="Kanban Logo"
+          className="md:w-[80px] lg:w-[100px] transition-all duration-300"
+        />
         <h1
-          className={`text-[80px] transition-all duration-300 ${
+          className={`md:text-[64px] lg:text-[80px] transition-all duration-300 ${
             isLightTheme ? "text-black" : "text-white"
           }`}
         >
@@ -44,7 +45,7 @@ const Empty = () => {
       </div>
       <div className="flex flex-col items-center gap-6">
         <h1
-          className={`text-[32px] transition-all duration-300 ${
+          className={`md:text-[28px] lg:text-[32px] transition-all duration-300 ${
             isLightTheme ? "text-black" : "text-white"
           } text-center leading-10 mt-10`}
         >

@@ -117,25 +117,27 @@ const Header = () => {
             <Image
               src={darkLogo}
               alt="Kanban Logo"
-              className="mt-5 mb-7 ml-6 mr-8"
+              className="mt-5 mb-7 ml-6 md:mr-6 lg:mr-8"
             />
           )}
           {!isLightTheme && (
             <Image
               src={lightLogo}
               alt="Kanban Logo"
-              className="mt-5 mb-7 ml-6 mr-8"
+              className="mt-5 mb-7 ml-6 md:mr-6 lg:mr-8"
             />
           )}
         </div>
-        <div className="flex items-center justify-between flex-1 pt-5 pb-7 pl-[300px] pr-8">
+        <div className="flex items-center justify-between flex-1 pt-5 pb-7 md:pl-[260px] lg:pl-[300px] md:pr-6 lg:pr-8">
           <div>
             <h1
               className={`${
                 isLightTheme ? "text-black" : "text-white"
               } transition-all duration-300 ${
-                isSidebarShown ? "translate-x-6" : "translate-x-0"
-              }`}
+                isSidebarShown
+                  ? "md:translate-x-5 lg:translate-x-6"
+                  : "translate-x-0"
+              } md:text-[20px] lg:text-[24px]`}
             >
               {selectedBoard.name}
             </h1>

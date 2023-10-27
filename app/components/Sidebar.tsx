@@ -59,8 +59,8 @@ const Sidebar = () => {
           isLightTheme
             ? "bg-white border-lines_light"
             : "bg-dark_grey border-lines_dark"
-        } min-w-[300px] border-r-[1px] min-h-full pt-8 pb-12 flex flex-col transition-all duration-300 absolute top-0 ${
-          isSidebarShown ? "left-0" : "-left-[300px]"
+        } md:min-w-[260px] lg:min-w-[300px] border-r-[1px] min-h-full pt-8 pb-12 flex flex-col transition-all duration-300 absolute top-0 ${
+          isSidebarShown ? "left-0" : "md:-left-[270px] lg:-left-[300px]"
         }`}
       >
         <div className="flex items-center gap-4">

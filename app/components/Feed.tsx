@@ -57,12 +57,12 @@ const Feed = () => {
         className={`${
           isLightTheme ? "bg-light_grey" : "bg-very_dark_grey"
         } flex-1 transition-all duration-300 ${
-          isSidebarShown ? "ml-[300px]" : ""
+          isSidebarShown ? "md:ml-[260px] lg:ml-[300px]" : ""
         } min-h-full pb-6`}
       >
         {selectedBoard.columns.length === 0 ? (
           <div className="flex flex-col items-center justify-center h-full gap-8">
-            <h2 className="text-medium_grey">
+            <h2 className="text-medium_grey px-[60px] text-center transition-all duration-300">
               This board is empty. Create a new column to get started.
             </h2>
             <button
