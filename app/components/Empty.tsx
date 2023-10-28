@@ -33,10 +33,10 @@ const Empty = () => {
         <Image
           src={logo}
           alt="Kanban Logo"
-          className="md:w-[80px] lg:w-[100px] transition-all duration-300"
+          className="xs:w-[60px] md:w-[80px] lg:w-[100px] transition-all duration-300"
         />
         <h1
-          className={`md:text-[64px] lg:text-[80px] transition-all duration-300 ${
+          className={`xs:text-[48px] md:text-[64px] lg:text-[80px] transition-all duration-300 ${
             isLightTheme ? "text-black" : "text-white"
           }`}
         >
@@ -45,7 +45,7 @@ const Empty = () => {
       </div>
       <div className="flex flex-col items-center gap-6">
         <h1
-          className={`md:text-[28px] lg:text-[32px] transition-all duration-300 ${
+          className={`xs:text-[20px] md:text-[28px] lg:text-[32px] transition-all duration-300 ${
             isLightTheme ? "text-black" : "text-white"
           } text-center leading-10 mt-10`}
         >

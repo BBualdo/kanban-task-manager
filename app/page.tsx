@@ -1,15 +1,25 @@
 "use client";
 
-import { useAppSelector } from "@/redux/store";
+import { AppDispatch, useAppSelector } from "@/redux/store";
 import Feed from "./components/Feed";
 import Header from "./components/Header";
 import Sidebar from "./components/Sidebar";
 import Empty from "./components/Empty";
 import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { showAddBoardModal } from "@/redux/features/add-board-slice";
+import Modal from "./components/Modal";
+import AddBoard from "./components/Modals/AddBoard";
 
 export default function Home() {
+  const dispatch = useDispatch<AppDispatch>();
+
   const selectedBoard = useAppSelector(
     (state) => state.selectedBoardReducer.value.selectedBoard
+  );
+
+  const isLightTheme = useAppSelector(
+    (state) => state.themeReducer.value.isLightTheme
   );
 
   const [width, setWidth] = useState(
@@ -28,9 +38,21 @@ export default function Home() {
     };
   }, [width]);
 
+  const isModalOpen = useAppSelector(
+    (state) => state.addBoardModalReducer.value.isShown
+  );
+  const closeModal = () => {
+    dispatch(showAddBoardModal(false));
+  };
+
   return (
     <>
       <div className="min-h-[100vh] flex flex-col relative">
+        {isModalOpen && (
+          <Modal isOpen={isModalOpen} onClose={closeModal}>
+            <AddBoard isLight={isLightTheme} onClose={closeModal} />
+          </Modal>
+        )}
         {selectedBoard && <Header />}
         <div className="w-full flex flex-1 overflow-auto">
           {width > 666 && <Sidebar />}

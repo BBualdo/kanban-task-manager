@@ -13,8 +13,6 @@ import { useDispatch } from "react-redux";
 import { AppDispatch, useAppSelector } from "@/redux/store";
 
 import data from "../data/data.json";
-import Modal from "./Modal";
-import AddBoard from "./Modals/AddBoard";
 
 const Sidebar = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -35,25 +33,12 @@ const Sidebar = () => {
     dispatch(toggleSidebar());
   };
 
-  const isModalOpen = useAppSelector(
-    (state) => state.addBoardModalReducer.value.isShown
-  );
-
   const openModal = () => {
     dispatch(showAddBoardModal(true));
   };
 
-  const closeModal = () => {
-    dispatch(showAddBoardModal(false));
-  };
-
   return (
     <>
-      {isModalOpen && (
-        <Modal isOpen={isModalOpen} onClose={closeModal}>
-          <AddBoard isLight={isLightTheme} onClose={closeModal} />
-        </Modal>
-      )}
       <section
         className={`${
           isLightTheme
