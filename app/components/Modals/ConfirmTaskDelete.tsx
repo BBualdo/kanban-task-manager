@@ -47,7 +47,7 @@ const ConfirmTaskDelete = ({ isLight, onClose }: ModalsProps) => {
     <div
       className={`${
         isLight ? "bg-white" : "bg-dark_grey"
-      } z-50 rounded-[6px] p-8 w-[480px] flex flex-col gap-6`}
+      } z-50 rounded-[6px] md:p-8 xs:p-6 xs:w-auto md:w-[480px] flex flex-col gap-6`}
     >
       <h2 className="text-red">Delete this task?</h2>
       <p className="p-lg text-medium_grey">

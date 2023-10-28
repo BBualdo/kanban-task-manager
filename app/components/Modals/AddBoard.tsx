@@ -83,7 +83,7 @@ const AddBoard = ({ isLight, onClose }: ModalsProps) => {
     <div
       className={`${
         isLight ? "bg-white" : "bg-dark_grey"
-      } z-50 rounded-[6px] p-8 w-[480px]`}
+      } z-50 rounded-[6px] xs:p-6 md:p-8 xs:w-auto md:w-[480px]`}
     >
       <h2 className={`${isLight ? "text-black" : "text-white"}`}>
         Add New Board

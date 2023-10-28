@@ -163,7 +163,7 @@ const TaskDetails = ({
     <div
       className={`${
         isLight ? "bg-white" : "bg-dark_grey"
-      } z-50 rounded-[6px] p-8 w-[480px] flex flex-col gap-6 relative`}
+      } z-50 rounded-[6px] md:p-8 xs:p-6 xs:w-auto md:w-[480px] flex flex-col gap-6 relative`}
     >
       <div className="flex items-center justify-between">
         <h2

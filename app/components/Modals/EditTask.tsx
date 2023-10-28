@@ -134,7 +134,7 @@ const EditTask = ({ isLight, onClose }: ModalsProps) => {
     <div
       className={`${
         isLight ? "bg-white" : "bg-dark_grey"
-      } z-50 rounded-[6px] p-8 w-[480px]`}
+      } z-50 rounded-[6px] md:p-8 xs:p-6 xs:w-auto md:w-[480px]`}
     >
       <h2 className={`${isLight ? "text-black" : "text-white"}`}>Edit Task</h2>
       <div className="flex flex-col mt-6 gap-6">
