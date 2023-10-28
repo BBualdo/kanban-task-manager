@@ -1,8 +1,7 @@
 ### Todo 🔜
 
-- Styling
-
-  - [ ] Mobile RWD
+- [ ] Allow users to drag and drop tasks to change their status and re-order them in a column
+- [ ] Build this project as a full-stack application
 
 ### Done ✅
 
@@ -31,3 +30,4 @@
 
   - [x] Fix Feed background, because it isn't streching when there is more tasks.
   - [x] Tablet RWD
+  - [x] Mobile RWD

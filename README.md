@@ -15,11 +15,10 @@ This is a solution to the [Kanban task management web app challenge on Frontend 
   - [Continued development](#continued-development)
   - [Useful resources](#useful-resources)
 - [Author](#author)
-- [Acknowledgments](#acknowledgments)
 
 ## Overview
 
-### The challenge
+### Features
 
 Users should be able to:
 
@@ -30,18 +29,20 @@ Users should be able to:
 - Mark subtasks as complete and move tasks between columns
 - Hide/show the board sidebar
 - Toggle the theme between light/dark modes
-- **Bonus**: Allow users to drag and drop tasks to change their status and re-order them in a column
-- **Bonus**: Keep track of any changes, even after refreshing the browser (`localStorage` could be used for this if you're not building out a full-stack app)
-- **Bonus**: Build this project as a full-stack application
 
 ### Screenshot
 
-![](./screenshot.jpg)
+![Main Page](/screenshots/main-menu.png)
+![Board](/screenshots/board-dark.png)
+![Board with Sidebar](/screenshots/board-light-sidebar.png)
+![Task Details](/screenshots/task-details-dark.png)
+![Edit Task](/screenshots/edit-task-light.png)
+![Delete Board](/screenshots/delete-board-light.png)
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Solution URL: [Frontend Mentor Solution](https://www.frontendmentor.io/challenges/kanban-task-management-web-app-wgQLt-HlbB/hub?share=true)
+- Live Site URL: [Kanban - Task Manager](https://bbualdo-kanban.vercel.app)
 
 ## My process
 
@@ -120,7 +121,7 @@ Users should be able to:
 
 ### What I learned
 
-Coming soon.
+This project helped me get comfortable with **TypeScript** and **Redux Toolkit**. I'm also happy that I've learned that it's not okay to mutate data direcly, but to create copy of existing data and working on it. However I probably shouldn't use **Next.js** here, because there is no routing and no actually need for SSR. But it should be helpful when I will make that App Fullstack. I also plan to add some animations via **Framer Motion**.
 
 ### Code snippets I'm proud of
 
@@ -354,19 +355,17 @@ useEffect(() => {
 
 ### Continued development
 
-Use this section to outline areas that you want to continue focusing on in future projects. These could be concepts you're still not completely comfortable with or techniques you found useful that you want to refine and perfect.
+There is one thing that I have to practice for sure - making my code more clean and reusable. It was my first touch with Redux and I have a lot of similar slices, what forces me to use a lot of `is{ModalName}Open` checks. And for each check I had to write 2 functions. One for opening and one for closing modal. I've also built few very similar Modals. I could probably write is as one modal but had to pass some unconvinient parameters to component function. So I did it a hard way.
 
 ### Useful resources
 
-- [Example resource 1](https://www.example.com) - This helped me for XYZ reason. I really liked this pattern and will use it going forward.
-- [Example resource 2](https://www.example.com) - This is an amazing article which helped me finally understand XYZ. I'd recommend it to anyone still learning this concept.
+I built this app working with documentations:
+
+- [Next.js](https://nextjs.org/)
+- [Redux Toolkit](https://redux-toolkit.js.org/)
+- [TailwindCSS](https://tailwindcss.com/)
 
 ## Author
 
-- Website - [Add your name here](https://www.your-site.com)
-- Frontend Mentor - [@yourusername](https://www.frontendmentor.io/profile/yourusername)
-- Twitter - [@yourusername](https://www.twitter.com/yourusername)
-
-## Acknowledgments
-
-This is where you can give a hat tip to anyone who helped you out on this project. Perhaps you worked in a team or got some inspiration from someone else's solution. This is the perfect place to give them some credit.
+- Website - [BBualdo](https://bbualdo-portfolio.netlify.app)
+- Frontend Mentor - [@bbualdo](https://www.frontendmentor.io/profile/bbualdo)
