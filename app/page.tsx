@@ -12,10 +12,12 @@ export default function Home() {
     (state) => state.selectedBoardReducer.value.selectedBoard
   );
 
-  const [width, setWidth] = useState(window.innerWidth);
+  const [width, setWidth] = useState(
+    typeof window !== "undefined" ? window.innerWidth : 0
+  );
 
   const handleResize = () => {
-    setWidth(window.innerWidth);
+    setWidth(typeof window !== "undefined" ? window.innerWidth : 0);
   };
 
   useEffect(() => {

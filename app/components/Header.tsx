@@ -87,7 +87,7 @@ const Header = () => {
   );
 
   const openMobileSidebar = () => {
-    if (window.innerWidth > 666) {
+    if (typeof window !== "undefined" && window.innerWidth > 666) {
       return;
     }
     dispatch(toggleMobileSidebar(true));
