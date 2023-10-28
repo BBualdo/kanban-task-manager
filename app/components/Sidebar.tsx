@@ -13,6 +13,7 @@ import { useDispatch } from "react-redux";
 import { AppDispatch, useAppSelector } from "@/redux/store";
 
 import data from "../data/data.json";
+import { toggleMobileSidebar } from "@/redux/features/mobile-sidebar-slice";
 
 const Sidebar = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -35,6 +36,7 @@ const Sidebar = () => {
 
   const openModal = () => {
     dispatch(showAddBoardModal(true));
+    dispatch(toggleMobileSidebar(false));
   };
 
   return (
