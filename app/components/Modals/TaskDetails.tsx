@@ -165,9 +165,11 @@ const TaskDetails = ({
         isLight ? "bg-white" : "bg-dark_grey"
       } z-50 rounded-[6px] md:p-8 xs:p-6 xs:w-auto md:w-[480px] flex flex-col gap-6 relative`}
     >
-      <div className="flex items-center justify-between">
+      <div className="flex items-center justify-between gap-4">
         <h2
-          className={`${isLight ? "text-black" : "text-white"} max-w-[360px]`}
+          className={`${
+            isLight ? "text-black" : "text-white"
+          } xs:max-w-[276px] md:max-w-[360px]`}
         >
           {selectedTask!.title}
         </h2>
@@ -187,7 +189,9 @@ const TaskDetails = ({
           </g>
         </svg>
       </div>
-      <p className="p-lg text-medium_grey">{selectedTask?.description}</p>
+      <p className="p-lg text-medium_grey xs:max-md:max-w-[296px]">
+        {selectedTask?.description}
+      </p>
       <div className="flex flex-col gap-4">
         <p className={`p-md ${isLight ? "text-medium_grey" : "text-white"}`}>
           Subtasks ({completedAmount} of {selectedTask!.subtasks.length})

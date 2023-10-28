@@ -31,7 +31,7 @@ const TaskOptions = ({
   return (
     <div
       ref={optionsRef}
-      className={`absolute w-[192px] top-20 -right-16 ${
+      className={`absolute w-[192px] xs:top-16 md:top-20 xs:right-0 md:-right-16 ${
         isLight ? "bg-very_dark_grey" : "bg-white"
       } p-4 flex flex-col items-start gap-4 rounded-[4px]`}
     >

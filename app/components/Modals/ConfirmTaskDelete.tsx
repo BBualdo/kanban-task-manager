@@ -50,18 +50,21 @@ const ConfirmTaskDelete = ({ isLight, onClose }: ModalsProps) => {
       } z-50 rounded-[6px] md:p-8 xs:p-6 xs:w-auto md:w-[480px] flex flex-col gap-6`}
     >
       <h2 className="text-red">Delete this task?</h2>
-      <p className="p-lg text-medium_grey">
+      <p className="p-lg text-medium_grey xs:max-md:max-w-[295px]">
         {`Are you sure you want to delete the ‘${
           selectedTask!.title
         }’ task and it's subtasks? This action cannot be reversed.`}
       </p>
-      <div className="flex items-center justify-between">
-        <button onClick={deleteTask} className="btn btn-destructive px-[78px]">
+      <div className="flex items-center justify-between xs:max-md:flex-col xs:max-md:gap-4">
+        <button
+          onClick={deleteTask}
+          className="btn btn-destructive xs:max-md:w-full md:px-[78px]"
+        >
           Delete
         </button>
         <button
           onClick={onClose}
-          className={`btn btn-secondary px-[78px] ${
+          className={`btn btn-secondary xs:max-md:w-full md:px-[78px] ${
             isLight ? "" : "bg-white hover:bg-white hover:text-purple_hover"
           }`}
         >
