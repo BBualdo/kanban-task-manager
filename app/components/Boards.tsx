@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { switchBoard } from "@/redux/features/selected-board-slice";
 import { BoardInterface } from "@/ts/types";
 import { v4 as uuidv4 } from "uuid";
+import { toggleMobileSidebar } from "@/redux/features/mobile-sidebar-slice";
 
 const Boards = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -18,6 +19,7 @@ const Boards = () => {
 
   const switchBoards = (board: BoardInterface) => {
     dispatch(switchBoard(board));
+    dispatch(toggleMobileSidebar(false));
   };
 
   const boardElement = data.boards.map((board: BoardInterface) => (
