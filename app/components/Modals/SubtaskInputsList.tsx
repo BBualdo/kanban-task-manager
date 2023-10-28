@@ -38,7 +38,7 @@ const SubtaskInputsList = ({
         >
           Subtasks
         </label>
-        <div className="flex flex-col gap-3 max-h-[153px] overflow-y-auto">
+        <div className="flex flex-col gap-3 xs:max-h-[98px] md:max-h-[153px] overflow-y-auto">
           {subtaskInputs}
         </div>
       </div>

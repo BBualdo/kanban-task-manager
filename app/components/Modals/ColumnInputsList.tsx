@@ -37,7 +37,7 @@ const ColumnInputsList = ({
         >
           Board Columns
         </label>
-        <div className="flex flex-col gap-3 max-h-[263px] overflow-y-auto">
+        <div className="flex flex-col gap-3 xs:max-h-[208px] max-h-[263px] overflow-y-auto">
           {columnInputs}
         </div>
       </div>

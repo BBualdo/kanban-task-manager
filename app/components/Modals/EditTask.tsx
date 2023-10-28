@@ -174,7 +174,7 @@ const EditTask = ({ isLight, onClose }: ModalsProps) => {
               isLight
                 ? "bg-white text-black border-lines_light"
                 : "bg-dark_grey text-white border-lines_dark placeholder:text-white/30"
-            } p-lg border-[2px] rounded-[4px] outline-none focus:border-purple px-4 py-2 cursor-pointer transition-all duration-300 h-[112px] resize-none`}
+            } p-lg border-[2px] rounded-[4px] outline-none focus:border-purple px-4 py-2 cursor-pointer transition-all duration-300 xs:h-[86px] md:h-[112px] resize-none`}
           />
         </div>
         <SubtaskInputsList
