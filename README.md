@@ -41,7 +41,7 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Frontend Mentor Solution](https://www.frontendmentor.io/challenges/kanban-task-management-web-app-wgQLt-HlbB/hub?share=true)
+- Solution URL: [Frontend Mentor Solution](https://www.frontendmentor.io/solutions/react-nextjs-typescript-tailwindcss-redux-toolkit-kanban-mrTZmpcoZ6)
 - Live Site URL: [Kanban - Task Manager](https://bbualdo-kanban.vercel.app)
 
 ## My process
