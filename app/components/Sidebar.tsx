@@ -59,7 +59,7 @@ const Sidebar = () => {
           isLightTheme
             ? "bg-white border-lines_light"
             : "bg-dark_grey border-lines_dark"
-        } md:min-w-[260px] xs:max-md:h-[340px] lg:min-w-[300px] border-r-[1px] md:min-h-full xs:max-md:py-4 xs:max-md:overflow-y-auto md:pt-8 md:pb-12 flex flex-col transition-all duration-300 absolute xs:top-20 md:top-0 ${
+        } md:min-w-[260px] xs:max-md:h-[340px] lg:min-w-[300px] border-r-[1px] md:min-h-full xs:max-md:py-4 xs:max-md:overflow-y-auto xs:max-md:rounded-[8px] xs:max-md:shadow-2xl xs:max-md:shadow-medium_grey/10 md:pt-8 md:pb-12 flex flex-col transition-all duration-300 absolute xs:top-20 md:top-0 ${
           isSidebarShown ? "left-0" : "md:-left-[270px] lg:-left-[300px]"
         }`}
       >
