@@ -106,6 +106,7 @@ Users should be able to:
 40. `DeleteTask` works fine.
 41. Fixed bug that was deleting task if user was changing task's status to the same as selected.
 42. I've implemented checking the subtask as completed or not. [Toggle Complition](#check-as-completed) That was another opportunity to help me understand working with data. It affects `completedAmount` counter. One thing: Editing complition status of the task forces it to go at the bottom of tasks list, but I think that is not an issue. At least for now. I'm proud of myself, because I finished logic for entire Application, at least the basic logic, because I'm gonna setup a database for this app and provide some Authentication. But for now I have to make it responsive.
+43. I've styled app for tablets and styled `Header` and `Sidebar` for Mobile Devices. Sidebar works, looks and is called differently. [Mobile Sidebar Call](#mobile-sidebar-call)
 
 ### Built with
 
@@ -324,6 +325,30 @@ const toggleCompleted = (subtaskToToggle: SubtaskInterface) => {
   dispatch(switchBoard(newBoard));
   dispatch(switchTask(updatedTask));
 };
+```
+
+#### Mobile Sidebar Call
+
+```tsx
+const [width, setWidth] = useState(window.innerWidth);
+
+const handleResize = () => {
+  setWidth(window.innerWidth);
+};
+
+useEffect(() => {
+  window.addEventListener("resize", handleResize);
+
+  return () => {
+    window.removeEventListener("resize", handleResize);
+  };
+}, [width]);
+
+/* ... */
+
+{
+  width > 666 && <Sidebar />;
+}
 ```
 
 ### Continued development

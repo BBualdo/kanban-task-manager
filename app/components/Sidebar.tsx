@@ -59,11 +59,11 @@ const Sidebar = () => {
           isLightTheme
             ? "bg-white border-lines_light"
             : "bg-dark_grey border-lines_dark"
-        } md:min-w-[260px] lg:min-w-[300px] border-r-[1px] min-h-full pt-8 pb-12 flex flex-col transition-all duration-300 absolute top-0 ${
+        } md:min-w-[260px] xs:max-md:h-[340px] lg:min-w-[300px] border-r-[1px] md:min-h-full xs:max-md:py-4 xs:max-md:overflow-y-auto md:pt-8 md:pb-12 flex flex-col transition-all duration-300 absolute xs:top-20 md:top-0 ${
           isSidebarShown ? "left-0" : "md:-left-[270px] lg:-left-[300px]"
         }`}
       >
-        <div className="flex items-center gap-4">
+        <div className="xs:max-md:hidden flex items-center gap-4">
           <Image src={logo} alt="Kanban Logo" className="ml-[34px]" />
           <h1
             className={`text-[32px] transition-all duration-300 ${
@@ -75,7 +75,7 @@ const Sidebar = () => {
         </div>
 
         <div className="flex flex-col justify-between flex-1">
-          <div className=" mt-[54px]">
+          <div className="md:mt-[54px]">
             <h4 className="text-medium_grey pl-8">
               ALL BOARDS ({data.boards.length})
             </h4>
@@ -103,7 +103,7 @@ const Sidebar = () => {
             <div
               className={`${
                 isLightTheme ? "bg-light_grey" : "bg-very_dark_grey"
-              } flex items-center justify-center gap-3 mx-6 py-[14px]`}
+              } flex items-center justify-center gap-3 xs:max-md:mt-4 mx-6 py-[14px]`}
             >
               <Image src={sunIcon} alt="Sun Icon" />
               <div
@@ -120,7 +120,7 @@ const Sidebar = () => {
             </div>
             <div
               onClick={toggleVisibility}
-              className={`group ${
+              className={`xs:max-md:hidden group ${
                 isLightTheme ? "hover:bg-purple/10" : "hover:bg-white"
               } transition-all duration-300 flex items-center gap-4 px-8 py-4 rounded-r-full mr-6 mt-[22px] cursor-pointer`}
             >
@@ -143,7 +143,7 @@ const Sidebar = () => {
         {!isSidebarShown && (
           <div
             onClick={toggleVisibility}
-            className="w-14 h-12 rounded-r-full bg-purple absolute bottom-8 -right-14 flex items-center justify-center cursor-pointer transition-all duration-200 hover:bg-purple_hover"
+            className="xs:max-md:hidden w-14 h-12 rounded-r-full bg-purple absolute bottom-8 -right-14 flex items-center justify-center cursor-pointer transition-all duration-200 hover:bg-purple_hover"
           >
             <Image src={eye} alt="Eye Icon" />
           </div>

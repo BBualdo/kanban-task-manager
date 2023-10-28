@@ -15,6 +15,8 @@ import EditBoard from "./Modals/EditBoard";
 import { showAddTaskModal } from "@/redux/features/add-task-slice";
 import AddTask from "./Modals/AddTask";
 import BoardOptions from "./Modals/BoardOptions";
+import Sidebar from "./Sidebar";
+import { toggleMobileSidebar } from "@/redux/features/mobile-sidebar-slice";
 
 const Header = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -80,6 +82,21 @@ const Header = () => {
     dispatch(showAddTaskModal(false));
   };
 
+  const isMobileSidebarOpen = useAppSelector(
+    (state) => state.mobileSidebarReducer.value.isShown
+  );
+
+  const openMobileSidebar = () => {
+    if (window.innerWidth > 666) {
+      return;
+    }
+    dispatch(toggleMobileSidebar(true));
+  };
+
+  const closeMobileSidebar = () => {
+    dispatch(toggleMobileSidebar(false));
+  };
+
   return (
     <>
       {isDeleteModalOpen && (
@@ -100,12 +117,17 @@ const Header = () => {
           <AddTask isLight={isLightTheme} onClose={closeAddTaskModal} />
         </Modal>
       )}
+      {isMobileSidebarOpen && (
+        <Modal isOpen={isMobileSidebarOpen} onClose={closeMobileSidebar}>
+          <Sidebar />
+        </Modal>
+      )}
       <header
         className={`border-b-[1px] ${
           isLightTheme
             ? "border-lines_light bg-white"
             : "border-lines_dark bg-dark_grey"
-        }  flex items-center relative transition-all duration-300 md:min-w-[700px] xs:p-4 md:p-0`}
+        }  flex items-center relative transition-all duration-300 xs:p-4 md:p-0`}
       >
         <div
           className={`xs:pr-4 md:pr-8 ${
@@ -124,7 +146,10 @@ const Header = () => {
           </div>
         </div>
         <div className="flex items-center justify-between flex-1 md:pt-6 md:pb-6 md:pl-[260px] lg:pl-[300px] md:pr-6 lg:pr-8">
-          <div className="group xs:max-md:flex xs:max-md:items-center xs:max-md:gap-2">
+          <div
+            onClick={openMobileSidebar}
+            className="group xs:max-md:flex xs:max-md:items-center xs:max-md:gap-2"
+          >
             <h1
               className={`${
                 isLightTheme ? "text-black" : "text-white"
@@ -137,7 +162,9 @@ const Header = () => {
               {selectedBoard.name}
             </h1>
             <svg
-              className="md:hidden stroke-purple group-hover:stroke-purple_hover transition-all duration-200"
+              className={`${
+                isMobileSidebarOpen && "rotate-180"
+              } md:hidden stroke-purple group-hover:stroke-purple_hover transition-all duration-200`}
               width="10"
               height="7"
               xmlns="http://www.w3.org/2000/svg"

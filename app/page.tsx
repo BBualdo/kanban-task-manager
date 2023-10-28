@@ -5,18 +5,33 @@ import Feed from "./components/Feed";
 import Header from "./components/Header";
 import Sidebar from "./components/Sidebar";
 import Empty from "./components/Empty";
+import { useEffect, useState } from "react";
 
 export default function Home() {
   const selectedBoard = useAppSelector(
     (state) => state.selectedBoardReducer.value.selectedBoard
   );
 
+  const [width, setWidth] = useState(window.innerWidth);
+
+  const handleResize = () => {
+    setWidth(window.innerWidth);
+  };
+
+  useEffect(() => {
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, [width]);
+
   return (
     <>
       <div className="min-h-[100vh] flex flex-col relative">
         {selectedBoard && <Header />}
         <div className="w-full flex flex-1 overflow-auto">
-          {/* <Sidebar /> */}
+          {width > 666 && <Sidebar />}
           {selectedBoard && <Feed />}
           {!selectedBoard && <Empty />}
         </div>
