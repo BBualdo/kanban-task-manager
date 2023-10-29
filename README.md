@@ -110,6 +110,10 @@ Users should be able to:
 43. I've styled app for tablets and styled `Header` and `Sidebar` for Mobile Devices. Sidebar works, looks and is called differently. [Mobile Sidebar Call](#mobile-sidebar-call)
 44. I've finished RWD. Probably some issues will apear later, but I will solve them.
 
+#### Fullstack Development
+
+45. I've built login page using **Next.js** App Router.
+
 ### Built with
 
 - React

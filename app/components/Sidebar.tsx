@@ -1,8 +1,6 @@
 import Image from "next/image";
 
 import logo from "../../public/assets/logo-mobile.svg";
-import sunIcon from "../../public/assets/icon-light-theme.svg";
-import moonIcon from "../../public/assets/icon-dark-theme.svg";
 import eye from "../../public/assets/icon-show-sidebar.svg";
 import Boards from "./Boards";
 
@@ -14,6 +12,7 @@ import { AppDispatch, useAppSelector } from "@/redux/store";
 
 import data from "../data/data.json";
 import { toggleMobileSidebar } from "@/redux/features/mobile-sidebar-slice";
+import ThemeSwitch from "./ThemeSwitch";
 
 const Sidebar = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -87,24 +86,7 @@ const Sidebar = () => {
             </div>
           </div>
           <div>
-            <div
-              className={`${
-                isLightTheme ? "bg-light_grey" : "bg-very_dark_grey"
-              } flex items-center justify-center gap-3 xs:max-md:mt-4 mx-6 py-[14px]`}
-            >
-              <Image src={sunIcon} alt="Sun Icon" />
-              <div
-                onClick={onClickToggle}
-                className="w-12 h-5 bg-purple hover:bg-purple_hover transition-all duration-200 rounded-full cursor-pointer flex items-center justify-center"
-              >
-                <div
-                  className={`w-[14px] h-[14px] bg-white rounded-full transition-transform duration-400 ${
-                    isLightTheme ? "translate-x-[-100%]" : "translate-x-[100%]"
-                  }`}
-                />
-              </div>
-              <Image src={moonIcon} alt="Moon Icon" />
-            </div>
+            <ThemeSwitch isLight={isLightTheme} toggle={onClickToggle} />
             <div
               onClick={toggleVisibility}
               className={`xs:max-md:hidden group ${

@@ -30,6 +30,7 @@ const config: Config = {
     extend: {
       backgroundImage: {
         plus: "url('../public/assets/icon-add-task-mobile.svg')",
+        preview: "url('../public/assets/preview.jpg')",
       },
     },
   },
