@@ -113,6 +113,7 @@ Users should be able to:
 #### Fullstack Development
 
 45. I've built login page using **Next.js** App Router.
+46. Firebase and Auth configured. For now user can "Create Account" that is stored in Firebase. On Create Account click it checks if email is OK. If not, console.error(error), else I used useRouter to take user into main page.
 
 ### Built with
 

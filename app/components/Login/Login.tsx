@@ -1,14 +1,19 @@
 "use client";
 
-import Image from "next/image";
+import { firebaseConfig } from "@/firebase.config";
+import { initializeApp } from "firebase/app";
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 
-import preview from "../../../public/assets/preview.jpg";
+import { useRouter } from "next/navigation";
+
+import Image from "next/image";
 import googleIcon from "../../../public/assets/google-logo.svg";
 import LoginHeader from "./LoginHeader";
 import ThemeSwitch from "../ThemeSwitch";
 import { useDispatch } from "react-redux";
 import { AppDispatch, useAppSelector } from "@/redux/store";
 import { toggleTheme } from "@/redux/features/theme-slice";
+import { useRef } from "react";
 
 const Login = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -22,6 +27,27 @@ const Login = () => {
   };
 
   const isEmpty = false;
+
+  const emailInputRef = useRef<HTMLInputElement | null>(null);
+  const passwordInputRef = useRef<HTMLInputElement | null>(null);
+
+  const router = useRouter();
+
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+
+  const authCreateAccountWithEmail = () => {
+    const email = emailInputRef.current!.value;
+    const password = passwordInputRef.current!.value;
+
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredentials) => {
+        router.replace("..");
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
 
   return (
     <main
@@ -52,6 +78,7 @@ const Login = () => {
                 E-Mail
               </label>
               <input
+                ref={emailInputRef}
                 className={`${
                   isLightTheme
                     ? "bg-white text-black border-lines_light"
@@ -75,6 +102,7 @@ const Login = () => {
                 Password
               </label>
               <input
+                ref={passwordInputRef}
                 className={`${
                   isLightTheme
                     ? "bg-white text-black border-lines_light"
@@ -92,7 +120,10 @@ const Login = () => {
 
           <div className="flex flex-col items-center gap-4 mt-4 mb-4">
             <button className="btn btn-primary-lg w-[250px]">Sign in</button>
-            <button className="btn btn-primary-lg border-2 border-purple bg-white text-black w-[250px] py-2 hover:text-white">
+            <button
+              onClick={authCreateAccountWithEmail}
+              className="btn btn-primary-lg border-2 border-purple bg-white text-black w-[250px] py-2 hover:text-white"
+            >
               Create Account
             </button>
           </div>
