@@ -15,9 +15,13 @@ import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 import { initializeApp } from "firebase/app";
 import { firebaseConfig } from "@/firebase.config";
 import Login from "./components/Login/Login";
+import { setIsLoggedIn } from "@/redux/features/auth-slice";
 
 export default function Home() {
-  const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
+  const isUserLoggedIn = useAppSelector(
+    (state) => state.isLoggedInReducer.value.isLoggedIn
+  );
+  const dispatch = useDispatch<AppDispatch>();
 
   const app = initializeApp(firebaseConfig);
   const auth = getAuth(app);
@@ -30,13 +34,11 @@ export default function Home() {
 
   onAuthStateChanged(auth, (user) => {
     if (user) {
-      setIsUserLoggedIn(true);
+      dispatch(setIsLoggedIn(true));
     } else {
-      setIsUserLoggedIn(false);
+      dispatch(setIsLoggedIn(false));
     }
   });
-
-  const dispatch = useDispatch<AppDispatch>();
 
   const selectedBoard = useAppSelector(
     (state) => state.selectedBoardReducer.value.selectedBoard

@@ -11,6 +11,7 @@ import addTaskModalReducer from "./features/add-task-slice";
 import deleteTaskModalReducer from "./features/confirm-delete-task-slice";
 import editTaskModalReducer from "./features/edit-task-slice";
 import mobileSidebarReducer from "./features/mobile-sidebar-slice";
+import isLoggedInReducer from "./features/auth-slice";
 import { TypedUseSelectorHook, useSelector } from "react-redux";
 
 export const store = configureStore({
@@ -27,6 +28,7 @@ export const store = configureStore({
     deleteTaskModalReducer,
     editTaskModalReducer,
     mobileSidebarReducer,
+    isLoggedInReducer,
   },
 });
 
