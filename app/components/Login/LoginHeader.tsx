@@ -22,7 +22,7 @@ const LoginHeader = ({ isLight }: { isLight: boolean }) => {
         <h1
           className={`xs:text-[16px] md:text-[24px] lg:text-[28px] transition-all duration-300 ${
             isLight ? "text-black" : "text-white"
-          } text-center leading-10 mt-4`}
+          } text-center xs:leading-6 md:leading-10 mt-4`}
         >
           Welcome to <span className="text-gradient">Kanban</span>
           : <br /> <span className="text-purple">Task Management App</span>{" "}
