@@ -1,13 +1,16 @@
 "use client";
 
-import React from "react";
+import { firebaseConfig } from "@/firebase.config";
+import { initializeApp } from "firebase/app";
 
 import { getAuth, signOut } from "firebase/auth";
 import { useRouter } from "next/navigation";
 
 const Logout = ({ isLight }: { isLight: boolean }) => {
   const router = useRouter();
-  const auth = getAuth();
+
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
   const signUserOut = () => {
     signOut(auth)
       .then(() => {
