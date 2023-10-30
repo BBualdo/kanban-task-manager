@@ -10,8 +10,35 @@ import { useDispatch } from "react-redux";
 import { showAddBoardModal } from "@/redux/features/add-board-slice";
 import Modal from "./components/Modal";
 import AddBoard from "./components/Modals/AddBoard";
+import { useRouter } from "next/navigation";
+
+import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
+import { initializeApp } from "firebase/app";
+import { firebaseConfig } from "@/firebase.config";
 
 export default function Home() {
+  const router = useRouter();
+
+  const app = initializeApp(firebaseConfig);
+
+  const auth = getAuth(app);
+
+  const signUserOut = () => {
+    signOut(auth)
+      .then(() => {
+        router.push("/login");
+      })
+      .catch((error) => console.error(error));
+  };
+
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      console.log(user);
+    } else {
+      router.push("/login");
+    }
+  });
+
   const dispatch = useDispatch<AppDispatch>();
 
   const selectedBoard = useAppSelector(
@@ -53,7 +80,7 @@ export default function Home() {
             <AddBoard isLight={isLightTheme} onClose={closeModal} />
           </Modal>
         )}
-        {selectedBoard && <Header />}
+        {selectedBoard && <Header logout={signUserOut} />}
         <div className="w-full flex flex-1 overflow-auto">
           {width > 666 && <Sidebar />}
           {selectedBoard && <Feed />}

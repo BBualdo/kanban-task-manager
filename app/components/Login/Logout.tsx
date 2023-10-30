@@ -1,28 +1,16 @@
 "use client";
 
-import { firebaseConfig } from "@/firebase.config";
-import { initializeApp } from "firebase/app";
-
-import { getAuth, signOut } from "firebase/auth";
-import { useRouter } from "next/navigation";
-
-const Logout = ({ isLight }: { isLight: boolean }) => {
-  const router = useRouter();
-
-  const app = initializeApp(firebaseConfig);
-  const auth = getAuth(app);
-  const signUserOut = () => {
-    signOut(auth)
-      .then(() => {
-        router.push("/login");
-      })
-      .catch((error) => console.error(error));
-  };
-
+const Logout = ({
+  isLight,
+  logout,
+}: {
+  isLight: boolean;
+  logout: () => void;
+}) => {
   return (
     <div>
       <svg
-        onClick={signUserOut}
+        onClick={logout}
         className={`${
           isLight ? "fill-black" : "fill-white"
         } hover:fill-purple transition-all duration-300 cursor-pointer`}

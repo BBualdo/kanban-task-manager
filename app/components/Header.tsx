@@ -19,7 +19,7 @@ import Sidebar from "./Sidebar";
 import { toggleMobileSidebar } from "@/redux/features/mobile-sidebar-slice";
 import Logout from "./Login/Logout";
 
-const Header = () => {
+const Header = ({ logout }: { logout: () => void }) => {
   const dispatch = useDispatch<AppDispatch>();
 
   const [isMenuShown, setIsMenuShown] = useState(false);
@@ -206,7 +206,7 @@ const Header = () => {
                 openEditBoardModal={openEditBoardModal}
               />
             )}
-            <Logout isLight={isLightTheme} />
+            <Logout isLight={isLightTheme} logout={logout} />
           </div>
         </div>
       </header>
