@@ -1,11 +1,6 @@
 "use client";
 
-import {
-  BoardColumnInterface,
-  ModalsProps,
-  SubtaskInterface,
-  TaskInterface,
-} from "@/ts/types";
+import { ModalsProps, SubtaskInterface, TaskInterface } from "@/ts/types";
 import SubtaskInputsList from "./SubtaskInputsList";
 import { useDispatch } from "react-redux";
 import { AppDispatch, useAppSelector } from "@/redux/store";

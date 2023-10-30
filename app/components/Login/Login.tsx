@@ -13,9 +13,11 @@ import ThemeSwitch from "../ThemeSwitch";
 import { useDispatch } from "react-redux";
 import { AppDispatch, useAppSelector } from "@/redux/store";
 import { toggleTheme } from "@/redux/features/theme-slice";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 
 const Login = () => {
+  const [isEmpty, setIsEmpty] = useState({ email: false, password: false });
+
   const dispatch = useDispatch<AppDispatch>();
 
   const isLightTheme = useAppSelector(
@@ -25,8 +27,6 @@ const Login = () => {
   const onClickToggle = () => {
     dispatch(toggleTheme());
   };
-
-  const isEmpty = false;
 
   const emailInputRef = useRef<HTMLInputElement | null>(null);
   const passwordInputRef = useRef<HTMLInputElement | null>(null);
@@ -40,8 +40,12 @@ const Login = () => {
     const email = emailInputRef.current!.value;
     const password = passwordInputRef.current!.value;
 
+    if (isEmpty.email || isEmpty.password) {
+      return;
+    }
+
     createUserWithEmailAndPassword(auth, email, password)
-      .then((userCredentials) => {
+      .then(() => {
         router.replace("..");
       })
       .catch((error) => {
@@ -68,7 +72,7 @@ const Login = () => {
 
         <div className="flex flex-col gap-4">
           <div className="flex flex-col items-center justify-center gap-4">
-            <div className="flex flex-col gap-2 w-[520px]">
+            <div className="relative flex flex-col gap-2 w-[520px]">
               <label
                 className={`${
                   isLightTheme ? "text-black" : "text-white"
@@ -78,21 +82,32 @@ const Login = () => {
                 E-Mail
               </label>
               <input
+                onChange={() =>
+                  setIsEmpty({
+                    ...isEmpty,
+                    email: emailInputRef.current!.value === "",
+                  })
+                }
                 ref={emailInputRef}
                 className={`${
                   isLightTheme
                     ? "bg-white text-black border-lines_light"
                     : "bg-dark_grey text-white border-lines_dark placeholder:text-white/30"
                 } ${
-                  isEmpty && "border-red focus:border-red"
+                  isEmpty.email && "border-red focus:border-red"
                 } p-lg border-[2px] rounded-[4px] outline-none focus:border-purple px-4 py-2 cursor-pointer transition-all duration-300 flex-1`}
                 id="email"
                 name="email"
                 type="text"
                 placeholder="E-mail"
               />
+              {isEmpty.email && (
+                <p className="absolute xs:max-md:text-[10px] right-4 top-[41px] p-lg text-red">
+                  Can&apos;t be empty
+                </p>
+              )}
             </div>
-            <div className="flex flex-col gap-2 w-[520px]">
+            <div className="relative flex flex-col gap-2 w-[520px]">
               <label
                 className={`${
                   isLightTheme ? "text-black" : "text-white"
@@ -102,19 +117,30 @@ const Login = () => {
                 Password
               </label>
               <input
+                onChange={() =>
+                  setIsEmpty({
+                    ...isEmpty,
+                    password: passwordInputRef.current!.value === "",
+                  })
+                }
                 ref={passwordInputRef}
                 className={`${
                   isLightTheme
                     ? "bg-white text-black border-lines_light"
                     : "bg-dark_grey text-white border-lines_dark placeholder:text-white/30"
                 } ${
-                  isEmpty && "border-red focus:border-red"
+                  isEmpty.password && "border-red focus:border-red"
                 } p-lg border-[2px] rounded-[4px] outline-none focus:border-purple px-4 py-2 cursor-pointer transition-all duration-300 flex-1`}
                 id="password"
                 name="password"
                 type="password"
                 placeholder="Password"
               />
+              {isEmpty.password && (
+                <p className="absolute xs:max-md:text-[10px] right-4 top-[41px] p-lg text-red">
+                  Can&apos;t be empty
+                </p>
+              )}
             </div>
           </div>
 
