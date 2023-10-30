@@ -116,6 +116,7 @@ Users should be able to:
 46. Firebase and Auth configured. For now user can "Create Account" that is stored in Firebase. On Create Account click it checks if email is OK. If not, console.error(error), else I used useRouter to take user into main page.
 47. I've added styling for empty input fields and prevent user from login if any input is empty. I've also added possibility to Sing in if user is in database.
 48. Added possibility to Log Out.
+49. I refused using **Next.js** App Router. Now `Login` component is rendered conditionally whenever user is logged in or not.
 
 ### Built with
 

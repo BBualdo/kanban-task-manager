@@ -8,8 +8,6 @@ import {
   signInWithEmailAndPassword,
 } from "firebase/auth";
 
-import { useRouter } from "next/navigation";
-
 import Image from "next/image";
 import googleIcon from "../../../public/assets/google-logo.svg";
 import LoginHeader from "./LoginHeader";
@@ -35,8 +33,6 @@ const Login = () => {
   const emailInputRef = useRef<HTMLInputElement | null>(null);
   const passwordInputRef = useRef<HTMLInputElement | null>(null);
 
-  const router = useRouter();
-
   const app = initializeApp(firebaseConfig);
   const auth = getAuth(app);
 
@@ -49,9 +45,7 @@ const Login = () => {
     }
 
     createUserWithEmailAndPassword(auth, email, password)
-      .then(() => {
-        router.replace("..");
-      })
+      .then(() => {})
       .catch((error) => {
         console.error(error);
       });
@@ -66,9 +60,7 @@ const Login = () => {
     }
 
     signInWithEmailAndPassword(auth, email, password)
-      .then((userCredentials) => {
-        router.replace("..");
-      })
+      .then((userCredentials) => {})
       .catch((error) => console.error(error));
   };
 

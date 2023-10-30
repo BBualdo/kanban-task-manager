@@ -10,32 +10,29 @@ import { useDispatch } from "react-redux";
 import { showAddBoardModal } from "@/redux/features/add-board-slice";
 import Modal from "./components/Modal";
 import AddBoard from "./components/Modals/AddBoard";
-import { useRouter } from "next/navigation";
 
 import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 import { initializeApp } from "firebase/app";
 import { firebaseConfig } from "@/firebase.config";
+import Login from "./components/Login/Login";
 
 export default function Home() {
-  const router = useRouter();
+  const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
 
   const app = initializeApp(firebaseConfig);
-
   const auth = getAuth(app);
 
   const signUserOut = () => {
     signOut(auth)
-      .then(() => {
-        router.push("/login");
-      })
+      .then(() => {})
       .catch((error) => console.error(error));
   };
 
   onAuthStateChanged(auth, (user) => {
     if (user) {
-      console.log(user);
+      setIsUserLoggedIn(true);
     } else {
-      router.push("/login");
+      setIsUserLoggedIn(false);
     }
   });
 
@@ -74,19 +71,22 @@ export default function Home() {
 
   return (
     <>
-      <div className="min-h-[100vh] flex flex-col relative">
-        {isModalOpen && (
-          <Modal isOpen={isModalOpen} onClose={closeModal}>
-            <AddBoard isLight={isLightTheme} onClose={closeModal} />
-          </Modal>
-        )}
-        {selectedBoard && <Header logout={signUserOut} />}
-        <div className="w-full flex flex-1 overflow-auto">
-          {width > 666 && <Sidebar />}
-          {selectedBoard && <Feed />}
-          {!selectedBoard && <Empty />}
+      {!isUserLoggedIn && <Login />}
+      {isUserLoggedIn && (
+        <div className="min-h-[100vh] flex flex-col relative">
+          {isModalOpen && (
+            <Modal isOpen={isModalOpen} onClose={closeModal}>
+              <AddBoard isLight={isLightTheme} onClose={closeModal} />
+            </Modal>
+          )}
+          {selectedBoard && <Header logout={signUserOut} />}
+          <div className="w-full flex flex-1 overflow-auto">
+            {width > 666 && <Sidebar />}
+            {selectedBoard && <Feed />}
+            {!selectedBoard && <Empty />}
+          </div>
         </div>
-      </div>
+      )}
     </>
   );
 }
