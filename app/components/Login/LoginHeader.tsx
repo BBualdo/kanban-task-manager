@@ -20,7 +20,7 @@ const LoginHeader = ({ isLight }: { isLight: boolean }) => {
       </div>
       <div className="flex flex-col items-center">
         <h1
-          className={`xs:text-[20px] md:text-[28px] lg:text-[32px] transition-all duration-300 ${
+          className={`xs:text-[16px] md:text-[24px] lg:text-[28px] transition-all duration-300 ${
             isLight ? "text-black" : "text-white"
           } text-center leading-10 mt-4`}
         >

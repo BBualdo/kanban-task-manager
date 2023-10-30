@@ -72,7 +72,7 @@ const Login = () => {
 
         <div className="flex flex-col gap-4">
           <div className="flex flex-col items-center justify-center gap-4">
-            <div className="relative flex flex-col gap-2 w-[520px]">
+            <div className="relative flex flex-col gap-2 xs:w-full md:w-[520px]">
               <label
                 className={`${
                   isLightTheme ? "text-black" : "text-white"
@@ -107,7 +107,7 @@ const Login = () => {
                 </p>
               )}
             </div>
-            <div className="relative flex flex-col gap-2 w-[520px]">
+            <div className="relative flex flex-col gap-2 xs:w-full md:w-[520px]">
               <label
                 className={`${
                   isLightTheme ? "text-black" : "text-white"
