@@ -2,7 +2,11 @@
 
 import { firebaseConfig } from "@/firebase.config";
 import { initializeApp } from "firebase/app";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
 
 import { useRouter } from "next/navigation";
 
@@ -51,6 +55,21 @@ const Login = () => {
       .catch((error) => {
         console.error(error);
       });
+  };
+
+  const authSignInWithEmail = () => {
+    const email = emailInputRef.current!.value;
+    const password = passwordInputRef.current!.value;
+
+    if (isEmpty.email || isEmpty.password) {
+      return;
+    }
+
+    signInWithEmailAndPassword(auth, email, password)
+      .then((userCredentials) => {
+        router.replace("..");
+      })
+      .catch((error) => console.error(error));
   };
 
   return (
@@ -145,7 +164,12 @@ const Login = () => {
           </div>
 
           <div className="flex flex-col items-center gap-4 mt-4 mb-4">
-            <button className="btn btn-primary-lg w-[250px]">Sign in</button>
+            <button
+              onClick={authSignInWithEmail}
+              className="btn btn-primary-lg w-[250px]"
+            >
+              Sign in
+            </button>
             <button
               onClick={authCreateAccountWithEmail}
               className="btn btn-primary-lg border-2 border-purple bg-white text-black w-[250px] py-2 hover:text-white"
