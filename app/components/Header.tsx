@@ -17,6 +17,7 @@ import AddTask from "./Modals/AddTask";
 import BoardOptions from "./Modals/BoardOptions";
 import Sidebar from "./Sidebar";
 import { toggleMobileSidebar } from "@/redux/features/mobile-sidebar-slice";
+import Logout from "./Login/Logout";
 
 const Header = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -205,6 +206,7 @@ const Header = () => {
                 openEditBoardModal={openEditBoardModal}
               />
             )}
+            <Logout isLight={isLightTheme} />
           </div>
         </div>
       </header>
