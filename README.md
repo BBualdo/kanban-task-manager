@@ -117,6 +117,7 @@ Users should be able to:
 47. I've added styling for empty input fields and prevent user from login if any input is empty. I've also added possibility to Sing in if user is in database.
 48. Added possibility to Log Out.
 49. I refused using **Next.js** App Router. Now `Login` component is rendered conditionally whenever user is logged in or not.
+50. Added Google Provider for loggin in with Google Account.
 
 ### Built with
 

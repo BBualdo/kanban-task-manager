@@ -6,6 +6,8 @@ import {
   getAuth,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  signInWithPopup,
+  GoogleAuthProvider,
 } from "firebase/auth";
 
 import Image from "next/image";
@@ -35,6 +37,7 @@ const Login = () => {
 
   const app = initializeApp(firebaseConfig);
   const auth = getAuth(app);
+  const provider = new GoogleAuthProvider();
 
   const authCreateAccountWithEmail = () => {
     const email = emailInputRef.current!.value;
@@ -64,6 +67,24 @@ const Login = () => {
       .catch((error) => console.error(error));
   };
 
+  const authSignInWithGoogle = () => {
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        // This gives you a Google Access Token. You can use it to access the Google API.
+        const credential = GoogleAuthProvider.credentialFromResult(result);
+        const token = credential!.accessToken;
+        // The signed-in user info.
+        const user = result.user;
+        // IdP data available using getAdditionalUserInfo(result)
+        console.log("Signed in with Google!");
+      })
+      .catch((error) => {
+        // The AuthCredential type that was used.
+        const credential = GoogleAuthProvider.credentialFromError(error);
+        console.error(error, credential);
+      });
+  };
+
   return (
     <main
       className={`flex items-center ${
@@ -75,7 +96,10 @@ const Login = () => {
           <LoginHeader isLight={isLightTheme} />
         </div>
         <div className="flex justify-center mt-2">
-          <button className="btn btn-primary-lg flex items-center border-2 border-purple bg-white text-black px-10 hover:text-white gap-4 mt-4 mb-4">
+          <button
+            onClick={authSignInWithGoogle}
+            className="btn btn-primary-lg flex items-center border-2 border-purple bg-white text-black px-10 hover:text-white gap-4 mt-4 mb-4"
+          >
             <Image src={googleIcon} alt="Google Logo" />
             <p className="p-lg">Sign in with Google</p>
           </button>
