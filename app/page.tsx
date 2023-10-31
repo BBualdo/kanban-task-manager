@@ -11,20 +11,18 @@ import { showAddBoardModal } from "@/redux/features/add-board-slice";
 import Modal from "./components/Modal";
 import AddBoard from "./components/Modals/AddBoard";
 
-import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
-import { initializeApp } from "firebase/app";
-import { firebaseConfig } from "@/firebase.config";
+import { onAuthStateChanged, signOut } from "firebase/auth";
+
 import Login from "./components/Login/Login";
 import { setIsLoggedIn } from "@/redux/features/auth-slice";
+
+import { auth } from "@/firebase";
 
 export default function Home() {
   const isUserLoggedIn = useAppSelector(
     (state) => state.isLoggedInReducer.value.isLoggedIn
   );
   const dispatch = useDispatch<AppDispatch>();
-
-  const app = initializeApp(firebaseConfig);
-  const auth = getAuth(app);
 
   const signUserOut = () => {
     signOut(auth)

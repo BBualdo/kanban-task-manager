@@ -1,14 +1,12 @@
 "use client";
-
-import { firebaseConfig } from "@/firebase.config";
-import { initializeApp } from "firebase/app";
 import {
-  getAuth,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signInWithPopup,
   GoogleAuthProvider,
 } from "firebase/auth";
+
+import { auth } from "@/firebase";
 
 import Image from "next/image";
 import googleIcon from "../../../public/assets/google-logo.svg";
@@ -35,8 +33,6 @@ const Login = () => {
   const emailInputRef = useRef<HTMLInputElement | null>(null);
   const passwordInputRef = useRef<HTMLInputElement | null>(null);
 
-  const app = initializeApp(firebaseConfig);
-  const auth = getAuth(app);
   const provider = new GoogleAuthProvider();
 
   const authCreateAccountWithEmail = () => {
