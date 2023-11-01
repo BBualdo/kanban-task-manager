@@ -92,7 +92,7 @@ const Login = () => {
     <main
       className={`flex items-center ${
         isLightTheme ? "bg-light_grey" : "bg-very_dark_grey"
-      } transition-all duration-300 h-full`}
+      } transition-all duration-300 min-h-[100vh]`}
     >
       <div className="flex-1 p-10 flex flex-col">
         <div>
