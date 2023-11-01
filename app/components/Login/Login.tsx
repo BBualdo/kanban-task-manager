@@ -20,6 +20,10 @@ import { useRef, useState } from "react";
 const Login = () => {
   const [isEmpty, setIsEmpty] = useState({ email: false, password: false });
 
+  const [errorCode, setErrorCode] = useState<string[]>([]);
+
+  console.log(errorCode);
+
   const dispatch = useDispatch<AppDispatch>();
 
   const isLightTheme = useAppSelector(
@@ -46,7 +50,8 @@ const Login = () => {
     createUserWithEmailAndPassword(auth, email, password)
       .then(() => {})
       .catch((error) => {
-        console.error(error);
+        setErrorCode([]);
+        setErrorCode((prev) => [...prev, error.code]);
       });
   };
 
@@ -60,7 +65,10 @@ const Login = () => {
 
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredentials) => {})
-      .catch((error) => console.error(error));
+      .catch((error) => {
+        setErrorCode([]);
+        setErrorCode((prev) => [...prev, error.code]);
+      });
   };
 
   const authSignInWithGoogle = () => {
@@ -72,7 +80,6 @@ const Login = () => {
         // The signed-in user info.
         const user = result.user;
         // IdP data available using getAdditionalUserInfo(result)
-        console.log("Signed in with Google!");
       })
       .catch((error) => {
         // The AuthCredential type that was used.
@@ -104,14 +111,26 @@ const Login = () => {
         <div className="flex flex-col gap-4">
           <div className="flex flex-col items-center justify-center gap-4">
             <div className="relative flex flex-col gap-2 xs:w-full md:w-[520px]">
-              <label
-                className={`${
-                  isLightTheme ? "text-black" : "text-white"
-                } p-lg uppercase`}
-                htmlFor="email"
-              >
-                E-Mail
-              </label>
+              <div className="flex items-center justify-between">
+                <label
+                  className={`${
+                    isLightTheme ? "text-black" : "text-white"
+                  } p-lg uppercase`}
+                  htmlFor="email"
+                >
+                  E-Mail
+                </label>
+                {errorCode.find((error) => error == "auth/invalid-email") && (
+                  <p className="p-lg text-red">E-mail is invalid</p>
+                )}
+                {errorCode.find(
+                  (error) => error == "auth/invalid-login-credentials"
+                ) && <p className="p-lg text-red">Wrong e-mail or password</p>}
+                {errorCode.find(
+                  (error) => error == "auth/email-already-in-use"
+                ) && <p className="p-lg text-red">Email already in use</p>}
+              </div>
+
               <input
                 onChange={() =>
                   setIsEmpty({
@@ -139,21 +158,32 @@ const Login = () => {
               )}
             </div>
             <div className="relative flex flex-col gap-2 xs:w-full md:w-[520px]">
-              <label
-                className={`${
-                  isLightTheme ? "text-black" : "text-white"
-                } p-lg uppercase`}
-                htmlFor="password"
-              >
-                Password
-              </label>
+              <div className="flex items-center justify-between">
+                <label
+                  className={`${
+                    isLightTheme ? "text-black" : "text-white"
+                  } p-lg uppercase`}
+                  htmlFor="password"
+                >
+                  Password
+                </label>
+
+                {errorCode.find((error) => error == "auth/weak-password") && (
+                  <p className="p-lg text-red">
+                    Password must have at least 6 characters
+                  </p>
+                )}
+                {errorCode.find(
+                  (error) => error == "auth/missing-password"
+                ) && <p className="p-lg text-red">Missing password</p>}
+              </div>
               <input
-                onChange={() =>
+                onChange={() => {
                   setIsEmpty({
                     ...isEmpty,
                     password: passwordInputRef.current!.value === "",
-                  })
-                }
+                  });
+                }}
                 ref={passwordInputRef}
                 className={`${
                   isLightTheme

@@ -118,6 +118,7 @@ Users should be able to:
 48. Added possibility to Log Out.
 49. I refused using **Next.js** App Router. Now `Login` component is rendered conditionally whenever user is logged in or not.
 50. Added Google Provider for loggin in with Google Account.
+51. Handled and displayed some common errors when providing invalid email or password, or when user doesn't exist.
 
 ### Built with
 
